@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "book": "finite-fields",
+  "exported": "2026-10-03T08:36:02.684Z",
+  "records": {
+    "trace": {
+      "status": "learning",
+      "difficulty": "proof",
+      "note": "不理解轨道长度与扩张次数。<img src=x onerror=alert(1)>",
+      "updated": "2026-10-03T08:36:02.584Z",
+      "reviewed": "2026-10-03T08:36:02.584Z"
+    }
+  }
+}

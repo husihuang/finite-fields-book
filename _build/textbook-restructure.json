@@ -1,0 +1,479 @@
+[
+  {
+    "chapter": 2,
+    "title": "等价关系与陪集",
+    "concept_sections": [
+      "等价关系与等价类",
+      "模 n 剩余类与加法群",
+      "左陪集及其划分",
+      "指标与拉格朗日定理"
+    ],
+    "old_blocks": 12,
+    "new_blocks": 10,
+    "pages": [
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "anchors_retained": true,
+    "remarks": 9,
+    "experiment": "cosets",
+    "math_fixes": [
+      "H < G"
+    ]
+  },
+  {
+    "chapter": 3,
+    "title": "循环群基本定理",
+    "concept_sections": [
+      "循环群结构定理总览",
+      "子群为什么仍是循环群",
+      "元素的阶与最大公因数",
+      "子群的存在与唯一性",
+      "生成元与指定阶元素的计数"
+    ],
+    "old_blocks": 6,
+    "new_blocks": 6,
+    "pages": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "anchors_retained": true,
+    "remarks": 6,
+    "experiment": "cyclic",
+    "math_fixes": [
+      "指数分别是",
+      "其指数为"
+    ]
+  },
+  {
+    "chapter": 4,
+    "title": "环、理想与域",
+    "concept_sections": [
+      "环、整环与域",
+      "子环、理想与主理想",
+      "商环及代表元无关性",
+      "同态、核与同态基本定理",
+      "素数阶有限域",
+      "环的特征与 Frobenius 公式"
+    ],
+    "old_blocks": 26,
+    "new_blocks": 25,
+    "pages": [
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "anchors_retained": true,
+    "remarks": 16,
+    "experiment": "residues",
+    "math_fixes": [
+      "[0.25]\\overset{?}{=}[0.75]",
+      "交换环，且 $R$ 中的非零元素",
+      "令 $R$ 为一个交换环且其特征为素数 $p$."
+    ]
+  },
+  {
+    "chapter": 5,
+    "title": "多项式与 Euclid 算法",
+    "concept_sections": [
+      "形式多项式及其运算",
+      "次数、首项与整除",
+      "带余除法与唯一性",
+      "多项式理想的生成元",
+      "最大公因子与 Bézout 等式"
+    ],
+    "old_blocks": 10,
+    "new_blocks": 10,
+    "pages": [
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "anchors_retained": true,
+    "remarks": 9,
+    "experiment": "division",
+    "math_fixes": [
+      "\\exists q,r\\in\\mathbb F[x]"
+    ]
+  },
+  {
+    "chapter": 6,
+    "title": "不可约多项式",
+    "concept_sections": [
+      "不可约性的定义与系数域",
+      "不可约多项式与商域",
+      "素元性质与唯一分解"
+    ],
+    "old_blocks": 4,
+    "new_blocks": 4,
+    "pages": [
+      45,
+      46,
+      47,
+      48
+    ],
+    "anchors_retained": true,
+    "remarks": 4,
+    "experiment": "irreducible",
+    "math_fixes": [
+      "给定非常数多项式 $f",
+      "其中 $a \\in {\\mathbb{F}},"
+    ]
+  },
+  {
+    "chapter": 7,
+    "title": "根与 Lagrange 插值",
+    "concept_sections": [
+      "根、因子与重数",
+      "根数界与不可约性判别",
+      "形式导数与重根",
+      "Lagrange 插值"
+    ],
+    "old_blocks": 8,
+    "new_blocks": 8,
+    "pages": [
+      49,
+      50,
+      51,
+      52
+    ],
+    "anchors_retained": true,
+    "remarks": 7,
+    "experiment": "interpolation",
+    "math_fixes": [
+      "元素 $b \\in {\\mathbb{F}}$ 是多项式 $f$ 的一个重根"
+    ]
+  },
+  {
+    "chapter": 8,
+    "title": "子域与极小多项式",
+    "concept_sections": [
+      "子域与素子域",
+      "添加元素与生成子域",
+      "代数元与超越元",
+      "代入同态与极小多项式"
+    ],
+    "old_blocks": 9,
+    "new_blocks": 9,
+    "pages": [
+      53,
+      54,
+      55,
+      56,
+      57,
+      58
+    ],
+    "anchors_retained": true,
+    "remarks": 6,
+    "experiment": "minimal",
+    "math_fixes": []
+  },
+  {
+    "chapter": 9,
+    "title": "域扩张与分裂域",
+    "concept_sections": [
+      "扩域作为向量空间",
+      "塔式法则与有限扩张的代数性",
+      "代数单扩张的幂基",
+      "分裂域的定义、存在与唯一性"
+    ],
+    "old_blocks": 10,
+    "new_blocks": 10,
+    "pages": [
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67
+    ],
+    "anchors_retained": true,
+    "remarks": 9,
+    "experiment": "coordinates",
+    "math_fixes": []
+  },
+  {
+    "chapter": 10,
+    "title": "有限域的存在与子域",
+    "concept_sections": [
+      "大小、特征与扩张次数",
+      "x^q−x 的根与分解",
+      "有限域的存在与唯一性",
+      "子域判别与包含关系"
+    ],
+    "old_blocks": 8,
+    "new_blocks": 8,
+    "pages": [
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74
+    ],
+    "anchors_retained": true,
+    "remarks": 8,
+    "experiment": "subfields",
+    "math_fixes": [
+      "\\prod_{a \\in {\\mathbb{F}}_{q}}^{}"
+    ]
+  },
+  {
+    "chapter": 11,
+    "title": "本原元",
+    "concept_sections": [
+      "有限域乘法群的循环性",
+      "本原元与个数",
+      "单扩张与各次数不可约多项式"
+    ],
+    "old_blocks": 5,
+    "new_blocks": 5,
+    "pages": [
+      75,
+      76
+    ],
+    "anchors_retained": true,
+    "remarks": 3,
+    "experiment": "primitive",
+    "math_fixes": []
+  },
+  {
+    "chapter": 12,
+    "title": "不可约多项式的根",
+    "concept_sections": [
+      "极小多项式与整除判据",
+      "不可约多项式的根与分裂域",
+      "共轭元、轨道长度与重复"
+    ],
+    "old_blocks": 8,
+    "new_blocks": 8,
+    "pages": [
+      77,
+      78,
+      79,
+      80
+    ],
+    "anchors_retained": true,
+    "remarks": 6,
+    "experiment": "conjugates",
+    "math_fixes": []
+  },
+  {
+    "chapter": 13,
+    "title": "迹与范数",
+    "concept_sections": [
+      "Frobenius 与自同构",
+      "迹、特征多项式与乘法算子",
+      "迹的性质、配对与零迹元素",
+      "范数及其传递性"
+    ],
+    "old_blocks": 12,
+    "new_blocks": 12,
+    "pages": [
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92
+    ],
+    "anchors_retained": true,
+    "remarks": 12,
+    "experiment": "trace",
+    "math_fixes": []
+  },
+  {
+    "chapter": 14,
+    "title": "基、对偶基与判别式",
+    "concept_sections": [
+      "坐标映射与对偶基",
+      "正规基及其存在性",
+      "迹矩阵与判别式",
+      "Moore 行列式判据"
+    ],
+    "old_blocks": 7,
+    "new_blocks": 7,
+    "pages": [
+      93,
+      94,
+      95,
+      96,
+      97
+    ],
+    "anchors_retained": true,
+    "remarks": 6,
+    "experiment": "basis",
+    "math_fixes": []
+  },
+  {
+    "chapter": 15,
+    "title": "割圆域与割圆多项式",
+    "concept_sections": [
+      "单位根与割圆域",
+      "本原单位根与割圆多项式",
+      "乘积分解与素数幂公式",
+      "不同基域上的割圆扩张"
+    ],
+    "old_blocks": 10,
+    "new_blocks": 10,
+    "pages": [
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106
+    ],
+    "anchors_retained": true,
+    "remarks": 9,
+    "experiment": "cyclotomic",
+    "math_fixes": [
+      "特征为 $p $的域",
+      "特征为 $p $的域，",
+      "特征为 $p$ 且 $p\\nmid n$",
+      "如果 $p \\nmid n$",
+      "如果 $p\\mid n$",
+      "为不被 $p$ 整除的正整数",
+      "是一个不被 $p $整除的正整数",
+      "设 $r$ 为素数且 $k$ 为正整数。则"
+    ]
+  },
+  {
+    "chapter": 16,
+    "title": "有限域的表示与实现",
+    "concept_sections": [
+      "多项式坐标表示",
+      "本原元与幂表示",
+      "伴随矩阵表示",
+      "位串、整数编码与 XOR",
+      "对数表实现乘除法"
+    ],
+    "old_blocks": 14,
+    "new_blocks": 14,
+    "pages": [
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116
+    ],
+    "anchors_retained": true,
+    "remarks": 11,
+    "experiment": "encoding",
+    "math_fixes": [
+      "\\mathbb{F}}_{q}$ 是$ {\\mathbb{F}}_{p} $的单扩张.",
+      "\\mathbb{F}}_{4} = {\\mathbb{F}}_{2}[ x]/(x^{2} + x + 1) =",
+      "GF}(2^w)="
+    ]
+  },
+  {
+    "chapter": 17,
+    "title": "组合零点定理",
+    "concept_sections": [
+      "有限网格上的根数界",
+      "网格消失理想与带余除法",
+      "组合零点定理的系数判别"
+    ],
+    "old_blocks": 3,
+    "new_blocks": 3,
+    "pages": [
+      117,
+      118,
+      119
+    ],
+    "anchors_retained": true,
+    "remarks": 3,
+    "experiment": "grid",
+    "math_fixes": [
+      "（Hilbert 零点定理）",
+      "${s_{1} \\in S}_{1},{s_{2} \\in S}_{2,}\\cdots,s_{n}{\\in S}_{n},"
+    ]
+  },
+  {
+    "chapter": 18,
+    "title": "加法组合与零和问题",
+    "concept_sections": [
+      "和集与 Cauchy–Davenport 定理",
+      "Chevalley–Warning 的零点计数",
+      "零和问题及最优下界",
+      "Erdős–Ginzburg–Ziv 定理"
+    ],
+    "old_blocks": 7,
+    "new_blocks": 7,
+    "pages": [
+      120,
+      121,
+      122
+    ],
+    "anchors_retained": true,
+    "remarks": 4,
+    "experiment": "sumsets",
+    "math_fixes": [
+      "(Erdos-Ginzburg-Ziv)"
+    ]
+  },
+  {
+    "chapter": 19,
+    "title": "Schwartz–Zippel 与多项式检验",
+    "concept_sections": [
+      "Schwartz–Zippel 零点数上界",
+      "随机检验的错误概率",
+      "二元多线性多项式的非零点下界"
+    ],
+    "old_blocks": 3,
+    "new_blocks": 3,
+    "pages": [
+      123,
+      124
+    ],
+    "anchors_retained": true,
+    "remarks": 3,
+    "experiment": "identity",
+    "math_fixes": [
+      "则\\n\\n$$"
+    ]
+  }
+]

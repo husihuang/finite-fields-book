@@ -1,0 +1,43 @@
+title: 有限域 · 逐行阅读
+author: 胡四煌课程讲义 · 交互注释版
+copyright: "2026"
+only_build_toc_files: true
+execute:
+  execute_notebooks: "off"
+  timeout: 120
+parse:
+  myst_enable_extensions:
+    - dollarmath
+    - amsmath
+    - colon_fence
+    - html_admonition
+    - html_image
+html:
+  use_download_button: true
+  use_fullscreen_button: true
+sphinx:
+  config:
+    # Browser experiments use reader.js; Notebook execution remains local.
+    # Omit the unused Thebe extension, whose inline config is duplicated by this build.
+    extensions:
+      - sphinx_togglebutton
+      - sphinx_copybutton
+      - myst_nb
+      - jupyter_book
+      - sphinx_comments
+      - sphinx_external_toc
+      - sphinx.ext.intersphinx
+      - sphinx_design
+      - sphinx_book_theme
+    language: zh_CN
+    togglebutton_hint: 展开说明
+    togglebutton_hint_hide: 收起说明
+    html_static_path: ["_static"]
+    html_css_files: ["reader.css"]
+    html_js_files: ["reader.js", "symmetry.js", "lessons.js"]
+    mathjax_path: math/tex-svg.mjs
+    mathjax3_config:
+      svg:
+        fontCache: global
+    suppress_warnings: ["myst.header"]
+

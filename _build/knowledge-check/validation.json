@@ -1,0 +1,14 @@
+{
+  "nodes": 134,
+  "edges": 216,
+  "chapters": 19,
+  "allAnchors": true,
+  "allFormulas": true,
+  "learningPersistence": true,
+  "exportImportMerge": true,
+  "invalidImportUnchanged": true,
+  "keyboard": true,
+  "mobile": true,
+  "offlineInteraction": true,
+  "errors": []
+}

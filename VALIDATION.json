@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-03",
+  "original_sha256": "matched",
+  "slides": 124,
+  "sections": 19,
+  "textbook_chapters_completed": 19,
+  "reading_units": 595,
+  "local_chapter_resources": "all 124 source slide images exist",
+  "jupyter_book_build": "passed with warnings treated as errors",
+  "browser_visual_test": "passed: chapter-specific mobile screenshots and selected dark themes inspected",
+  "browser_functional_chapters": 19,
+  "browser_formula_errors": 0,
+  "browser_script_errors": 0,
+  "independent_math_cases": 651,
+  "square_group_products": 64,
+  "notebook_source": "unchanged; initial validation preserved below",
+  "initial_release_validation": {
+    "original_sha256": "matched",
+    "slides": 124,
+    "sections": 19,
+    "reading_units": 660,
+    "rendered_math_nodes": 1177,
+    "python_experiment_cells": 8,
+    "python_assertions": "passed",
+    "local_chapter_resources": "all exist",
+    "jupyter_book_build": "passed without warnings",
+    "browser_visual_test": "not run: browser binary download unavailable",
+    "jupyter_kernel_test": "not run: socket binding unavailable; validated sequential Python execution"
+  },
+  "element_representation_review": {
+    "date": "2026-10-03",
+    "power_input_chapters": [
+      "c08",
+      "c09",
+      "c11",
+      "c12",
+      "c13",
+      "c14"
+    ],
+    "zero_selected_separately": true,
+    "primitive_models": {
+      "GF(4)": "x^2+x+1",
+      "GF(16)": "x^4+x+1",
+      "GF(256)": "x^8+x^4+x^3+x^2+1"
+    },
+    "encoding_chapter": "c16; inputs explicitly labelled as coefficient-bit storage encodings",
+    "checks": {
+      "independent_math_cases": 651,
+      "primitive_power_cases": 273,
+      "chapters_browser_checked": 18,
+      "strict_build_passed": true
+    }
+  },
+  "standalone_edition": {
+    "date": "2026-10-03",
+    "title": "有限域及其应用",
+    "chapters": 19,
+    "parts": 5,
+    "appendices": 4,
+    "source_comparison_removed": true,
+    "chapter_learning_notes": true,
+    "legacy_notes_migration_tested": true,
+    "notes_export_tested": true,
+    "advanced_reading_preserved": true,
+    "strict_build_passed": true,
+    "browser_pages_checked": 24,
+    "math_cases": 651,
+    "primitive_power_cases": 273,
+    "notebook_cells_executed": 8,
+    "report": "_build/standalone-validation.json",
+    "backup": "_build/standalone-backup"
+  },
+  "knowledge_graph_and_learning_status": {
+    "date": "2026-10-03",
+    "nodes": 134,
+    "edges": 216,
+    "chapters": 19,
+    "allAnchors": true,
+    "allFormulas": true,
+    "learningPersistence": true,
+    "exportImportMerge": true,
+    "invalidImportUnchanged": true,
+    "keyboard": true,
+    "mobile": true,
+    "offlineInteraction": true,
+    "errors": [],
+    "strict_build": true,
+    "existing_book_regression": "24 pages passed",
+    "local_records_only": true,
+    "reviewed_views": [
+      "desktop",
+      "mobile",
+      "dark mobile"
+    ]
+  }
+}

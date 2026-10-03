@@ -1,0 +1,475 @@
+{
+  "chapters": [
+    {
+      "chapter": "c02",
+      "frames": 12,
+      "remarks": 9,
+      "original_anchors": 49,
+      "reading_units": 46,
+      "slides": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c03",
+      "frames": 6,
+      "remarks": 6,
+      "original_anchors": 31,
+      "reading_units": 31,
+      "slides": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c04",
+      "frames": 26,
+      "remarks": 16,
+      "original_anchors": 97,
+      "reading_units": 86,
+      "slides": [
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c05",
+      "frames": 10,
+      "remarks": 9,
+      "original_anchors": 49,
+      "reading_units": 48,
+      "slides": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c06",
+      "frames": 4,
+      "remarks": 4,
+      "original_anchors": 14,
+      "reading_units": 14,
+      "slides": [
+        45,
+        46,
+        47,
+        48
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c07",
+      "frames": 8,
+      "remarks": 7,
+      "original_anchors": 23,
+      "reading_units": 23,
+      "slides": [
+        49,
+        50,
+        51,
+        52
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c08",
+      "frames": 9,
+      "remarks": 6,
+      "original_anchors": 31,
+      "reading_units": 31,
+      "slides": [
+        53,
+        54,
+        55,
+        56,
+        57,
+        58
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c09",
+      "frames": 10,
+      "remarks": 9,
+      "original_anchors": 35,
+      "reading_units": 35,
+      "slides": [
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c10",
+      "frames": 8,
+      "remarks": 8,
+      "original_anchors": 19,
+      "reading_units": 19,
+      "slides": [
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c11",
+      "frames": 5,
+      "remarks": 3,
+      "original_anchors": 11,
+      "reading_units": 11,
+      "slides": [
+        75,
+        76
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c12",
+      "frames": 8,
+      "remarks": 6,
+      "original_anchors": 22,
+      "reading_units": 22,
+      "slides": [
+        77,
+        78,
+        79,
+        80
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c13",
+      "frames": 12,
+      "remarks": 12,
+      "original_anchors": 57,
+      "reading_units": 57,
+      "slides": [
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c14",
+      "frames": 7,
+      "remarks": 6,
+      "original_anchors": 24,
+      "reading_units": 23,
+      "slides": [
+        93,
+        94,
+        95,
+        96,
+        97
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c15",
+      "frames": 10,
+      "remarks": 9,
+      "original_anchors": 35,
+      "reading_units": 35,
+      "slides": [
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c16",
+      "frames": 14,
+      "remarks": 11,
+      "original_anchors": 58,
+      "reading_units": 56,
+      "slides": [
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c17",
+      "frames": 3,
+      "remarks": 3,
+      "original_anchors": 13,
+      "reading_units": 13,
+      "slides": [
+        117,
+        118,
+        119
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c18",
+      "frames": 7,
+      "remarks": 4,
+      "original_anchors": 21,
+      "reading_units": 19,
+      "slides": [
+        120,
+        121,
+        122
+      ],
+      "validated": true
+    },
+    {
+      "chapter": "c19",
+      "frames": 3,
+      "remarks": 3,
+      "original_anchors": 6,
+      "reading_units": 6,
+      "slides": [
+        123,
+        124
+      ],
+      "validated": true
+    }
+  ],
+  "corrections": [
+    {
+      "anchor": "p023-l02",
+      "correction": "补全单位元定义中对所有环元素的量词。"
+    },
+    {
+      "anchor": "p011-l02",
+      "correction": "明确模 n 同余类计数要求 n 为正整数。"
+    },
+    {
+      "anchor": "p026-l05",
+      "correction": "补全双边理想的两侧吸收条件，与一般环的商环定义一致。"
+    },
+    {
+      "anchor": "p031-l04",
+      "correction": "同态未假设满射，将结论中的 S 改为同态的像。"
+    },
+    {
+      "anchor": "p031-l07",
+      "correction": "自然投影的核记号改为 ker Ψ。"
+    },
+    {
+      "anchor": "p038-l02",
+      "correction": "补零范围 n≤i≤m 改为 n<i≤m，保留原首项系数。"
+    },
+    {
+      "anchor": "p050-l03",
+      "correction": "根因子乘积统一使用同一个多项式变量 x。"
+    },
+    {
+      "anchor": "p063-l04",
+      "correction": "修复幂基中 θ² 的括号位置。"
+    },
+    {
+      "anchor": "p071-l02",
+      "correction": "补明 F4 元素表示中 θ 所满足的方程。"
+    },
+    {
+      "anchor": "p084-l02",
+      "correction": "将元素所属域记号统一为 F，保留有限域大小记号。"
+    },
+    {
+      "anchor": "p088-l02",
+      "correction": "将未定义的域记号统一为 F。"
+    },
+    {
+      "anchor": "p100-l04",
+      "correction": "本原单位根的所在域明确为割圆扩域。"
+    },
+    {
+      "anchor": "p103-l02",
+      "correction": "明确素数幂割圆公式要求 k≥1。"
+    },
+    {
+      "anchor": "p103-l03",
+      "correction": "订正素数幂割圆多项式中乘积指数的括号。"
+    },
+    {
+      "anchor": "p104-l04",
+      "correction": "补明 n=1 时模 n 乘法阶的约定。"
+    },
+    {
+      "anchor": "p106-l02",
+      "correction": "显式保留割圆定义所用的 p∤n 条件。"
+    },
+    {
+      "anchor": "p108-l04",
+      "correction": "补全 a0∈F3 的条件。"
+    },
+    {
+      "anchor": "p114-l03",
+      "correction": "将多项式、位串和整数间的集合相等改为编码对应。"
+    },
+    {
+      "anchor": "p123-l02",
+      "correction": "订正 Schwartz 名称、零点数上界，并明确 S 非空。"
+    },
+    {
+      "anchor": "p123-l04",
+      "correction": "补全二元立方体非零点界所需的多线性条件及 0≤d≤n。"
+    },
+    {
+      "anchor": "p124-l02",
+      "correction": "明确随机抽样集合非空，并修复概率公式。"
+    },
+    {
+      "anchor": "p118-l02",
+      "correction": "网格零点定理补全各 Si 为有限集合的条件。"
+    },
+    {
+      "anchor": "p012-l02",
+      "correction": "将剩余类加法称为二元运算。"
+    },
+    {
+      "anchor": "p015-l03",
+      "correction": "显式补上陪集基数乘法与元素阶整除结论的有限群条件。"
+    },
+    {
+      "anchor": "p028-l09",
+      "correction": "(n) 是主理想，不是主理想环。"
+    },
+    {
+      "anchor": "p029-l05",
+      "correction": "商环良定义证明中的第二因子改为 b-s。"
+    },
+    {
+      "anchor": "p031-l02",
+      "correction": "(n) 是主理想，不是主理想环。"
+    },
+    {
+      "anchor": "p049-l07",
+      "correction": "根的有限重数定义限定非零多项式。"
+    },
+    {
+      "anchor": "p050-l02",
+      "correction": "根数界中明确定义 n 为 f 的次数。"
+    },
+    {
+      "anchor": "p077-l05",
+      "correction": "整除 x^(q^n)-x 的次数判据中明确 n≥1。"
+    },
+    {
+      "anchor": "p086-l03",
+      "correction": "将未定义的通用域记号统一为本定理的 F。"
+    },
+    {
+      "anchor": "p086-l04",
+      "correction": "将未定义的通用域记号统一为本定理的 F。"
+    },
+    {
+      "anchor": "p086-l05",
+      "correction": "将未定义的通用域记号统一为本定理的 F。"
+    },
+    {
+      "anchor": "p091-l03",
+      "correction": "将未定义的通用域记号统一为本定理的 F。"
+    },
+    {
+      "anchor": "p091-l06",
+      "correction": "将未定义的通用域记号统一为本定理的 F。"
+    },
+    {
+      "anchor": "p112-l05",
+      "correction": "九元素矩阵模型的域大小标为 F9。"
+    },
+    {
+      "anchor": "p112-l08",
+      "correction": "九元素矩阵模型的域大小标为 F9。"
+    },
+    {
+      "anchor": "p121-l08",
+      "correction": "订正 Warning 姓名的拼写。"
+    }
+  ],
+  "uncertain": [
+    {
+      "anchor": "p030-l05",
+      "issue": "原讲义的 [0.25]=?[0.75] 未说明比较语境，原文保留；备注给出子环并非理想及商乘法不良定义的独立例子。"
+    }
+  ],
+  "validation": {
+    "strict_build": true,
+    "original_paragraph_anchors": 595,
+    "frames": 162,
+    "remarks": 131,
+    "formulas": 1421,
+    "chapter_1_unchanged": true,
+    "visual_check": "No browser surfaces are available through CUA.",
+    "mathjax_parser": "3.2.2; TeX base/ams/newcommand; SVG output",
+    "mathjax_formulas": 1421,
+    "mathjax_errors": 0,
+    "original_ppt_sha256": "d7ac12a881faf91795958ca70f9e42b4e8a2192386dcc3b79c5eab374caa968c",
+    "original_ppt_matches_manifest": true,
+    "display_formulas_over_100ex": 0,
+    "preview_http": 200
+  }
+}

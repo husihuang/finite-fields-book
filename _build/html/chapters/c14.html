@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 14 章 基、对偶基与判别式 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/c14';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 15 章 割圆域与割圆多项式" href="c15.html" />
+    <link rel="prev" title="第 13 章 迹与范数" href="c13.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c01.html">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c03.html">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c08.html">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c10.html">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c15.html">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c16.html">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/experiments.html">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/c14.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 14 章 基、对偶基与判别式</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">坐标映射与对偶基</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正规基及其存在性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">迹矩阵与判别式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moore">Moore 行列式判据</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathrm-gf-4">交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(4)\)</span> 的基、对偶基与迹矩阵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习笔记</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 14 章 基、对偶基与判别式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>基决定坐标，迹配对决定对偶基，Frobenius 共轭给出正规基。本章用判别式与 Moore 矩阵检验线性无关。</p>
+<div class="tip chapter-goals admonition">
+<p class="admonition-title">学习目标</p>
+<ul class="simple">
+<li><p>理解幂基、对偶基与正规基。</p></li>
+<li><p>用迹配对构造对偶基。</p></li>
+<li><p>用 Moore 矩阵与判别式判断线性无关。</p></li>
+</ul>
+</div>
+<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><section id="id2">
+<h2>坐标映射与对偶基<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="statement-box example docutils container" id="c14-statement-001">
+<span id="p093-l01"></span><div class="source-line source-label docutils container" id="p093-l02">
+<p>例 14.1</p>
+</div>
+<div class="source-line docutils container" id="p093-l03">
+<p>如果 <span class="math notranslate nohighlight">\((\alpha_{1},\cdots,\alpha_{m})\)</span> 是 <span class="math notranslate nohighlight">\(F/K\)</span> 的一组基，那么</p>
+</div>
+<div class="source-line docutils container" id="p093-l04">
+<div class="math notranslate nohighlight">
+\[\forall\alpha \in F,\alpha = c_{1}(\alpha)\alpha_{1} + c_{2}(\alpha)\alpha_{2} + \cdots + c_{m}(\alpha)\alpha_{m}.\]</div>
+</div>
+<div class="source-line docutils container" id="p093-l05">
+<p>容易验证坐标映射</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+c_j:F&amp;\longrightarrow K, \\
+\alpha&amp;\longmapsto c_j(\alpha)
+\end{aligned}
+\end{split}\]</div>
+<p>是线性变换。因此存在 <span class="math notranslate nohighlight">\(\beta_j\in F\)</span> 使得 <span class="math notranslate nohighlight">\(c_j(\alpha)=\operatorname{Tr}_{F/K}(\beta_j\alpha)\)</span> 对所有 <span class="math notranslate nohighlight">\(\alpha\in F\)</span> 成立。</p>
+</div>
+<div class="source-line docutils container" id="p093-l06">
+<p>特别地</p>
+</div>
+<div class="source-line docutils container" id="p093-l07">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\operatorname{Tr}_{F/K}(\beta_j\alpha_i)=\begin{cases}0,&amp;i\ne j,\\1,&amp;i=j.\end{cases}\qquad\text{(*)}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p093-l08">
+<p>可以验证 <span class="math notranslate nohighlight">\((\beta_{1},\cdots,\beta_{m})\)</span> 是 <span class="math notranslate nohighlight">\(F/K\)</span> 的另一组基.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c14-remark-01">
+<p class="admonition-title">注 1</p>
+<ul class="simple">
+<li><p>坐标映射 <span class="math notranslate nohighlight">\(c_j\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 线性泛函，由迹配对可唯一写成 <span class="math notranslate nohighlight">\(c_j(\beta)=\operatorname{Tr}_{F/K}(\beta\alpha_j^\ast)\)</span>。代入各基向量就得到对偶条件。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c14-statement-002">
+<div class="source-line source-label docutils container" id="p094-l01">
+<p>定义 14.1</p>
+</div>
+<div class="source-line docutils container" id="p094-l02">
+<p>我们称满足<span class="math notranslate nohighlight">\( ( \ast ) \)</span>式的两组基 <span class="math notranslate nohighlight">\((\alpha_{1},\cdots,\alpha_{m})\)</span> 和<span class="math notranslate nohighlight">\( ( \beta_{1},\cdots,\beta_{m} ) \)</span>互为对偶基.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c14-remark-02">
+<p class="admonition-title">注 2</p>
+<ul class="simple">
+<li><p>右端为 Kronecker 符号 <span class="math notranslate nohighlight">\(\delta_{ij}\)</span>：<span class="math notranslate nohighlight">\(i=j\)</span> 时为 <span class="math notranslate nohighlight">\(1\)</span>，其余为 <span class="math notranslate nohighlight">\(0\)</span>。对偶基使任意 <span class="math notranslate nohighlight">\(\beta\in F\)</span> 的第 <span class="math notranslate nohighlight">\(j\)</span> 个坐标直接由 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(\beta\alpha_j^\ast)\)</span> 求得。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>正规基及其存在性<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c14-statement-003">
+<div class="source-line source-label docutils container" id="p094-l03">
+<p>定义 14.2</p>
+</div>
+<div class="source-line docutils container" id="p094-l04">
+<p>令 <span class="math notranslate nohighlight">\(K=\mathbb F_q&lt;F=\mathbb F_{q^m}\)</span>。<span class="math notranslate nohighlight">\(F/K\)</span> 的一组形如 <span class="math notranslate nohighlight">\(\{\alpha,\alpha^q,\ldots,\alpha^{q^{m-1}}\}\)</span> 的基称为 <span class="math notranslate nohighlight">\(F/K\)</span> 的正规基。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c14-remark-03">
+<p class="admonition-title">注 3</p>
+<ul class="simple">
+<li><p>正规基由一个元素及其 Frobenius 共轭组成。它首先必须是一组基；仅有 <span class="math notranslate nohighlight">\(m\)</span> 个不同的共轭元还不足以保证线性无关。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c14-statement-004">
+<div class="source-line source-label docutils container" id="p094-l05">
+<p>定理 14.1</p>
+</div>
+<div class="source-line docutils container" id="p094-l06">
+<p>对于一个有限域<span class="math notranslate nohighlight">\( K\)</span> 及其有限扩张<span class="math notranslate nohighlight">\( F/K\)</span>，都存在<span class="math notranslate nohighlight">\( F/K\)</span> 的一组正规基.</p>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>迹矩阵与判别式<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c14-statement-005">
+<div class="source-line source-label docutils container" id="p095-l01">
+<p>定义 14.3</p>
+</div>
+<div class="source-line docutils container" id="p095-l02">
+<p>设<span class="math notranslate nohighlight">\( F/K\)</span> 的次数为 <span class="math notranslate nohighlight">\(m . \)</span>我们定义元素 <span class="math notranslate nohighlight">\(\alpha_{1},\cdots,\alpha_{m} \in F\)</span> 的判别式为</p>
+</div>
+<div class="source-line docutils container" id="p095-l03">
+<div class="math notranslate nohighlight" id="p095-l04">
+\[\begin{split}
+\Delta_{F/K}(\alpha_1,\ldots,\alpha_m)=\begin{vmatrix}\operatorname{Tr}_{F/K}(\alpha_1\alpha_1)&amp;\cdots&amp;\operatorname{Tr}_{F/K}(\alpha_1\alpha_m)\\\vdots&amp;\ddots&amp;\vdots\\\operatorname{Tr}_{F/K}(\alpha_m\alpha_1)&amp;\cdots&amp;\operatorname{Tr}_{F/K}(\alpha_m\alpha_m)\end{vmatrix}.
+\end{split}\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c14-remark-04">
+<p class="admonition-title">注 4</p>
+<ul class="simple">
+<li><p>这是迹配对在所给元素组上的 Gram 行列式。它同时使用两项元素的乘积与迹，不应把矩阵误读成各元素迹的外积。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c14-statement-006">
+<div class="source-line source-label docutils container" id="p096-l01">
+<p>定理 14.2</p>
+</div>
+<div class="source-line docutils container" id="p096-l02">
+<p>设<span class="math notranslate nohighlight">\( F/K\)</span> 的次数为 <span class="math notranslate nohighlight">\(m \quad \)</span>且 <span class="math notranslate nohighlight">\(\alpha_{1},\cdots,\alpha_{m} \in F\)</span>. 那么<span class="math notranslate nohighlight">\({\{\alpha}_{1},\cdots,\alpha_{m}\}\)</span> 是 <span class="math notranslate nohighlight">\(F \)</span>在 <span class="math notranslate nohighlight">\(K\)</span> 上的一组基，当且仅当<span class="math notranslate nohighlight">\(\mathrm{\Delta}_{F/K}(\alpha_{1},\cdots,\alpha_{m}) \neq 0\)</span>.</p>
+</div>
+<div class="source-line source-label docutils container" id="p096-l03">
+<p>证明要点见本框备注。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c14-remark-05">
+<p class="admonition-title">注 5</p>
+<ul class="simple">
+<li><p>迹配对非退化，故在一组基上的矩阵可逆。若元素线性相关，对应矩阵也有相同的线性关系，从而行列式为零。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="moore">
+<h2>Moore 行列式判据<a class="headerlink" href="#moore" title="Link to this heading">#</a></h2>
+<div class="statement-box corollary docutils container" id="c14-statement-007">
+<div class="source-line source-label docutils container" id="p097-l01">
+<p>推论 14.1</p>
+</div>
+<div class="source-line docutils container" id="p097-l02">
+<p>设 <span class="math notranslate nohighlight">\(\alpha_{1},\cdots,\alpha_{m} \in {\mathbb{F}}_{q^{m}}\)</span>. 那么<span class="math notranslate nohighlight">\( {\{\alpha}_{1},\cdots,\alpha_{m}\} \)</span> 是 <span class="math notranslate nohighlight">\({\mathbb{F}}_{q^{m}}/{\mathbb{F}}_{q}\)</span> 的一组基，当且仅当</p>
+</div>
+<div class="source-line docutils container" id="p097-l03">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\det\begin{pmatrix}\alpha_1&amp;\alpha_2&amp;\cdots&amp;\alpha_m\\\alpha_1^q&amp;\alpha_2^q&amp;\cdots&amp;\alpha_m^q\\\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\\alpha_1^{q^{m-1}}&amp;\alpha_2^{q^{m-1}}&amp;\cdots&amp;\alpha_m^{q^{m-1}}\end{pmatrix}\ne0
+\end{split}\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c14-remark-06">
+<p class="admonition-title">注 6</p>
+<ul class="simple">
+<li><p>该矩阵称为 Moore 矩阵。其行列式非零刻画相对于 <span class="math notranslate nohighlight">\(\mathbb F_q\)</span> 的线性无关，而不是相对于整个扩域的线性无关。</p></li>
+</ul>
+</div>
+<div class="dropdown tip admonition">
+<p class="admonition-title">证明</p>
+<p>令 <span class="math notranslate nohighlight">\(M=(\alpha_j^{q^i})_{0\leq i&lt;m,\,1\leq j\leq m}\)</span>。迹矩阵的第 <span class="math notranslate nohighlight">\((j,k)\)</span> 项是 <span class="math notranslate nohighlight">\(\sum_i\alpha_j^{q^i}\alpha_k^{q^i}\)</span>，所以迹矩阵等于 <span class="math notranslate nohighlight">\(M^{\mathsf T}M\)</span>。其行列式为 <span class="math notranslate nohighlight">\((\det M)^2\)</span>，在任何特征下非零当且仅当 <span class="math notranslate nohighlight">\(\det M\ne0\)</span>；再应用判别式判据即得结论。</p>
+</div>
+</div>
+</section>
+<section id="mathrm-gf-4">
+<h2>交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(4)\)</span> 的基、对偶基与迹矩阵<a class="headerlink" href="#mathrm-gf-4" title="Link to this heading">#</a></h2>
+<p>输入采用 <span class="math notranslate nohighlight">\(\alpha\)</span> 的幂表示，零元素单独选择。本实验采用本原多项式模型；输出中的向量与对偶基使用域元素的代数表示，而非整数编码。</p>
+<div class="lesson-widget" data-kind="basis" aria-label="GF(4) 的基、对偶基与迹矩阵"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
+<section id="id5">
+<h2>本章自测<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="共轭基向量被依次排列。" data-hint="跟踪基向量的 \(q\) 次幂。"><p>正规基中的 Frobenius 对坐标执行什么？</p><button data-correct="yes">循环移位</button> <button data-correct="no">逐项求逆</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id6">
+<h2>练习与解答<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>给出正规基存在性的一条线性代数证明路线。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">参考解答</p>
+<p>令 <span class="math notranslate nohighlight">\(\sigma(z)=z^q\)</span>，把 <span class="math notranslate nohighlight">\(F\)</span> 看作 <span class="math notranslate nohighlight">\(m\)</span> 维 <span class="math notranslate nohighlight">\(K\)</span> 向量空间。<span class="math notranslate nohighlight">\(\sigma^m=I\)</span>。若次数小于 <span class="math notranslate nohighlight">\(m\)</span> 的非零多项式 <span class="math notranslate nohighlight">\(\sum c_iT^i\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma\)</span>，则非零线性化多项式 <span class="math notranslate nohighlight">\(\sum c_iz^{q^i}\)</span> 在 <span class="math notranslate nohighlight">\(q^m\)</span> 个点全部为零，但其次数至多 <span class="math notranslate nohighlight">\(q^{m-1}\)</span>，与根数界矛盾。故 <span class="math notranslate nohighlight">\(\sigma\)</span> 的极小多项式次数为 <span class="math notranslate nohighlight">\(m\)</span>。使用线性代数中的循环向量定理（极小多项式次数等于空间维数时存在循环向量），可取 <span class="math notranslate nohighlight">\(\alpha\)</span> 使 <span class="math notranslate nohighlight">\(\alpha,\sigma\alpha,\ldots,\sigma^{m-1}\alpha\)</span> 为基，即正规基。</p>
+</div>
+</section>
+<section id="id7">
+<h2>学习检查<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] 理解幂基、对偶基与正规基。</p></li>
+<li><p>[ ] 用迹配对构造对偶基。</p></li>
+<li><p>[ ] 用 Moore 矩阵与判别式判断线性无关。</p></li>
+</ul>
+</section>
+<section id="id8">
+<h2>学习笔记<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
+<span id="slide-093"></span><span id="slide-094"></span><span id="slide-095"></span><span id="slide-096"></span><span id="slide-097"></span>
+<label for="chapter-note-c14">本章笔记</label><textarea id="chapter-note-c14" class="local-note chapter-note" data-page="chapter" data-legacy-pages="93,94,95,96,97" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
+<button type="button" class="export-notes">导出本章笔记</button></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c13.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">第 13 章 迹与范数</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c15.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">第 15 章 割圆域与割圆多项式</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">坐标映射与对偶基</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正规基及其存在性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">迹矩阵与判别式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moore">Moore 行列式判据</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathrm-gf-4">交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(4)\)</span> 的基、对偶基与迹矩阵</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习笔记</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

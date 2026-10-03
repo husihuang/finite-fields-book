@@ -1,0 +1,723 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 10 章 有限域的存在与子域 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/c10';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 11 章 本原元" href="c11.html" />
+    <link rel="prev" title="第 9 章 域扩张与分裂域" href="c09.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c01.html">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c03.html">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c08.html">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c14.html">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c15.html">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c16.html">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/experiments.html">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/c10.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 10 章 有限域的存在与子域</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">大小、特征与扩张次数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-q-x"><span class="math notranslate nohighlight">\(x^q-x\)</span> 的根与分解</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">有限域的存在与唯一性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">子域判别与包含关系</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">交互实验：有限域子域的整除关系</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 10 章 有限域的存在与子域<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>有限域的大小必须是素数幂，但每个素数幂也确实对应一个有限域。本章通过 <span class="math notranslate nohighlight">\(x^q-x\)</span> 的根集证明存在性，并用整除关系描述子域。</p>
+<div class="tip chapter-goals admonition">
+<p class="admonition-title">学习目标</p>
+<ul class="simple">
+<li><p>证明有限域大小是素数幂。</p></li>
+<li><p>由多项式的根集构造有限域。</p></li>
+<li><p>用次数整除条件判断子域及其包含关系。</p></li>
+</ul>
+</div>
+<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><div class="definition admonition">
+<p class="admonition-title">说明：唯一性</p>
+<p>有限域的唯一性指同构意义上的唯一。固定代数闭包后，每个 <span class="math notranslate nohighlight">\(p^m\)</span> 元子域才是具体唯一的根集 <span class="math notranslate nohighlight">\(\{a:a^{p^m}=a\}\)</span>。其中子域交满足 <span class="math notranslate nohighlight">\(\mathbb F_{p^a}\cap\mathbb F_{p^b}=\mathbb F_{p^{\gcd(a,b)}}\)</span>。</p>
+</div>
+<section id="id2">
+<h2>大小、特征与扩张次数<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="statement-box lemma docutils container" id="c10-statement-001">
+<span id="p068-l01"></span><div class="source-line source-label docutils container" id="p068-l02">
+<p>引理 10.1</p>
+</div>
+<div class="source-line docutils container" id="p068-l03">
+<p>假设有限域 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 中包含一个大小为 <span class="math notranslate nohighlight">\(q\)</span> 的子域 <span class="math notranslate nohighlight">\(K\)</span>. 我们有 <span class="math notranslate nohighlight">\(|{\mathbb{F}}| = q^{m}\)</span>，其中 <span class="math notranslate nohighlight">\(m = [{\mathbb{F}} :K]\)</span>.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-01">
+<p class="admonition-title">注 1</p>
+<ul class="simple">
+<li><p>每个元素由 <span class="math notranslate nohighlight">\(m\)</span> 个 <span class="math notranslate nohighlight">\(K\)</span> 坐标唯一表示，每个坐标有 <span class="math notranslate nohighlight">\(q\)</span> 种选择，故共有 <span class="math notranslate nohighlight">\(q^m\)</span> 个元素。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c10-statement-002">
+<div class="source-line source-label docutils container" id="p069-l01">
+<p>定理 10.1</p>
+</div>
+<div class="source-line docutils container" id="p069-l02">
+<p>给定有限域 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 并假设 <span class="math notranslate nohighlight">\(\operatorname{char}({\mathbb{F}}) = p\)</span>. 则有 <span class="math notranslate nohighlight">\(|{\mathbb{F}}| = p^{n} \)</span>，其中<span class="math notranslate nohighlight">\( n = [ {\mathbb{F}} :{\mathbb{F}}_{p} ]\)</span> .</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-02">
+<p class="admonition-title">注 2</p>
+<ul class="simple">
+<li><p>有限域包含特征为 <span class="math notranslate nohighlight">\(p\)</span> 的素子域 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span>，作为其上的有限维向量空间，元素个数必为 <span class="math notranslate nohighlight">\(p\)</span> 的正整数次幂。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="x-q-x">
+<h2><span class="math notranslate nohighlight">\(x^q-x\)</span> 的根与分解<a class="headerlink" href="#x-q-x" title="Link to this heading">#</a></h2>
+<div class="statement-box lemma docutils container" id="c10-statement-003">
+<div class="source-line source-label docutils container" id="p070-l01">
+<p>引理 10.2</p>
+</div>
+<div class="source-line docutils container" id="p070-l02">
+<p>令 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 为大小为 <span class="math notranslate nohighlight">\(q\)</span> 的有限域. 那么</p>
+</div>
+<div class="source-line docutils container" id="p070-l03">
+<div class="math notranslate nohighlight">
+\[\forall a \in {\mathbb{F}},{ a}^{q} = a.\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-03">
+<p class="admonition-title">注 3</p>
+<ul class="simple">
+<li><p>对非零元素应用乘法群的拉格朗日定理，得到 <span class="math notranslate nohighlight">\(a^{q-1}=1\)</span>；零元素也满足 <span class="math notranslate nohighlight">\(a^q=a\)</span>。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box lemma docutils container" id="c10-statement-004">
+<div class="source-line source-label docutils container" id="p070-l04">
+<p>引理 10.3</p>
+</div>
+<div class="source-line docutils container" id="p070-l05">
+<p>令 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 为大小为 <span class="math notranslate nohighlight">\(q\)</span> 的有限域，且 <span class="math notranslate nohighlight">\(K\)</span> 为 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 的子域. 则<span class="math notranslate nohighlight">\(K[ x]\)</span>中多项式 <span class="math notranslate nohighlight">\(x^{q} - x\)</span> 在 <span class="math notranslate nohighlight">\({\mathbb{F}}[ x]\)</span> 中有如下分解:</p>
+</div>
+<div class="source-line docutils container" id="p070-l06">
+<div class="math notranslate nohighlight">
+\[x^{q} - x = \prod_{a \in \mathbb F}(x - a)\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-04">
+<p class="admonition-title">注 4</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x^q-x\)</span> 的导数为 <span class="math notranslate nohighlight">\(-1\)</span>，故没有重根。域中的 <span class="math notranslate nohighlight">\(q\)</span> 个元素已经给出全部根。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c10-statement-005">
+<div class="source-line source-label docutils container" id="p071-l01">
+<p>例 10.1</p>
+</div>
+<div class="source-line docutils container" id="p071-l02">
+<p><span class="math notranslate nohighlight">\(\mathbb F_4=\{0,1,\theta,\theta+1\}\)</span>，其中 <span class="math notranslate nohighlight">\(\theta\)</span> 满足 <span class="math notranslate nohighlight">\(\theta^2+\theta+1=0\)</span>。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-05">
+<p class="admonition-title">注 5</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x^2+x+1\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 中无根。令其根为 <span class="math notranslate nohighlight">\(\theta\)</span>，则 <span class="math notranslate nohighlight">\(\theta^2=\theta+1\)</span>，因而 <span class="math notranslate nohighlight">\(\theta^3=1\)</span>，且 <span class="math notranslate nohighlight">\(\theta\ne1\)</span>。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>有限域的存在与唯一性<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c10-statement-006">
+<div class="source-line source-label docutils container" id="p072-l01">
+<p>定理 10.2</p>
+</div>
+<div class="source-line docutils container" id="p072-l02">
+<p>（有限域的存在＆唯一性）对于任一素数 <span class="math notranslate nohighlight">\(p\)</span> 和正整数 <span class="math notranslate nohighlight">\(n\)</span>，存在一个大小为 <span class="math notranslate nohighlight">\(p^{n}\)</span> 的有限域. 并且任一大小为 <span class="math notranslate nohighlight">\(q = p^{n}\)</span> 的有限域都和 <span class="math notranslate nohighlight">\(x^{q} - x\)</span> 在 <span class="math notranslate nohighlight">\({\mathbb{F}}_{p}\)</span> 上的分裂域同构.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-06">
+<p class="admonition-title">注 6</p>
+<ul class="simple">
+<li><p>在 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 上取 <span class="math notranslate nohighlight">\(x^{p^n}-x\)</span> 的分裂域。其根集对加法、乘法和非零元素的逆封闭，且导数为 <span class="math notranslate nohighlight">\(-1\)</span>，由此构造出恰有 <span class="math notranslate nohighlight">\(p^n\)</span> 个元素的域。</p></li>
+</ul>
+</div>
+<div class="dropdown tip admonition">
+<p class="admonition-title">证明</p>
+<p>令 <span class="math notranslate nohighlight">\(q=p^n\)</span>，在 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 上取 <span class="math notranslate nohighlight">\(x^q-x\)</span> 的分裂域 <span class="math notranslate nohighlight">\(E\)</span>，记根集为 <span class="math notranslate nohighlight">\(F\)</span>。特征 <span class="math notranslate nohighlight">\(p\)</span> 的幂公式给出 <span class="math notranslate nohighlight">\((a+b)^q=a+b\)</span>、<span class="math notranslate nohighlight">\((ab)^q=ab\)</span>；根集中含 <span class="math notranslate nohighlight">\(0,1\)</span>，并对相反数及非零元素的逆封闭，因此 <span class="math notranslate nohighlight">\(F\)</span> 是子域。分裂域由全部根生成，所以 <span class="math notranslate nohighlight">\(E=F\)</span>。导数为 <span class="math notranslate nohighlight">\(-1\)</span>，故 <span class="math notranslate nohighlight">\(q\)</span> 个根彼此不同，<span class="math notranslate nohighlight">\(|F|=q\)</span>。任一大小为 <span class="math notranslate nohighlight">\(q\)</span> 的域恰含该多项式的全部根，因而也是其分裂域；唯一性是固定素子域的同构意义下唯一。</p>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>子域判别与包含关系<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c10-statement-007">
+<div class="source-line source-label docutils container" id="p073-l01">
+<p>定理 10.3</p>
+</div>
+<div class="source-line docutils container" id="p073-l02">
+<p>（子域判别法则）令 <span class="math notranslate nohighlight">\({\mathbb{F}}_{q}\)</span> 为大小为 <span class="math notranslate nohighlight">\(q = p^{n}\)</span> 的有限域.那么 <span class="math notranslate nohighlight">\({\mathbb{F}}_{q}\)</span> 的任一子域的大小为 <span class="math notranslate nohighlight">\(p^{m}\)</span> ，其中 <span class="math notranslate nohighlight">\(m| n  \)</span>. 反之，若 <span class="math notranslate nohighlight">\(m| n   \)</span>则存在唯一的 大小为 <span class="math notranslate nohighlight">\(p^{m}\)</span>的<span class="math notranslate nohighlight">\({\mathbb{F}}_{q}\)</span>的子域.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-07">
+<p class="admonition-title">注 7</p>
+<ul class="simple">
+<li><p>若 <span class="math notranslate nohighlight">\(\mathbb F_{p^m}\subseteq\mathbb F_{p^n}\)</span>，塔式法则给出 <span class="math notranslate nohighlight">\(m\mid n\)</span>。反向可用 <span class="math notranslate nohighlight">\(x^{p^m}-x\)</span> 的根集构造子域，根集也说明其唯一性。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c10-statement-008">
+<div class="source-line source-label docutils container" id="p074-l01">
+<p>例 10.2</p>
+</div>
+<div class="source-line docutils container" id="p074-l02">
+<p><span class="math notranslate nohighlight">\({\mathbb{F}}_{2^{30}}\)</span>的子域.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c10-remark-08">
+<p class="admonition-title">注 8</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(30\)</span> 的正因子为 <span class="math notranslate nohighlight">\(1,2,3,5,6,10,15,30\)</span>，所以子域恰为相应的 <span class="math notranslate nohighlight">\(\mathbb F_{2^d}\)</span>。子域之间的包含关系也由指数的整除关系决定。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>交互实验：有限域子域的整除关系<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>下面用子域包含关系图展示整除条件。每个节点表示 <span class="math notranslate nohighlight">\(\mathbb F_{p^d}\)</span>，其中 <span class="math notranslate nohighlight">\(d\mid n\)</span>；箭头从小子域指向大子域。若包含关系可由一条路径推出，就省略直接连线。点击节点可查看它包含哪些子域、又被哪些子域包含。</p>
+<div class="lesson-widget" data-kind="subfields" aria-label="有限域子域的整除关系"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
+<section id="id6">
+<h2>本章自测<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="4 不整除 30。" data-hint="子域次数必须整除。"><p><span class="math">\(\mathbb F_{2^{30}}\)</span> 中有 <span class="math">\(\mathbb F_{2^4}\)</span> 子域吗？</p><button data-correct="yes">没有</button> <button data-correct="no">有</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id7">
+<h2>练习与解答<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>求固定代数闭包中 <span class="math notranslate nohighlight">\(\mathbb F_{2^6}\)</span> 与 <span class="math notranslate nohighlight">\(\mathbb F_{2^{10}}\)</span> 的交。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">参考解答</p>
+<p>交为 <span class="math notranslate nohighlight">\(\mathbb F_{2^2}\)</span>。交域的次数必须同时整除 <span class="math notranslate nohighlight">\(6\)</span> 与 <span class="math notranslate nohighlight">\(10\)</span>，故整除 <span class="math notranslate nohighlight">\(2\)</span>；而唯一的二次子域包含于二者。</p>
+</div>
+</section>
+<section id="id8">
+<h2>学习检查<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] 证明有限域大小是素数幂。</p></li>
+<li><p>[ ] 由多项式的根集构造有限域。</p></li>
+<li><p>[ ] 用次数整除条件判断子域及其包含关系。</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>学习笔记<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
+<span id="slide-068"></span><span id="slide-069"></span><span id="slide-070"></span><span id="slide-071"></span><span id="slide-072"></span><span id="slide-073"></span><span id="slide-074"></span>
+<label for="chapter-note-c10">本章笔记</label><textarea id="chapter-note-c10" class="local-note chapter-note" data-page="chapter" data-legacy-pages="68,69,70,71,72,73,74" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
+<button type="button" class="export-notes">导出本章笔记</button></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c09.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">第 9 章 域扩张与分裂域</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c11.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">第 11 章 本原元</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">大小、特征与扩张次数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#x-q-x"><span class="math notranslate nohighlight">\(x^q-x\)</span> 的根与分解</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">有限域的存在与唯一性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">子域判别与包含关系</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">交互实验：有限域子域的整除关系</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

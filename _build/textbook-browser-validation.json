@@ -1,0 +1,149 @@
+{
+  "chapters": [
+    {
+      "chapter": "c02",
+      "kind": "cosets",
+      "formulaNodes": 94,
+      "anchors": 76,
+      "mobilePassed": true,
+      "wideFormulas": 1
+    },
+    {
+      "chapter": "c03",
+      "kind": "cyclic",
+      "formulaNodes": 94,
+      "anchors": 49,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    },
+    {
+      "chapter": "c04",
+      "kind": "residues",
+      "formulaNodes": 170,
+      "anchors": 154,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    },
+    {
+      "chapter": "c05",
+      "kind": "division",
+      "formulaNodes": 91,
+      "anchors": 76,
+      "mobilePassed": true,
+      "wideFormulas": 2
+    },
+    {
+      "chapter": "c06",
+      "kind": "irreducible",
+      "formulaNodes": 47,
+      "anchors": 26,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    },
+    {
+      "chapter": "c07",
+      "kind": "interpolation",
+      "formulaNodes": 74,
+      "anchors": 42,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    },
+    {
+      "chapter": "c08",
+      "kind": "minimal",
+      "formulaNodes": 125,
+      "anchors": 52,
+      "mobilePassed": true,
+      "wideFormulas": 1
+    },
+    {
+      "chapter": "c09",
+      "kind": "coordinates",
+      "formulaNodes": 265,
+      "anchors": 63,
+      "mobilePassed": true,
+      "wideFormulas": 5
+    },
+    {
+      "chapter": "c10",
+      "kind": "subfields",
+      "formulaNodes": 111,
+      "anchors": 42,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    },
+    {
+      "chapter": "c11",
+      "kind": "primitive",
+      "formulaNodes": 128,
+      "anchors": 21,
+      "mobilePassed": true,
+      "wideFormulas": 2
+    },
+    {
+      "chapter": "c12",
+      "kind": "conjugates",
+      "formulaNodes": 93,
+      "anchors": 40,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    },
+    {
+      "chapter": "c13",
+      "kind": "trace",
+      "formulaNodes": 174,
+      "anchors": 93,
+      "mobilePassed": true,
+      "wideFormulas": 2
+    },
+    {
+      "chapter": "c14",
+      "kind": "basis",
+      "formulaNodes": 79,
+      "anchors": 42,
+      "mobilePassed": true,
+      "wideFormulas": 2
+    },
+    {
+      "chapter": "c15",
+      "kind": "cyclotomic",
+      "formulaNodes": 147,
+      "anchors": 63,
+      "mobilePassed": true,
+      "wideFormulas": 1
+    },
+    {
+      "chapter": "c16",
+      "kind": "encoding",
+      "formulaNodes": 118,
+      "anchors": 93,
+      "mobilePassed": true,
+      "wideFormulas": 8
+    },
+    {
+      "chapter": "c17",
+      "kind": "grid",
+      "formulaNodes": 51,
+      "anchors": 22,
+      "mobilePassed": true,
+      "wideFormulas": 2
+    },
+    {
+      "chapter": "c18",
+      "kind": "sumsets",
+      "formulaNodes": 96,
+      "anchors": 35,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    },
+    {
+      "chapter": "c19",
+      "kind": "identity",
+      "formulaNodes": 55,
+      "anchors": 14,
+      "mobilePassed": true,
+      "wideFormulas": 0
+    }
+  ],
+  "browserErrors": []
+}

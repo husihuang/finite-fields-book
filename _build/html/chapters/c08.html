@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 8 章 子域与极小多项式 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/c08';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 9 章 域扩张与分裂域" href="c09.html" />
+    <link rel="prev" title="第 7 章 根与 Lagrange 插值" href="c07.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c01.html">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c03.html">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c10.html">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c14.html">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c15.html">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c16.html">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/experiments.html">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/c08.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 8 章 子域与极小多项式</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">子域与素子域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">添加元素与生成子域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">代数元与超越元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">代入同态与极小多项式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frobenius">交互实验：由 Frobenius 轨道计算极小多项式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 8 章 子域与极小多项式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>从素子域出发，通过添加元素构造扩域。学完后应能区分代数元与超越元，并利用代入同态确定极小多项式。</p>
+<div class="tip chapter-goals admonition">
+<p class="admonition-title">学习目标</p>
+<ul class="simple">
+<li><p>区分代数元与超越元。</p></li>
+<li><p>理解添根扩张和极小多项式。</p></li>
+<li><p>由极小多项式确定单扩张的结构。</p></li>
+</ul>
+</div>
+<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><section id="id2">
+<h2>子域与素子域<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c08-statement-001">
+<span id="p053-l01"></span><div class="source-line source-label docutils container" id="p053-l02">
+<p>定义 8.1</p>
+</div>
+<div class="source-line docutils container" id="p053-l03">
+<p>给定域 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>. 若 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 的子集 <span class="math notranslate nohighlight">\(K\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 的运算下也构成一个域，则我们称 <span class="math notranslate nohighlight">\(K\)</span> 为 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 的子域. 也称 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span>为 <span class="math notranslate nohighlight">\(K\)</span> 的扩域.</p>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c08-statement-002">
+<div class="source-line source-label docutils container" id="p053-l04">
+<p>例 8.1</p>
+</div>
+<div class="source-line docutils container" id="p053-l05">
+<p>域 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 是其本身的一个子域，我们称之为平凡子域. 其余与 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 不同的子域称为真子域.</p>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c08-statement-003">
+<div class="source-line source-label docutils container" id="p053-l06">
+<p>定义 8.2</p>
+</div>
+<div class="source-line docutils container" id="p053-l07">
+<p>若域 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 中没有真子域，则称 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 为素域.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c08-remark-01">
+<p class="admonition-title">注 1</p>
+<ul class="simple">
+<li><p>素域并不限于有限域；有理数域也是素域。每个域都含一个唯一的素子域。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c08-statement-004">
+<div class="source-line source-label docutils container" id="p054-l01">
+<p>定理 8.1</p>
+</div>
+<div class="source-line docutils container" id="p054-l02">
+<p>给定域 <span class="math notranslate nohighlight">\({\mathbb{F}}.\)</span> 我们有:</p>
+</div>
+<div class="source-line docutils container" id="p054-l03">
+<p>1）若 <span class="math notranslate nohighlight">\(\operatorname{char}(\mathbb F)=p\)</span>，其中 <span class="math notranslate nohighlight">\(p\)</span> 为素数，则 <span class="math notranslate nohighlight">\(\mathbb F\)</span> 包含的素域同构于 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="p054-l04">
+<p>2）若 <span class="math notranslate nohighlight">\(\operatorname{char}(\mathbb F)=0\)</span>，则 <span class="math notranslate nohighlight">\(\mathbb F\)</span> 包含的素域同构于 <span class="math notranslate nohighlight">\(\mathbb Q\)</span>。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c08-remark-02">
+<p class="admonition-title">注 2</p>
+<ul class="simple">
+<li><p>整数映射 <span class="math notranslate nohighlight">\(n\mapsto n\cdot1\)</span> 在特征 <span class="math notranslate nohighlight">\(p\)</span> 时给出 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span>；特征 <span class="math notranslate nohighlight">\(0\)</span> 时为单射，再加入非零整数像的逆元就得到 <span class="math notranslate nohighlight">\(\mathbb Q\)</span>。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>添加元素与生成子域<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c08-statement-005">
+<div class="source-line source-label docutils container" id="p055-l01">
+<p>定义 8.3</p>
+</div>
+<div class="source-line docutils container" id="p055-l02">
+<p>给定域 <span class="math notranslate nohighlight">\(K &lt; {\mathbb{F}}\)</span> 以及 <span class="math notranslate nohighlight">\(M \subset {\mathbb{F}}.\)</span> 我们定义域 <span class="math notranslate nohighlight">\(K(M)\)</span> 为 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 中所有同时包含 <span class="math notranslate nohighlight">\(K\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span> 的子域的交，并称之为由域 <span class="math notranslate nohighlight">\(K\)</span> 添加 <span class="math notranslate nohighlight">\(M\)</span> 中元素所得到的扩域.</p>
+</div>
+<div class="source-line docutils container" id="p055-l03">
+<p>1) 若 <span class="math notranslate nohighlight">\(M = \{ \theta_{1},\cdots,\theta_{n} \},\)</span> 我们也记 <span class="math notranslate nohighlight">\(K(M) = K( \theta_{1},\cdots,\theta_{n} ).\)</span></p>
+</div>
+<div class="source-line docutils container" id="p055-l04">
+<p>2) 若 <span class="math notranslate nohighlight">\(M = \{ \theta \},\)</span> 则称 <span class="math notranslate nohighlight">\(L = K(\theta)\)</span> 为域 <span class="math notranslate nohighlight">\(K\)</span> 的单扩张，并称元素 <span class="math notranslate nohighlight">\(\theta\)</span> 为 <span class="math notranslate nohighlight">\(L\)</span> 在 <span class="math notranslate nohighlight">\(K\)</span> 上的一个定义元.</p>
+</div>
+<div class="source-line docutils container" id="p055-l05">
+<p>3) 可以验证 <span class="math notranslate nohighlight">\(K(M)\)</span> 是 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 中最小的同时包含 <span class="math notranslate nohighlight">\(K\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span> 的子域.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c08-remark-03">
+<p class="admonition-title">注 3</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(K(M)\)</span> 的交集定义刻画了“最小的子域”。与只允许多项式表达式的 <span class="math notranslate nohighlight">\(K[M]\)</span> 相比，<span class="math notranslate nohighlight">\(K(M)\)</span> 还允许非零分母；代数单扩张中二者相等。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>代数元与超越元<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c08-statement-006">
+<div class="source-line source-label docutils container" id="p056-l01">
+<p>定义 8.4</p>
+</div>
+<div class="source-line docutils container" id="p056-l02">
+<p>给定域 <span class="math notranslate nohighlight">\(K &lt; {\mathbb{F}}\)</span> 以及 <span class="math notranslate nohighlight">\(\theta \in {\mathbb{F}}.\)</span> 若 <span class="math notranslate nohighlight">\(\theta\)</span> 满足代数方程</p>
+</div>
+<div class="source-line docutils container" id="p056-l03">
+<div class="math notranslate nohighlight">
+\[
+a_n\theta^n+a_{n-1}\theta^{n-1}+\cdots+a_1\theta+a_0=0,\qquad a_i\in K.
+\]</div>
+<p>其中各系数不全为 <span class="math notranslate nohighlight">\(0\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="p056-l04">
+<p>则称 <span class="math notranslate nohighlight">\(\theta\)</span> 在 <span class="math notranslate nohighlight">\(K\)</span> 上是代数的. 若不存在如上的代数方程，则称 <span class="math notranslate nohighlight">\(\theta\)</span> 在 <span class="math notranslate nohighlight">\(K\)</span> 上是超越的. 如果 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 中的每一个元素在 <span class="math notranslate nohighlight">\(K\)</span>上都是代数的，则称 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 的代数扩张. 反之，若 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 中存在至少一个在 <span class="math notranslate nohighlight">\(K\)</span> 上超越的元素，则称 <span class="math notranslate nohighlight">\(\mathbb{F}\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 的超越扩张.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c08-remark-04">
+<p class="admonition-title">注 4</p>
+<ul class="simple">
+<li><p>“在 <span class="math notranslate nohighlight">\(K\)</span> 上”指定方程系数的来源，因而代数性与基域有关。有限扩张一定是代数扩张，但代数扩张未必具有有限次数。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>代入同态与极小多项式<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c08-statement-007">
+<div class="source-line source-label docutils container" id="p057-l01">
+<p>定理 8.2</p>
+</div>
+<div class="source-line docutils container" id="p057-l02">
+<p>假定元素 <span class="math notranslate nohighlight">\(\theta \in {\mathbb{F}}\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 上的代数元. 令</p>
+</div>
+<div class="source-line docutils container" id="p057-l03">
+<div class="math notranslate nohighlight">
+\[J = \{ f \in K[ x]:f(\theta) = 0 \}.\]</div>
+</div>
+<div class="source-line docutils container" id="p057-l04">
+<p>则存在唯一的首<span class="math notranslate nohighlight">\(1\)</span>多项式 <span class="math notranslate nohighlight">\(g \in K[ x]\)</span> 使得 <span class="math notranslate nohighlight">\(J = (g).\)</span> 并且多项式 <span class="math notranslate nohighlight">\(g\)</span> 在 <span class="math notranslate nohighlight">\(K\)</span> 上不可约.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c08-remark-05">
+<p class="admonition-title">注 5</p>
+<ul class="simple">
+<li><p>代入映射 <span class="math notranslate nohighlight">\(\operatorname{ev}_\theta:K[x]\to\mathbb F\)</span>，<span class="math notranslate nohighlight">\(f\mapsto f(\theta)\)</span> 是环同态，且核为 <span class="math notranslate nohighlight">\(J\)</span>。代数性使 <span class="math notranslate nohighlight">\(J\)</span> 非零；其首一生成元的不可约性来自域中无零因子及次数的最小性。</p></li>
+</ul>
+</div>
+<div class="dropdown tip admonition">
+<p class="admonition-title">证明</p>
+<p>代入映射的核 <span class="math notranslate nohighlight">\(J\)</span> 是非零理想，故由唯一首一多项式 <span class="math notranslate nohighlight">\(g\)</span> 生成。若 <span class="math notranslate nohighlight">\(g=uv\)</span> 且两因子次数均为正，则 <span class="math notranslate nohighlight">\(u(\theta)v(\theta)=0\)</span>。扩域是域，故某个因子在 <span class="math notranslate nohighlight">\(\theta\)</span> 处为零；该因子属于 <span class="math notranslate nohighlight">\(J\)</span>，却比 <span class="math notranslate nohighlight">\(g\)</span> 次数低，矛盾。因此 <span class="math notranslate nohighlight">\(g\)</span> 不可约。</p>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c08-statement-008">
+<div class="source-line source-label docutils container" id="p057-l05">
+<p>定义 8.5</p>
+</div>
+<div class="source-line docutils container" id="p057-l06">
+<p>我们称 <span class="math notranslate nohighlight">\(g\)</span> 为元素 <span class="math notranslate nohighlight">\(\theta\)</span> 在 <span class="math notranslate nohighlight">\(K\)</span> 上的极小多项式，也将 <span class="math notranslate nohighlight">\(g\)</span> 的次数称为元素 <span class="math notranslate nohighlight">\(\theta\)</span> 在 <span class="math notranslate nohighlight">\(K\)</span> 上的次数.</p>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c08-statement-009">
+<div class="source-line source-label docutils container" id="p058-l01">
+<p>定理 8.3</p>
+</div>
+<div class="source-line docutils container" id="p058-l02">
+<p>假定元素 <span class="math notranslate nohighlight">\(\theta \in {\mathbb{F}}\)</span> 是域 <span class="math notranslate nohighlight">\(K\)</span> 上的代数元. 我们有以下关于 <span class="math notranslate nohighlight">\(\theta\)</span> 的极小多项式 <span class="math notranslate nohighlight">\(g\)</span> 的性质:</p>
+</div>
+<div class="source-line docutils container" id="p058-l03">
+<p>1) <span class="math notranslate nohighlight">\(g\)</span> 是 <span class="math notranslate nohighlight">\(K[ x]\)</span> 中的不可约多项式.</p>
+</div>
+<div class="source-line docutils container" id="p058-l04">
+<p>2) 对于 <span class="math notranslate nohighlight">\(f \in K[ x],\)</span> 有 <span class="math notranslate nohighlight">\(f(\theta) = 0\)</span> 当且仅当 <span class="math notranslate nohighlight">\(g|f.\)</span></p>
+</div>
+<div class="source-line docutils container" id="p058-l05">
+<p>3) <span class="math notranslate nohighlight">\(g\)</span> 是 <span class="math notranslate nohighlight">\(K[ x]\)</span> 中以 <span class="math notranslate nohighlight">\(\theta\)</span> 为根的次数最低的首<span class="math notranslate nohighlight">\(1\)</span>多项式.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c08-remark-06">
+<p class="admonition-title">注 6</p>
+<ul class="simple">
+<li><p>任意使 <span class="math notranslate nohighlight">\(\theta\)</span> 归零的多项式都属于代入同态的核，因而都被极小多项式整除。首一条件保证极小多项式的唯一性。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="frobenius">
+<h2>交互实验：由 Frobenius 轨道计算极小多项式<a class="headerlink" href="#frobenius" title="Link to this heading">#</a></h2>
+<p>在二元有限域中，依次取平方得到 <span class="math notranslate nohighlight">\(a,a^2,a^4,\ldots\)</span>，直到回到起点。这称为 Frobenius 轨道。本实验预览轨道与极小多项式的联系，其一般证明将在第 12 章给出。</p>
+<p>输入采用 <span class="math notranslate nohighlight">\(\alpha\)</span> 的幂表示，零元素单独选择。本实验采用本原多项式模型；输出中的共轭与极小多项式使用域元素的代数表示，而非整数编码。</p>
+<div class="lesson-widget" data-kind="minimal" aria-label="由 Frobenius 轨道计算极小多项式"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
+<section id="id6">
+<h2>本章自测<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="首 1 排除常数倍不唯一。" data-hint="查看首项系数。"><p>极小多项式要求哪种归一化？</p><button data-correct="yes">首 1</button> <button data-correct="no">常数项 1</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id7">
+<h2>练习与解答<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>求满足 <span class="math notranslate nohighlight">\(\alpha^2=2\)</span> 的元素 <span class="math notranslate nohighlight">\(\alpha\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb F_3\)</span> 上的极小多项式。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">参考解答</p>
+<p><span class="math notranslate nohighlight">\(x^2+1\)</span> 在 <span class="math notranslate nohighlight">\(\alpha\)</span> 处为零，在 <span class="math notranslate nohighlight">\(\mathbb F_3\)</span> 的 <span class="math notranslate nohighlight">\(0,1,2\)</span> 处均非零，故不可约。它是首一多项式，因此就是极小多项式。</p>
+</div>
+</section>
+<section id="id8">
+<h2>学习检查<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] 区分代数元与超越元。</p></li>
+<li><p>[ ] 理解添根扩张和极小多项式。</p></li>
+<li><p>[ ] 由极小多项式确定单扩张的结构。</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>学习笔记<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
+<span id="slide-053"></span><span id="slide-054"></span><span id="slide-055"></span><span id="slide-056"></span><span id="slide-057"></span><span id="slide-058"></span>
+<label for="chapter-note-c08">本章笔记</label><textarea id="chapter-note-c08" class="local-note chapter-note" data-page="chapter" data-legacy-pages="53,54,55,56,57,58" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
+<button type="button" class="export-notes">导出本章笔记</button></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c07.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">第 7 章 根与 Lagrange 插值</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c09.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">第 9 章 域扩张与分裂域</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">子域与素子域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">添加元素与生成子域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">代数元与超越元</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">代入同态与极小多项式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frobenius">交互实验：由 Frobenius 轨道计算极小多项式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

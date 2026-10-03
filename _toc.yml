@@ -1,0 +1,41 @@
+format: jb-book
+root: intro
+parts:
+  - caption: 学习导航
+    chapters:
+      - file: knowledge
+  - caption: 代数基础
+    chapters:
+      - file: chapters/c01
+      - file: chapters/c02
+      - file: chapters/c03
+      - file: chapters/c04
+      - file: chapters/c05
+      - file: chapters/c06
+      - file: chapters/c07
+  - caption: 域扩张与有限域
+    chapters:
+      - file: chapters/c08
+      - file: chapters/c09
+      - file: chapters/c10
+      - file: chapters/c11
+      - file: chapters/c12
+  - caption: 有限域的进一步结构
+    chapters:
+      - file: chapters/c13
+      - file: chapters/c14
+      - file: chapters/c15
+  - caption: 表示与计算
+    chapters:
+      - file: chapters/c16
+  - caption: 多项式的组合应用
+    chapters:
+      - file: chapters/c17
+      - file: chapters/c18
+      - file: chapters/c19
+  - caption: 附录
+    chapters:
+      - file: appendices/source
+      - file: appendices/algorithms
+      - file: appendices/experiments
+      - file: appendices/references

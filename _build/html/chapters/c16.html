@@ -1,0 +1,1011 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 16 章 有限域的表示与实现 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/c16';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 17 章 组合零点定理" href="c17.html" />
+    <link rel="prev" title="第 15 章 割圆域与割圆多项式" href="c15.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c01.html">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c03.html">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c08.html">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c10.html">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c14.html">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c15.html">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/experiments.html">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/c16.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 16 章 有限域的表示与实现</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">多项式坐标表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">本原元与幂表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">伴随矩阵表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xor">位串、整数编码与 XOR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">对数表实现乘除法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathrm-gf-16">交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(16)\)</span> 的位编码与对数表</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-arithmetic">有限域四则计算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">学习笔记</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 16 章 有限域的表示与实现<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>同一个有限域可以用多项式、幂或矩阵表示。学完后应能明确各表示的运算规则，理解整数编码仅用于存储而不保持普通整数运算。</p>
+<div class="tip chapter-goals admonition">
+<p class="admonition-title">学习目标</p>
+<ul class="simple">
+<li><p>在多项式、幂、矩阵和位串表示之间转换。</p></li>
+<li><p>区分域运算与存储编码的普通整数运算。</p></li>
+<li><p>正确处理对数表的指数周期、零和除零。</p></li>
+</ul>
+</div>
+<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><div class="definition admonition">
+<p class="admonition-title">说明：编码不是整数运算</p>
+<p>位编码 <span class="math notranslate nohighlight">\(a=\sum_i a_i2^i\)</span> 对应多项式 <span class="math notranslate nohighlight">\(\sum_i a_i x^i\)</span>。域加法是 XOR，域乘法是无进位多项式乘法后约化。选择不同不可约模多项式得到同构的域，但同一整数编码的乘法结果可能改变。</p>
+</div>
+<section id="id2">
+<h2>多项式坐标表示<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="statement-box notation docutils container" id="c16-statement-001">
+<span id="p107-l01"></span><span id="p107-l02"></span><div class="source-line source-label docutils container" id="p107-l03">
+<p>第1种</p>
+</div>
+<div class="source-line docutils container" id="p107-l04">
+<p>我们知道 <span class="math notranslate nohighlight">\({\mathbb{F}}_{q}\)</span> 是<span class="math notranslate nohighlight">\( {\mathbb{F}}_{p} \)</span>的单扩张，其中 <span class="math notranslate nohighlight">\(q=p^n\)</span>。 不妨设 <span class="math notranslate nohighlight">\({\mathbb{F}}_{q} = {\mathbb{F}}_{p}[\alpha] \)</span> ，多项式 <span class="math notranslate nohighlight">\(f \in {\mathbb{F}}_{p}[x]\)</span> 为 <span class="math notranslate nohighlight">\(\alpha\)</span> 在 <span class="math notranslate nohighlight">\({\mathbb{F}}_{p}\)</span> 上的极小多项式. 于是 <span class="math notranslate nohighlight">\(\deg(f) = n \)</span> ，且 <span class="math notranslate nohighlight">\({\mathbb{F}}_{q} \cong {\mathbb{F}}_{p}[ x]/(f)\)</span> . 从而我们可以将<span class="math notranslate nohighlight">\( {\mathbb{F}}_{q}\)</span> 中元素表述为 <span class="math notranslate nohighlight">\(a_{n - 1}\alpha^{n - 1} + a_{n - 2}\alpha^{n - 2} + \cdots + a_{1}\alpha + a_{0}, { a}_{i} \in {\mathbb{F}}_{p}\)</span> ，或者<span class="math notranslate nohighlight">\( a_{n - 1}x^{n - 1} + a_{n - 2}x^{n - 2} + \cdots + a_{1}x + a_{0} + (f),a_{i} \in {\mathbb{F}}_{p}\)</span></p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-01">
+<p class="admonition-title">注 1</p>
+<ul class="simple">
+<li><p>基坐标用于加法，乘法则先作多项式乘法再模 <span class="math notranslate nohighlight">\(f\)</span> 约化。构造域只要求 <span class="math notranslate nohighlight">\(f\)</span> 不可约，不要求它一定是本原多项式。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c16-statement-002">
+<div class="source-line docutils container" id="p108-l01">
+<p>给定有限域<span class="math notranslate nohighlight">\({ {\mathbb{F}}}_{9}\)</span> 和<span class="math notranslate nohighlight">\({ {\mathbb{F}}}_{3}\)</span> 上的二次不可约多项式</p>
+</div>
+<div class="source-line docutils container" id="p108-l02">
+<p><span class="math notranslate nohighlight">\(f(x) = x^{2} + 1\)</span>. 设 <span class="math notranslate nohighlight">\(\alpha \in {\mathbb{F}}_{9}\)</span> 为 <span class="math notranslate nohighlight">\(f(x)\)</span> 的一个根，即 <span class="math notranslate nohighlight">\(f(\alpha) = \alpha^{2} + 1 = 0\)</span>. 那么</p>
+</div>
+<div class="source-line source-label docutils container" id="p108-l03">
+<p>例 16.1</p>
+</div>
+<div class="source-line docutils container" id="p108-l04">
+<div class="math notranslate nohighlight" id="p108-l05">
+\[\begin{split}
+\begin{aligned}
+\mathbb F_9&amp;=\{a_1\alpha+a_0:a_1,a_0\in\mathbb F_3\} \\
+&amp;=\{0,1,2,\alpha,\alpha+1,\alpha+2, \\
+&amp;\qquad 2\alpha,2\alpha+1,2\alpha+2\}.
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-02">
+<p class="admonition-title">注 2</p>
+<ul class="simple">
+<li><p>在 <span class="math notranslate nohighlight">\(\mathbb F_3\)</span> 中，<span class="math notranslate nohighlight">\(x^2+1\)</span> 无根，故不可约。约化规则为 <span class="math notranslate nohighlight">\(\alpha^2=2\)</span>，两项系数各有三种取值，恰得到九个不同元素。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>本原元与幂表示<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="statement-box notation docutils container" id="c16-statement-003">
+<div class="source-line source-label docutils container" id="p109-l01">
+<p>第2种</p>
+</div>
+<div class="source-line docutils container" id="p109-l02">
+<p>假设 <span class="math notranslate nohighlight">\(\zeta \)</span>为<span class="math notranslate nohighlight">\({ {\mathbb{F}}}_{q}\)</span>的本原元. 那么 <span class="math notranslate nohighlight">\({\mathbb{F}}_{q}^{\ast} = \langle \zeta \rangle.\)</span></p>
+</div>
+</div>
+<div class="statement-box exercise docutils container" id="c16-statement-004">
+<div class="source-line docutils container" id="p109-l03">
+<p>问题</p>
+</div>
+<div class="source-line docutils container" id="p109-l04">
+<p>如何寻找本原元或者本原多项式？</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-03">
+<p class="admonition-title">注 3</p>
+<ul class="simple">
+<li><p>若 <span class="math notranslate nohighlight">\(\ell\)</span> 遍历 <span class="math notranslate nohighlight">\(q-1\)</span> 的不同素因子，非零元素 <span class="math notranslate nohighlight">\(\zeta\)</span> 为本原元当且仅当对每个 <span class="math notranslate nohighlight">\(\ell\)</span> 均有 <span class="math notranslate nohighlight">\(\zeta^{(q-1)/\ell}\ne1\)</span>。本原多项式则是本原元在基域上的极小多项式。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c16-statement-005">
+<div class="source-line docutils container" id="p109-l05">
+<p>给定有限域<span class="math notranslate nohighlight">\({ {\mathbb{F}}}_{9}\)</span>. 注意到 <span class="math notranslate nohighlight">\({\mathbb{F}}_{9} = {\mathbb{F}}_{3}^{(8)}\)</span>，即 <span class="math notranslate nohighlight">\({\mathbb{F}}_{9}\)</span> 是 <span class="math notranslate nohighlight">\({\mathbb{F}}_{3}\)</span> 上的 <span class="math notranslate nohighlight">\(8\)</span> 次割圆域。通过计算可以得到</p>
+</div>
+<div class="source-line docutils container" id="p109-l06">
+<div class="math notranslate nohighlight">
+\[Q_{8}(x) = x^{4} + 1 = (x^{2} + x + 2)(x^{2} + 2x + 2).\]</div>
+</div>
+<div class="source-line docutils container" id="p109-l07">
+<p>令<span class="math notranslate nohighlight">\( \zeta \in {\mathbb{F}}_{9}\)</span> 为不可约多项式 <span class="math notranslate nohighlight">\(x^{2} + x + 2\)</span> 的根. 那么可知，<span class="math notranslate nohighlight">\(\zeta\)</span> 是 <span class="math notranslate nohighlight">\({\mathbb{F}}_{9}\)</span> 的本原元. 于是</p>
+</div>
+<div class="source-line docutils container" id="p109-l08">
+<div class="math notranslate nohighlight">
+\[{\mathbb{F}}_{9} = \{ 0,\zeta, \zeta^{2}, \zeta^{3}, \zeta^{4},\zeta^{5},\zeta^{6},\zeta^{7}, \zeta^{8}( = 1)\}\]</div>
+</div>
+<div class="source-line source-label docutils container" id="p109-l09">
+<p>例 16.2</p>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c16-statement-006">
+<div class="statement-title">例 16.3</div><div class="source-line docutils container" id="p110-l01">
+<p>注意到元素<span class="math notranslate nohighlight">\( \zeta = 1 + \alpha\)</span> 为 <span class="math notranslate nohighlight">\(x^{2} + x + 2\)</span> 的根，其中 <span class="math notranslate nohighlight">\(\alpha^{2} + 1 = 0.\)</span></p>
+</div>
+<div class="source-line docutils container" id="p110-l02">
+<p>于是我们有如下的元素对应表</p>
+</div>
+<div class="source-line docutils container" id="p110-l03">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|l}i&amp;\text{幂表示}&amp;\text{多项式表示}\\\hline1&amp;\zeta&amp;1+\alpha\\2&amp;\zeta^2&amp;2\alpha\\3&amp;\zeta^3&amp;1+2\alpha\\4&amp;\zeta^4&amp;2\\5&amp;\zeta^5&amp;2+2\alpha\\6&amp;\zeta^6&amp;\alpha\\7&amp;\zeta^7&amp;2+\alpha\\8&amp;1&amp;1\end{array}
+\end{split}\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-04">
+<p class="admonition-title">注 4</p>
+<ul class="simple">
+<li><p>逐行将上一行乘以 <span class="math notranslate nohighlight">\(1+\alpha\)</span>，再用 <span class="math notranslate nohighlight">\(\alpha^2=2\)</span> 约化，便可核验对应表；第八次幂回到 <span class="math notranslate nohighlight">\(1\)</span>，之前均不为 <span class="math notranslate nohighlight">\(1\)</span>。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>伴随矩阵表示<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c16-statement-007">
+<div class="statement-title">定义 16.1</div><div class="source-line source-label docutils container" id="p111-l01">
+<p>第3种</p>
+</div>
+<div class="source-line docutils container" id="p111-l02">
+<p>给定 <span class="math notranslate nohighlight">\(n\)</span> 次首<span class="math notranslate nohighlight">\( 1 \)</span>多项式 <span class="math notranslate nohighlight">\(f(x) = a_{0} + a_{1}x + \ldots + a_{n - 1}x^{n - 1} + x^{n}\)</span>. 我们称如下矩阵</p>
+</div>
+<div class="source-line docutils container" id="p111-l03">
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix}
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; - a_{0} \\
+1 &amp; 0 &amp; 0 &amp; \cdots &amp; 0 &amp; - a_{1} \\
+0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 &amp; - a_{2} \\
+ \vdots &amp; \vdots &amp; \vdots &amp;   &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 &amp; - a_{n - 1}
+\end{pmatrix}\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p111-l04">
+<p>为 <span class="math notranslate nohighlight">\(f(x)\)</span> 的伴随矩阵. 可以验证</p>
+</div>
+<div class="source-line docutils container" id="p111-l05">
+<div class="math notranslate nohighlight">
+\[\det(xI - A) = f(x).\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-05">
+<p class="admonition-title">注 5</p>
+<ul class="simple">
+<li><p>伴随矩阵表达在幂基下“乘以根”的线性算子。矩阵的单位元素为 <span class="math notranslate nohighlight">\(I\)</span>；负号和系数都在给定系数域中计算。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box lemma docutils container" id="c16-statement-008">
+<div class="source-line source-label docutils container" id="p111-l06">
+<p>引理 16.1</p>
+</div>
+<div class="source-line docutils container" id="p111-l07">
+<p><span class="math notranslate nohighlight">\(f(A) = a_{0}I + a_{1}A + \cdots + a_{n - 1}A^{n - 1} + A^{n} = 0\)</span> ，其中 I 为 <span class="math notranslate nohighlight">\(n\)</span> 阶单位阵.</p>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c16-statement-009">
+<span id="p112-l01"></span><div class="source-line source-label docutils container" id="p112-l02">
+<p>例 16.4</p>
+</div>
+<div class="source-line docutils container" id="p112-l03">
+<p>令 <span class="math notranslate nohighlight">\(f(x) = x^{2} + 1 \in {\mathbb{F}}_{3}[ x] \)</span>. 其伴随矩阵</p>
+</div>
+<div class="source-line docutils container" id="p112-l04">
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{pmatrix}
+0 &amp; 2 \\
+1 &amp; 0
+\end{pmatrix}\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p112-l05">
+<div class="math notranslate nohighlight">
+\[\mathbb F_9 = \{ 0,I,2I,A,I + A,2I + A,2A,2A + I,2A + 2I\}\]</div>
+</div>
+<div class="source-line docutils container" id="p112-l06">
+<p>还可以取 <span class="math notranslate nohighlight">\(h(x) = x^{2} + x + 2\)</span> 及其伴随矩阵</p>
+</div>
+<div class="source-line docutils container" id="p112-l07">
+<div class="math notranslate nohighlight">
+\[\begin{split}C = \begin{pmatrix}
+0 &amp; 1 \\
+1 &amp; 2
+\end{pmatrix}\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p112-l08">
+<div class="math notranslate nohighlight">
+\[\mathbb F_9 = \{ 0,C,C^{2},\cdots,C^{8}\}\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-06">
+<p class="admonition-title">注 6</p>
+<ul class="simple">
+<li><p>矩阵模型是 <span class="math notranslate nohighlight">\(\mathbb F_3[A]\)</span>，同构于 <span class="math notranslate nohighlight">\(\mathbb F_3[x]/(f)\)</span>。这里只取多项式代入 <span class="math notranslate nohighlight">\(A\)</span> 所得的矩阵，并不是所有二阶矩阵。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="xor">
+<h2>位串、整数编码与 XOR<a class="headerlink" href="#xor" title="Link to this heading">#</a></h2>
+<div class="statement-box example docutils container" id="c16-statement-010">
+<span id="p113-l01"></span><div class="source-line source-label docutils container" id="p113-l02">
+<p>例 16.5</p>
+</div>
+<div class="source-line docutils container" id="p113-l03">
+<p>给定<span class="math notranslate nohighlight">\({ {\mathbb{F}}}_{2}\)</span> 上的二次本原多项式 <span class="math notranslate nohighlight">\(x^{2} + x + 1\)</span>. 我们有 <span class="math notranslate nohighlight">\({\mathbb{F}}_{4} = {\mathbb{F}}_{2}[ x]/(x^{2} + x + 1)\cong \{ 0,1,x,x + 1\}.\)</span></p>
+</div>
+<div class="source-line docutils container" id="p113-l04">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{c|c|c|c}\text{生成元幂}&amp;\text{多项式}&amp;\text{二元序列}&amp;\text{整数编码}\\\hline0&amp;0&amp;00&amp;0\\x^0=1&amp;1&amp;01&amp;1\\x&amp;x&amp;10&amp;2\\x^2&amp;x+1&amp;11&amp;3\end{array}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p113-l05">
+<p>加法：二元序列XOR运算</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-07">
+<p class="admonition-title">注 7</p>
+<ul class="simple">
+<li><p>整数是系数位串的编码。例如编码 <span class="math notranslate nohighlight">\(2\)</span> 表示 <span class="math notranslate nohighlight">\(x\)</span>，并非域中的 <span class="math notranslate nohighlight">\(1+1\)</span>；域加法由逐位 XOR 实现。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c16-statement-011">
+<div class="source-line source-label docutils container" id="p114-l01">
+<p>例 16.6</p>
+</div>
+<div class="source-line docutils container" id="p114-l02">
+<p>给定有限域 <span class="math notranslate nohighlight">\(\text{GF}(2^{w})\)</span> 以及<span class="math notranslate nohighlight">\({ {\mathbb{F}}}_{2}\)</span> 上的 <span class="math notranslate nohighlight">\(w\)</span> 次本原多项式.</p>
+</div>
+<div class="source-line docutils container" id="p114-l03">
+<p>于是有如下表示与编码对应：</p>
+</div>
+<div class="source-line docutils container" id="p114-l04">
+<div class="math notranslate nohighlight">
+\[
+\operatorname{GF}(2^w)\cong\{a_0+a_1x+\cdots+a_{w-1}x^{w-1}:a_i\in\mathbb F_2\}.
+\]</div>
+</div>
+<div class="source-line docutils container" id="p114-l05">
+<div class="math notranslate nohighlight" id="p114-l06">
+\[\begin{split}
+\begin{aligned}
+a_0+a_1x+\cdots+a_{w-1}x^{w-1}&amp;\longleftrightarrow(a_{w-1}\cdots a_1a_0) \\
+&amp;\longleftrightarrow\sum_{i=0}^{w-1}a_i2^i,\qquad a_i\in\mathbb F_2.
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p114-l07">
+<div class="math notranslate nohighlight">
+\[
+[2^w-1]=\{0,1,\ldots,2^w-1\}.
+\]</div>
+<p>上述编码集为 <span class="math notranslate nohighlight">\(\{0,1,\ldots,2^w-1\}\)</span>；它与域元素一一对应，但不保留普通整数运算。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-08">
+<p class="admonition-title">注 8</p>
+<ul class="simple">
+<li><p>三个表示之间是集合上的一一对应。最低位对应常数项，编码不保持通常的整数加法或乘法，因此不能把这些对应当作环同构。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c16-statement-012">
+<div class="statement-title">例 16.7</div><div class="source-line docutils container" id="p115-l01">
+<div class="math notranslate nohighlight">
+\[\text{GF}(2^{4})\]</div>
+</div>
+<div class="source-line docutils container" id="p115-l02">
+<p>本原多项式<span class="math notranslate nohighlight">\( f(x) = x^{4} + x + 1\)</span></p>
+</div>
+<p>在此模型中，令 <span class="math notranslate nohighlight">\(\alpha=x+(f)\)</span>。全部元素的幂表示、幂基表达式与编码如下：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>幂表示</p></th>
+<th class="head"><p>幂基表达式</p></th>
+<th class="head"><p>系数位串</p></th>
+<th class="head"><p>存储编码</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0000</span></code></p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{0}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0001</span></code></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha^{1}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0010</span></code></p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{2}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0100</span></code></p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha^{3}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1000</span></code></p></td>
+<td><p>8</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{4}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha + 1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0011</span></code></p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha^{5}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{2} + \alpha\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0110</span></code></p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{6}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3} + \alpha^{2}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1100</span></code></p></td>
+<td><p>12</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha^{7}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3} + \alpha + 1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1011</span></code></p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{8}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{2} + 1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0101</span></code></p></td>
+<td><p>5</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha^{9}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3} + \alpha\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1010</span></code></p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{10}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{2} + \alpha + 1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0111</span></code></p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha^{11}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3} + \alpha^{2} + \alpha\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1110</span></code></p></td>
+<td><p>14</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{12}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3} + \alpha^{2} + \alpha + 1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1111</span></code></p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha^{13}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3} + \alpha^{2} + 1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1101</span></code></p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha^{14}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha^{3} + 1\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1001</span></code></p></td>
+<td><p>9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-09">
+<p class="admonition-title">注 9</p>
+<ul class="simple">
+<li><p>用 <span class="math notranslate nohighlight">\(x^4=x+1\)</span> 约化 <span class="math notranslate nohighlight">\(x\)</span> 的逐次幂，即可建立指数表；非零元素的指数以 <span class="math notranslate nohighlight">\(15\)</span> 为周期。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c16-statement-013">
+<div class="statement-title">例 16.8</div><div class="source-line source-label docutils container" id="p116-l01">
+<p>加法</p>
+</div>
+<div class="source-line docutils container" id="p116-l02">
+<div class="math notranslate nohighlight">
+\[11 + 7 = 1011 \oplus 0111 = 1100 = 12\]</div>
+</div>
+<div class="source-line docutils container" id="p116-l03">
+<p>需 <span class="math notranslate nohighlight">\(w\)</span> 次XOR运算</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-10">
+<p class="admonition-title">注 10</p>
+<ul class="simple">
+<li><p>例子中的整数均为四位二进制编码，符号 <span class="math notranslate nohighlight">\(+\)</span> 表示域加法，计算由 XOR 完成。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>对数表实现乘除法<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="statement-box example docutils container" id="c16-statement-014">
+<div class="statement-title">例 16.9</div><div class="source-line docutils container" id="p116-l04">
+<p>选取本原元 <span class="math notranslate nohighlight">\(\alpha\)</span>，定义指数表 <span class="math notranslate nohighlight">\(\operatorname{exp}(k)=\alpha^k\)</span> 与对数表 <span class="math notranslate nohighlight">\(\operatorname{log}(\alpha^k)=k\)</span>，其中 <span class="math notranslate nohighlight">\(0\leq k&lt;2^w-1\)</span>。对数只对非零元素定义，指数按模 <span class="math notranslate nohighlight">\(2^w-1\)</span> 运算。</p>
+</div>
+<div class="source-line source-label docutils container" id="p116-l05">
+<p>乘法</p>
+</div>
+<div class="source-line docutils container" id="p116-l06">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+3\times7&amp;=\operatorname{gfilog}\bigl(\operatorname{gflog}(3)+\operatorname{gflog}(7)\bigr) \\
+&amp;=\operatorname{gfilog}(4+10)=\operatorname{gfilog}(14)=9.
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p116-l07">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+13\div10&amp;=\operatorname{gfilog}\bigl(\operatorname{gflog}(13)-\operatorname{gflog}(10)\bigr) \\
+&amp;=\operatorname{gfilog}(13-9)=\operatorname{gfilog}(4)=3.
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p116-l08">
+<p>需 3 次查表，和 1 次模运算</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c16-remark-11">
+<p class="admonition-title">注 11</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\operatorname{gflog}\)</span> 只对非零元素定义；<span class="math notranslate nohighlight">\(\operatorname{gfilog}\)</span> 将指数映回域元素，指数按 <span class="math notranslate nohighlight">\(15\)</span> 取模。实现乘除时须另行处理零元素及除零情形。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="mathrm-gf-16">
+<h2>交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(16)\)</span> 的位编码与对数表<a class="headerlink" href="#mathrm-gf-16" title="Link to this heading">#</a></h2>
+<div class="lesson-widget" data-kind="encoding" aria-label="GF(16) 的位编码与对数表"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
+<section id="field-arithmetic">
+<span id="id6"></span><h2>有限域四则计算<a class="headerlink" href="#field-arithmetic" title="Link to this heading">#</a></h2>
+<div class="ff-widget"><h3>有限域编码计算器</h3><p>输入整数是系数位串的存储编码，并非域中的普通整数。</p><p>第 <span class="math">\(i\)</span> 位表示 <span class="math">\(x^i\)</span> 的系数。运算按所选不可约模多项式进行。</p><label>有限域 <select class="field"><option value="2,7">GF(4)，x²+x+1</option><option value="4,19" selected>GF(16)，x⁴+x+1</option><option value="8,283">GF(256)，x⁸+x⁴+x³+x+1</option></select></label><label>a 的系数位串编码 <input class="operand-a" type="number" value="3" min="0"></label><label>b 的系数位串编码 <input class="operand-b" type="number" value="7" min="0"></label><button>计算</button><pre class="result" aria-live="polite"></pre></div></section>
+<section id="id7">
+<h2>本章自测<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="1011 XOR 0111=1100。" data-hint="位编码加法是 XOR。"><p><span class="math">\(\mathrm{GF}(16)\)</span> 中整数编码 11 与 7 的和是多少？</p><button data-correct="yes">12</button> <button data-correct="no">18</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id8">
+<h2>练习与解答<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>在 <span class="math notranslate nohighlight">\(\operatorname{GF}(16)\)</span>、模多项式 <span class="math notranslate nohighlight">\(x^4+x+1\)</span> 的模型中计算编码 <span class="math notranslate nohighlight">\(3\cdot7\)</span> 和 <span class="math notranslate nohighlight">\(13/10\)</span>。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">参考解答</p>
+<p>以编码 <span class="math notranslate nohighlight">\(2\)</span>（即 <span class="math notranslate nohighlight">\(x\)</span>）为本原元，有 <span class="math notranslate nohighlight">\(\log(3)=4\)</span>、<span class="math notranslate nohighlight">\(\log(7)=10\)</span>、<span class="math notranslate nohighlight">\(\operatorname{exp}(14)=9\)</span>；以及 <span class="math notranslate nohighlight">\(\log(13)=13\)</span>、<span class="math notranslate nohighlight">\(\log(10)=9\)</span>、<span class="math notranslate nohighlight">\(\operatorname{exp}(4)=3\)</span>。所以两结果为 <span class="math notranslate nohighlight">\(9,3\)</span>。指数按模 <span class="math notranslate nohighlight">\(15\)</span> 运算，零元素需单独处理。</p>
+</div>
+</section>
+<section id="id9">
+<h2>学习检查<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] 在多项式、幂、矩阵和位串表示之间转换。</p></li>
+<li><p>[ ] 区分域运算与存储编码的普通整数运算。</p></li>
+<li><p>[ ] 正确处理对数表的指数周期、零和除零。</p></li>
+</ul>
+</section>
+<section id="id10">
+<h2>学习笔记<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
+<span id="slide-107"></span><span id="slide-108"></span><span id="slide-109"></span><span id="slide-110"></span><span id="slide-111"></span><span id="slide-112"></span><span id="slide-113"></span><span id="slide-114"></span><span id="slide-115"></span><span id="slide-116"></span>
+<label for="chapter-note-c16">本章笔记</label><textarea id="chapter-note-c16" class="local-note chapter-note" data-page="chapter" data-legacy-pages="107,108,109,110,111,112,113,114,115,116" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
+<button type="button" class="export-notes">导出本章笔记</button></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c15.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">第 15 章 割圆域与割圆多项式</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c17.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">第 17 章 组合零点定理</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">多项式坐标表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">本原元与幂表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">伴随矩阵表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xor">位串、整数编码与 XOR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">对数表实现乘除法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathrm-gf-16">交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(16)\)</span> 的位编码与对数表</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#field-arithmetic">有限域四则计算</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">学习笔记</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

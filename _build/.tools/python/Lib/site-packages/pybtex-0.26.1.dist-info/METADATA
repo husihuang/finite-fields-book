@@ -1,0 +1,76 @@
+Metadata-Version: 2.4
+Name: pybtex
+Version: 0.26.1
+Summary: A BibTeX-compatible bibliography processor in Python
+Project-URL: Homepage, https://pybtex.org/
+Project-URL: Changelog, https://docs.pybtex.org/history.html
+Project-URL: Documentation, https://docs.pybtex.org/
+Project-URL: Repository, https://codeberg.org/pybtex/pybtex
+Project-URL: Bug tracker, https://codeberg.org/pybtex/pybtex/issues
+Author-email: Andrey Golovizin <ag@sologoc.com>
+License-Expression: MIT
+License-File: COPYING
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: Console
+Classifier: Intended Audience :: End Users/Desktop
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Text Processing :: Markup :: LaTeX
+Classifier: Topic :: Text Processing :: Markup :: XML
+Classifier: Topic :: Utilities
+Requires-Python: >=3.8
+Requires-Dist: importlib-metadata; python_version < '3.10'
+Requires-Dist: latexcodec>=1.0.4
+Requires-Dist: pyyaml>=3.01
+Description-Content-Type: text/x-rst
+
+BibTeX-compatible bibliography processor in Python
+==================================================
+
+Synopsis
+--------
+
+::
+
+    latex foo.tex
+    pybtex foo.aux
+    latex foo.tex
+    latex foo.tex
+
+
+Description
+-----------
+
+Pybtex reads citation information from a file and
+produces a formatted bibliography. BibTeX style files are supported.
+Alternatively it is possible to write styles in Python.
+
+Pybtex currently understands the following bibliography formats:
+
+- BibTeX
+
+- BibTeXML
+
+- YAML-based format
+
+The resulting bibliography may be output in one of the following formats
+(not supported by legacy BibTeX styles):
+
+- LaTeX
+
+- HTML
+
+- markdown
+
+- plain text
+
+
+See also
+--------
+
+- `Home page <https://pybtex.org/>`_
+
+- `Pybtex at Codeberg <https://codeberg.org/pybtex/pybtex>`_
+
+- `Pybtex at PyPI <https://pypi.org/project/pybtex>`_

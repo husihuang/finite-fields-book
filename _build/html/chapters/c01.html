@@ -1,0 +1,993 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 1 章 群与运算 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/c01';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 2 章 等价关系与陪集" href="c02.html" />
+    <link rel="prev" title="知识图谱与学习状态" href="../knowledge.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c03.html">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c08.html">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c10.html">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c14.html">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c15.html">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c16.html">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/experiments.html">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/c01.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 1 章 群与运算</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p001-l01">二元运算与群公理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">群的记号与基本例子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">一个非交换群：正方形的对称群</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square-symmetry">交互动画：旋转、反射与复合</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">子群与循环群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">元素的阶</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">由一个集合生成的群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">交互实验：模加法群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">学习笔记</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 1 章 群与运算<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>本章从二元运算出发，介绍群、子群、循环群以及元素的阶，为后续有限域的加法群和乘法群建立基础。</p>
+<div class="tip chapter-goals admonition">
+<p class="admonition-title">学习目标</p>
+<ul class="simple">
+<li><p>从二元运算与群公理识别常见群。</p></li>
+<li><p>区分群的阶和元素的阶，理解子群与循环群。</p></li>
+<li><p>用正方形对称群说明结合律与交换律的区别。</p></li>
+</ul>
+</div>
+<div class="reader-toolbar" role="region" aria-label="逐段阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><section id="p001-l01">
+<span id="id2"></span><h2>二元运算与群公理<a class="headerlink" href="#p001-l01" title="Link to this heading">#</a></h2>
+<p>群是一个集合连同其上的运算。先检查运算能否对任意两个元素给出唯一的、仍属于该集合的结果，再检查群公理。</p>
+<div class="statement-box definition docutils container" id="c01-binary-operation">
+<div class="source-line source-label docutils container" id="p001-l02">
+<p>定义 1.1</p>
+</div>
+<div class="source-line docutils container" id="p001-l03">
+<p>设 <span class="math notranslate nohighlight">\(S\)</span> 为一个非空集合，我们将映射</p>
+</div>
+<div class="source-line docutils container" id="p001-l04">
+<div class="math notranslate nohighlight" id="p001-l05">
+\[\begin{split}
+\begin{aligned}
+\circ:\quad S\times S &amp;\longrightarrow S \\
+(a,b) &amp;\longmapsto a\circ b\quad(\text{或 }ab)
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p001-l06">
+<p>称为 <span class="math notranslate nohighlight">\(S\)</span> 上的二元运算.</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-01">
+<p class="admonition-title">注 1</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S\times S\)</span> 由所有有序对 <span class="math notranslate nohighlight">\((a,b)\)</span>（<span class="math notranslate nohighlight">\(a,b\in S\)</span>）组成。映射 <span class="math notranslate nohighlight">\(\circ:S\times S\to S\)</span> 要求每个有序对对应唯一的结果，且结果仍属于 <span class="math notranslate nohighlight">\(S\)</span>；后一要求称为封闭性。</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\circ b\)</span> 与 <span class="math notranslate nohighlight">\(ab\)</span> 是同一运算的两种记法，<span class="math notranslate nohighlight">\(ab\)</span> 不一定表示通常的数的乘法。交换两个输入的位置，结果未必不变，因此二元运算的定义并不要求交换律。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c01-integer-addition">
+<div class="source-line source-label docutils container" id="p001-l07">
+<p>例 1.1</p>
+</div>
+<div class="source-line docutils container" id="p001-l08">
+<p>整数集 <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> 上的加法：</p>
+</div>
+<div class="source-line docutils container" id="p001-l09">
+<div class="math notranslate nohighlight" id="p001-l10">
+\[\begin{split}
+\begin{aligned}
++:\quad \mathbb{Z}\times\mathbb{Z} &amp;\longrightarrow \mathbb{Z} \\
+(a,b) &amp;\longmapsto a+b
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-02">
+<p class="admonition-title">注 2</p>
+<ul class="simple">
+<li><p>任意两个整数的和仍是整数，因此加法确实给出了上述映射。例如 <span class="math notranslate nohighlight">\((2,-3)\)</span> 的像是 <span class="math notranslate nohighlight">\(-1\)</span>。相比之下，通常的除法不能定义为 <span class="math notranslate nohighlight">\(\mathbb Z\)</span> 上的二元运算：<span class="math notranslate nohighlight">\(1\div2\)</span> 不是整数，除数为 <span class="math notranslate nohighlight">\(0\)</span> 时也没有定义。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c01-group-definition">
+<div class="source-line source-label docutils container" id="p002-l01">
+<p>定义 1.2</p>
+</div>
+<div class="source-line docutils container" id="p002-l02">
+<p>给定一个非空集合 <span class="math notranslate nohighlight">\(G\)</span> 及其上的一个二元运算 <span class="math notranslate nohighlight">\(\circ\)</span>，我们说 <span class="math notranslate nohighlight">\(G\)</span> 对于 <span class="math notranslate nohighlight">\(\circ\)</span> 构成一个群，若：</p>
+</div>
+<div class="source-line docutils container" id="p002-l03">
+<p>1) 结合律：<span class="math notranslate nohighlight">\(\forall a,b,c\in G,\quad a\circ(b\circ c)=(a\circ b)\circ c\)</span></p>
+</div>
+<div class="source-line docutils container" id="p002-l04">
+<p>2) 单位元：<span class="math notranslate nohighlight">\(\exists e\in G\quad\text{s.t.}\quad\forall a\in G,\quad a\circ e=e\circ a=a\)</span></p>
+</div>
+<div class="source-line docutils container" id="p002-l05">
+<p>我们称 <span class="math notranslate nohighlight">\(e\)</span> 为 <span class="math notranslate nohighlight">\(G\)</span> 中的单位元，也写成 <span class="math notranslate nohighlight">\(1_G\)</span> 或 <span class="math notranslate nohighlight">\(1\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="p002-l06">
+<p>3) 逆元：<span class="math notranslate nohighlight">\(\forall a\in G,\quad\exists b\in G\quad\text{s.t.}\quad a\circ b=b\circ a=e\)</span></p>
+</div>
+<div class="source-line docutils container" id="p002-l07">
+<p>我们称此元素 <span class="math notranslate nohighlight">\(b\)</span> 为 <span class="math notranslate nohighlight">\(a\)</span> 的逆元，记成 <span class="math notranslate nohighlight">\(a^{-1}\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-03">
+<p class="admonition-title">注 3</p>
+<ul class="simple">
+<li><p>结合律允许改变括号的位置，因此可把 <span class="math notranslate nohighlight">\(a\circ(b\circ c)\)</span> 与 <span class="math notranslate nohighlight">\((a\circ b)\circ c\)</span> 共同记为 <span class="math notranslate nohighlight">\(a\circ b\circ c\)</span>，但不能据此改变元素的排列次序。</p></li>
+<li><p>记号 <span class="math notranslate nohighlight">\(1_G\)</span> 或 <span class="math notranslate nohighlight">\(1\)</span> 表示群的单位元，不一定是通常的数 <span class="math notranslate nohighlight">\(1\)</span>；<span class="math notranslate nohighlight">\(a^{-1}\)</span> 表示关于当前群运算的逆元，也不一定是倒数。在加法记号下，单位元写为 <span class="math notranslate nohighlight">\(0\)</span>，<span class="math notranslate nohighlight">\(a\)</span> 的逆元写为 <span class="math notranslate nohighlight">\(-a\)</span>。单位元与逆元的唯一性见本节末的推理练习。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c01-abelian-group">
+<div class="statement-title">定义 1.3</div><div class="source-line docutils container" id="p002-l08">
+<p>4) Abel（交换）群：<span class="math notranslate nohighlight">\(\forall a,b\in G,\quad a\circ b=b\circ a\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-04">
+<p class="admonition-title">注 4</p>
+<ul class="simple">
+<li><p>前面第 1）至第 3）项是群的公理；此处第 4）项是交换群所满足的附加条件。一个群可以不满足交换律，正方形对称群就是这样的例子。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>群的记号与基本例子<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="statement-box notation docutils container" id="c01-group-notation">
+<div class="source-line source-label docutils container" id="p004-l01">
+<p>记号</p>
+</div>
+<div class="source-line docutils container" id="p004-l02">
+<p>对于 Abel 群，我们常将 <span class="math notranslate nohighlight">\(a\circ b\)</span> 写成 <span class="math notranslate nohighlight">\(a+b\)</span>，<span class="math notranslate nohighlight">\(e\)</span> 写成 <span class="math notranslate nohighlight">\(0\)</span>，<span class="math notranslate nohighlight">\(a^{-1}\)</span> 写成 <span class="math notranslate nohighlight">\(-a\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="p004-l03">
+<p id="p004-l06"><span id="p004-l05"></span><span id="p004-l04"></span>对正整数 <span class="math notranslate nohighlight">\(n\)</span>，约定：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+a^n &amp;= \underbrace{a\circ a\circ\cdots\circ a}_{n\text{ 个 }a}, \\
+a^0 &amp;= e, \\
+a^{-n} &amp;= (a^{-1})^n, \\
+na &amp;= \underbrace{a+a+\cdots+a}_{n\text{ 个 }a}.
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-06">
+<p class="admonition-title">注 5</p>
+<ul>
+<li><p><strong>乘法记号。</strong> 对正整数 <span class="math notranslate nohighlight">\(n\)</span>，<span class="math notranslate nohighlight">\(a^n\)</span> 是 <span class="math notranslate nohighlight">\(n\)</span> 个 <span class="math notranslate nohighlight">\(a\)</span> 的乘积；结合律保证它与括号的安排无关。约定 <span class="math notranslate nohighlight">\(a^0=e\)</span>，并用 <span class="math notranslate nohighlight">\(a^{-n}=(a^{-1})^n\)</span> 定义负整数幂。于是对任意 <span class="math notranslate nohighlight">\(m,n\in\mathbb Z\)</span>，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \begin{aligned}
+  a^{m+n} &amp;= a^m a^n, \\
+  (a^n)^{-1} &amp;= a^{-n}.
+  \end{aligned}
+  \end{split}\]</div>
+<p>这些等式只涉及同一元素的幂，不要求整个群满足交换律。</p>
+</li>
+<li><p><strong>加法记号。</strong> 单位元条件与逆元条件分别写为 <span class="math notranslate nohighlight">\(a+0=0+a=a\)</span> 和 <span class="math notranslate nohighlight">\(a+(-a)=(-a)+a=0\)</span>。<span class="math notranslate nohighlight">\(na\)</span> 表示 <span class="math notranslate nohighlight">\(n\)</span> 个 <span class="math notranslate nohighlight">\(a\)</span> 的和，并约定 <span class="math notranslate nohighlight">\(0a=0\)</span>、<span class="math notranslate nohighlight">\((-n)a=-(na)\)</span>（<span class="math notranslate nohighlight">\(n&gt;0\)</span>）。这里的整数倍完全由群运算定义，不需要另行给定向量空间的数乘。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c01-additive-groups">
+<div class="source-line source-label docutils container" id="p004-l07">
+<p>例 1.2</p>
+</div>
+<div class="source-line docutils container" id="p004-l08">
+<p>所有整数 <span class="math notranslate nohighlight">\(\mathbb{Z}\)</span> 在加法运算下构成一个交换群，记为 <span class="math notranslate nohighlight">\((\mathbb{Z},+)\)</span>。同样地，还有 <span class="math notranslate nohighlight">\((\mathbb{Q},+)\)</span>、<span class="math notranslate nohighlight">\((\mathbb{R},+)\)</span>、<span class="math notranslate nohighlight">\((\mathbb{C},+)\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-07">
+<p class="admonition-title">注 6</p>
+<ul class="simple">
+<li><p>以 <span class="math notranslate nohighlight">\((\mathbb Z,+)\)</span> 为例，加法封闭且满足结合律，单位元是 <span class="math notranslate nohighlight">\(0\)</span>，每个整数 <span class="math notranslate nohighlight">\(a\)</span> 的逆元是 <span class="math notranslate nohighlight">\(-a\)</span>，并且加法可交换。有理数、实数和复数的加法也满足同样的条件。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c01-addition-mod-six">
+<div class="source-line source-label docutils container" id="p005-l03">
+<p>例 1.3</p>
+</div>
+<div class="source-line docutils container" id="p005-l04">
+<p>令 <span class="math notranslate nohighlight">\(G=\{0,1,2,3,4,5\}\)</span>。则 <span class="math notranslate nohighlight">\(G\)</span> 在模 <span class="math notranslate nohighlight">\(6\)</span> 加运算下</p>
+</div>
+<div class="source-line docutils container" id="p005-l05">
+<div class="math notranslate nohighlight" id="p005-l06">
+\[\begin{split}
+\begin{aligned}
++:\quad G\times G &amp;\longrightarrow G \\
+(a,b) &amp;\longmapsto (a+b)\bmod 6
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p005-l07">
+<p>构造一个 Abel 群。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-08">
+<p class="admonition-title">注 7</p>
+<ul class="simple">
+<li><p>运算结果是整数 <span class="math notranslate nohighlight">\(a+b\)</span> 除以 <span class="math notranslate nohighlight">\(6\)</span> 的余数，取值仍在 <span class="math notranslate nohighlight">\(G\)</span> 中。例如 <span class="math notranslate nohighlight">\(4+5=9\)</span>，取余后本运算的结果为 <span class="math notranslate nohighlight">\(3\)</span>。</p></li>
+<li><p>结合律与交换律由整数加法继承，单位元为 <span class="math notranslate nohighlight">\(0\)</span>。逆元分别为：<span class="math notranslate nohighlight">\(0\)</span> 与自身、<span class="math notranslate nohighlight">\(1\)</span> 与 <span class="math notranslate nohighlight">\(5\)</span>、<span class="math notranslate nohighlight">\(2\)</span> 与 <span class="math notranslate nohighlight">\(4\)</span>、<span class="math notranslate nohighlight">\(3\)</span> 与自身。例如 <span class="math notranslate nohighlight">\(2+4\equiv0\pmod6\)</span>，故 <span class="math notranslate nohighlight">\(4\)</span> 是 <span class="math notranslate nohighlight">\(2\)</span> 的加法逆元。因此这六个元素在上述运算下构成交换群。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c01-multiplicative-groups">
+<div class="source-line source-label docutils container" id="p005-l08">
+<p>例 1.4</p>
+</div>
+<div class="source-line docutils container" id="p005-l09">
+<p>所有非零的有理数在乘法运算下构成一个交换群，记为 <span class="math notranslate nohighlight">\((\mathbb{Q}\setminus\{0\},\bullet)\)</span>。同样地还有 <span class="math notranslate nohighlight">\((\mathbb{R}\setminus\{0\},\bullet)\)</span>、<span class="math notranslate nohighlight">\((\mathbb{C}\setminus\{0\},\bullet)\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-09">
+<p class="admonition-title">注 8</p>
+<ul class="simple">
+<li><p>两个非零有理数的积仍为非零有理数，乘法满足结合律与交换律，单位元为 <span class="math notranslate nohighlight">\(1\)</span>，每个 <span class="math notranslate nohighlight">\(a\ne0\)</span> 的逆元为 <span class="math notranslate nohighlight">\(1/a\)</span>。必须去掉 <span class="math notranslate nohighlight">\(0\)</span>，因为 <span class="math notranslate nohighlight">\(0\)</span> 没有乘法逆元；非零实数与非零复数的情形同理。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>一个非交换群：正方形的对称群<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>变换的复合次序会影响结果，因而群的结合律不能替代交换律。</p>
+<div class="example admonition" id="c01-remark-05">
+<p class="admonition-title">例 1.5：正方形的对称群</p>
+<ul>
+<li><p>正方形的对称变换是把正方形映到自身的刚性变换，共有四个旋转和四个反射；以变换复合作为运算，它们构成一个八阶群。令 <span class="math notranslate nohighlight">\(r\)</span> 为逆时针旋转 <span class="math notranslate nohighlight">\(90^\circ\)</span>，<span class="math notranslate nohighlight">\(s\)</span> 为关于一条固定对称轴的反射，并约定 <span class="math notranslate nohighlight">\(fg\)</span> 表示先施行 <span class="math notranslate nohighlight">\(g\)</span>、再施行 <span class="math notranslate nohighlight">\(f\)</span>。则</p>
+<div class="math notranslate nohighlight">
+\[r^4=s^2=e,\qquad srs=r^{-1}.\]</div>
+</li>
+<li><p>八个元素可写为 <span class="math notranslate nohighlight">\(e,r,r^2,r^3,s,sr,sr^2,sr^3\)</span>。关系 <span class="math notranslate nohighlight">\(sr=r^{-1}s\)</span> 表明这两个变换不能交换次序，因此这是一个非交换群。</p></li>
+</ul>
+</div>
+<section id="square-symmetry">
+<span id="id5"></span><h3>交互动画：旋转、反射与复合<a class="headerlink" href="#square-symmetry" title="Link to this heading">#</a></h3>
+<p>给四个顶点标上 <span class="math notranslate nohighlight">\(A,B,C,D\)</span> 后，就能区分外轮廓相同的不同对称变换。这里固定 <span class="math notranslate nohighlight">\(r\)</span> 为逆时针旋转 <span class="math notranslate nohighlight">\(90^\circ\)</span>，<span class="math notranslate nohighlight">\(s\)</span> 为关于竖直轴的反射。<strong>乘积从右向左执行</strong>：<span class="math notranslate nohighlight">\(sr\)</span> 是先旋转再反射，<span class="math notranslate nohighlight">\(rs\)</span> 是先反射再旋转。</p>
+<div class="square-symmetry" aria-label="正方形对称群交互动画">
+  <div class="symmetry-workspace">
+    <div class="symmetry-stage"><svg class="symmetry-main" viewBox="0 0 320 320" role="img" aria-label="标记顶点的正方形及其对称变换"></svg><p class="symmetry-state" aria-live="polite"></p></div>
+    <div class="symmetry-controls">
+      <h4>在当前图形上继续操作</h4>
+      <div class="symmetry-actions"><button type="button" data-step="r">r：逆时针旋转 90°</button><button type="button" data-step="s">s：竖直轴反射</button><button type="button" data-reset title="停止动画，清空操作记录，并将三个图形复原到单位元 e">复原</button></div>
+      <h4>从单位元演示八个元素</h4>
+      <div class="symmetry-elements"><button type="button" data-word="e"><span class="math">\(e\)</span></button><button type="button" data-word="r"><span class="math">\(r\)</span></button><button type="button" data-word="rr"><span class="math">\(r^2\)</span></button><button type="button" data-word="rrr"><span class="math">\(r^3\)</span></button><button type="button" data-word="s"><span class="math">\(s\)</span></button><button type="button" data-word="rs"><span class="math">\(sr\)</span></button><button type="button" data-word="rrs"><span class="math">\(sr^2\)</span></button><button type="button" data-word="rrrs"><span class="math">\(sr^3\)</span></button></div>
+      <h4>验证群的关系</h4>
+      <div class="symmetry-relations"><button type="button" data-word="rrrr"><span class="math">\(r^4 = e\)</span></button><button type="button" data-word="ss"><span class="math">\(s^2 = e\)</span></button><button type="button" data-word="srs"><span class="math">\(srs = r^{-1}\)</span></button></div>
+      <p class="symmetry-history" aria-live="polite"></p>
+    </div>
+  </div>
+  <div class="symmetry-comparison"><h4>比较 <span class="math">\(sr\)</span> 与 <span class="math">\(rs\)</span>：同样的两步，不同的次序</h4><button type="button" data-compare>同时播放两种次序</button><div class="symmetry-pair"><div><h5><span class="math">\(sr\)</span>：先 <span class="math">\(r\)</span>，后 <span class="math">\(s\)</span></h5><svg class="symmetry-sr" viewBox="0 0 320 320" role="img" aria-label="先旋转再反射"></svg><p class="symmetry-sr-state" aria-live="polite"></p></div><div><h5><span class="math">\(rs\)</span>：先 <span class="math">\(s\)</span>，后 <span class="math">\(r\)</span>（等于 <span class="math">\(sr^3\)</span>）</h5><svg class="symmetry-rs" viewBox="0 0 320 320" role="img" aria-label="先反射再旋转"></svg><p class="symmetry-rs-state" aria-live="polite"></p></div></div><p>观察顶点 A：<span class="math">\(sr\)</span> 把它送到右上角，<span class="math">\(rs\)</span> 把它送到左下角，因此 <span class="math">\(sr\neq rs\)</span>。</p></div>
+  <p class="symmetry-caption">点击“复原”可停止正在播放的动画、清空操作记录，并将三个图形回到初始顶点位置（单位元 e）。虚线是原始轮廓，竖直虚线是反射轴。字母随顶点移动，文字保持正向。反射采用沿竖直轴翻转的投影动画；动画的中间帧用于演示运动，不是群元素。减少动态效果的系统设置下直接显示结果。</p>
+  <noscript>此动画需要 JavaScript。初始顶点 A 在右上、B 在左上、C 在左下、D 在右下。sr 把 A 送到右上，而 rs 把 A 送到左下；两者不同。</noscript>
+</div><p>试一试：连续点击四次 <span class="math notranslate nohighlight">\(r\)</span>，或两次 <span class="math notranslate nohighlight">\(s\)</span>，观察顶点标记是否回到原位；再播放 <span class="math notranslate nohighlight">\(srs\)</span>，将其结果与 <span class="math notranslate nohighlight">\(r^3=r^{-1}\)</span> 比较。</p>
+</section>
+</section>
+<section id="id6">
+<h2>子群与循环群<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c01-finite-group-order">
+<div class="source-line source-label docutils container" id="p006-l01">
+<p>定义 1.4</p>
+</div>
+<div class="source-line docutils container" id="p006-l02">
+<p>若群 <span class="math notranslate nohighlight">\(G\)</span> 中含有有限多个元素，则称其为有限群。群 <span class="math notranslate nohighlight">\(G\)</span> 元素的个数称为 <span class="math notranslate nohighlight">\(G\)</span> 的阶，记为 <span class="math notranslate nohighlight">\(|G|\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-10">
+<p class="admonition-title">注 10</p>
+<ul class="simple">
+<li><p>这里的“阶”是群的元素个数。例如模 <span class="math notranslate nohighlight">\(6\)</span> 加法群有六个元素，故其阶为 <span class="math notranslate nohighlight">\(6\)</span>；整数加法群的元素有无限多个，所以它不是有限群。元素的阶指单个元素生成的循环子群的阶。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c01-subgroup">
+<div class="source-line source-label docutils container" id="p007-l01">
+<p>定义 1.5</p>
+</div>
+<div class="source-line docutils container" id="p007-l02">
+<p>给定群 <span class="math notranslate nohighlight">\((G,\bullet)\)</span> 及其子集 <span class="math notranslate nohighlight">\(H\)</span>。如果 <span class="math notranslate nohighlight">\(H\)</span> 自身在 <span class="math notranslate nohighlight">\(G\)</span> 的运算 <span class="math notranslate nohighlight">\(\bullet\)</span> 下构成一个群，则称 <span class="math notranslate nohighlight">\(H\)</span> 为 <span class="math notranslate nohighlight">\(G\)</span> 的一个子群。记 <span class="math notranslate nohighlight">\(H\leq G\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-12">
+<p class="admonition-title">注 11</p>
+<ul class="simple">
+<li><p>子群使用的是 <span class="math notranslate nohighlight">\(G\)</span> 的原有运算。因此结合律由 <span class="math notranslate nohighlight">\(G\)</span> 继承，关键是检验 <span class="math notranslate nohighlight">\(H\)</span> 非空且对乘积与逆元封闭。等价地，非空子集 <span class="math notranslate nohighlight">\(H\)</span> 是子群，当且仅当任意 <span class="math notranslate nohighlight">\(a,b\in H\)</span> 都有 <span class="math notranslate nohighlight">\(ab^{-1}\in H\)</span>。其理由是：取 <span class="math notranslate nohighlight">\(b=a\)</span> 得 <span class="math notranslate nohighlight">\(e\in H\)</span>，再取 <span class="math notranslate nohighlight">\(a=e\)</span> 得逆元封闭，最后对 <span class="math notranslate nohighlight">\(a\)</span> 与 <span class="math notranslate nohighlight">\(b^{-1}\)</span> 应用该条件得 <span class="math notranslate nohighlight">\(ab\in H\)</span>。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c01-trivial-subgroup">
+<div class="source-line source-label docutils container" id="p008-l03">
+<p>例 1.6</p>
+</div>
+<div class="source-line docutils container" id="p008-l04">
+<p>由单位元构成的平凡子群 <span class="math notranslate nohighlight">\(\langle e\rangle\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-16">
+<p class="admonition-title">注 12</p>
+<ul class="simple">
+<li><p>单位元的任意整数幂都是 <span class="math notranslate nohighlight">\(e\)</span>，故 <span class="math notranslate nohighlight">\(\langle e\rangle=\{e\}\)</span>。这个子群只有一个元素，所以单位元的阶为 <span class="math notranslate nohighlight">\(1\)</span>。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c01-cyclic-subgroup">
+<div class="source-line source-label docutils container" id="p007-l03">
+<p>例 1.7</p>
+</div>
+<div class="source-line docutils container" id="p007-l04">
+<p>给定元素 <span class="math notranslate nohighlight">\(a\in G\)</span>。我们用 <span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 表示由 <span class="math notranslate nohighlight">\(a\)</span> 的所有幂构成的子群，即</p>
+</div>
+<div class="source-line docutils container" id="p007-l05">
+<div class="math notranslate nohighlight">
+\[
+\langle a\rangle=\{a^m\mid m\in\mathbb{Z}\}.
+\]</div>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-13">
+<p class="admonition-title">注 13</p>
+<ul class="simple">
+<li><p>整数幂满足 <span class="math notranslate nohighlight">\(a^m a^n=a^{m+n}\)</span>、<span class="math notranslate nohighlight">\((a^m)^{-1}=a^{-m}\)</span>，并有 <span class="math notranslate nohighlight">\(a^0=e\)</span>，所以这些幂确实构成子群。<span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 总是 <span class="math notranslate nohighlight">\(G\)</span> 的子群；只有当它包含 <span class="math notranslate nohighlight">\(G\)</span> 的全部元素时，<span class="math notranslate nohighlight">\(a\)</span> 才是 <span class="math notranslate nohighlight">\(G\)</span> 的生成元。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c01-cyclic-group">
+<div class="source-line source-label docutils container" id="p006-l03">
+<p>定义 1.6</p>
+</div>
+<div class="source-line docutils container" id="p006-l04">
+<p>给定群 <span class="math notranslate nohighlight">\((G,\bullet)\)</span>。若</p>
+</div>
+<div class="source-line docutils container" id="p006-l05">
+<div class="math notranslate nohighlight">
+\[
+\exists a\in G\quad\text{s.t.}\quad
+\bigl(\forall b\in G,\ \exists j\in\mathbb{Z}\quad\text{s.t.}\quad b=a^j\bigr)
+\]</div>
+</div>
+<div class="source-line docutils container" id="p006-l06">
+<p>则称群 <span class="math notranslate nohighlight">\(G\)</span> 为循环群，<span class="math notranslate nohighlight">\(a\)</span> 为 <span class="math notranslate nohighlight">\(G\)</span> 的一个生成元。也记 <span class="math notranslate nohighlight">\(G=\langle a\rangle\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-11">
+<p class="admonition-title">注 14</p>
+<ul class="simple">
+<li><p>定义中的量词表示：先选定同一个元素 <span class="math notranslate nohighlight">\(a\)</span>，再对每个 <span class="math notranslate nohighlight">\(b\in G\)</span> 寻找一个可以依赖于 <span class="math notranslate nohighlight">\(b\)</span> 的整数 <span class="math notranslate nohighlight">\(j\)</span>，使 <span class="math notranslate nohighlight">\(b=a^j\)</span>。指数可正、可负，也可为零，因而这些幂包含单位元及逆元。</p></li>
+<li><p>采用加法记号时，生成条件写为 <span class="math notranslate nohighlight">\(G=\{ja:j\in\mathbb Z\}\)</span>。整数加法群由 <span class="math notranslate nohighlight">\(1\)</span> 或 <span class="math notranslate nohighlight">\(-1\)</span> 生成，是无限循环群；模 <span class="math notranslate nohighlight">\(6\)</span> 加法群由 <span class="math notranslate nohighlight">\(1\)</span> 生成，是有限循环群。因此循环群既可以有限，也可以无限。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>元素的阶<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c01-element-order">
+<div class="source-line source-label docutils container" id="p007-l06">
+<p>定义 1.7</p>
+</div>
+<div class="source-line docutils container" id="p007-l07">
+<p>若子群 <span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 为有限群，则将群 <span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 的阶 <span class="math notranslate nohighlight">\(|\langle a\rangle|\)</span> 也称为元素 <span class="math notranslate nohighlight">\(a\)</span> 的阶。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-14">
+<p class="admonition-title">注 15</p>
+<ul class="simple">
+<li><p>若 <span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 无限，则称 <span class="math notranslate nohighlight">\(a\)</span> 为无限阶元素，记为 <span class="math notranslate nohighlight">\(\operatorname{ord}(a)=\infty\)</span>。有限阶时，元素 <span class="math notranslate nohighlight">\(a\)</span> 的阶是它生成的子群的元素个数，通常记为 <span class="math notranslate nohighlight">\(\operatorname{ord}(a)\)</span>。例如在模 <span class="math notranslate nohighlight">\(6\)</span> 加法群中，<span class="math notranslate nohighlight">\(\langle2\rangle=\{0,2,4\}\)</span>，所以 <span class="math notranslate nohighlight">\(2\)</span> 的阶为 <span class="math notranslate nohighlight">\(3\)</span>，而整个群的阶为 <span class="math notranslate nohighlight">\(6\)</span>。</p></li>
+<li><p>无限阶时，不同整数幂互不相同。否则由 <span class="math notranslate nohighlight">\(a^i=a^j\)</span>（<span class="math notranslate nohighlight">\(i\ne j\)</span>）得到 <span class="math notranslate nohighlight">\(a^{i-j}=e\)</span>，所有整数幂便可按 <span class="math notranslate nohighlight">\(|i-j|\)</span> 取余，生成子群将只有有限多个元素，与无限阶矛盾。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box exercise docutils container" id="c01-order-verification">
+<div class="source-line docutils container" id="p009-l03">
+<p>设 <span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 有限。验证元素 <span class="math notranslate nohighlight">\(a\)</span> 的阶 <span class="math notranslate nohighlight">\(|\langle a\rangle|\)</span> 是使得 <span class="math notranslate nohighlight">\(a^{|\langle a\rangle|}=1\)</span> 成立的最小正整数。</p>
+</div>
+<div class="source-line source-label docutils container" id="p009-l04">
+<p>练习 1.1</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-18">
+<p class="admonition-title">注 16</p>
+<ul>
+<li><p>设 <span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 有限。在序列 <span class="math notranslate nohighlight">\(e,a,a^2,\ldots\)</span> 中必有两项相等，故存在正整数 <span class="math notranslate nohighlight">\(t\)</span> 使 <span class="math notranslate nohighlight">\(a^t=e\)</span>；取满足此式的最小正整数 <span class="math notranslate nohighlight">\(t\)</span>。对任意 <span class="math notranslate nohighlight">\(n\in\mathbb Z\)</span>，作带余除法 <span class="math notranslate nohighlight">\(n=qt+r\)</span>（<span class="math notranslate nohighlight">\(0\le r&lt;t\)</span>），便有 <span class="math notranslate nohighlight">\(a^n=a^r\)</span>。因此 <span class="math notranslate nohighlight">\(\langle a\rangle\)</span> 恰由 <span class="math notranslate nohighlight">\(e,a,\ldots,a^{t-1}\)</span> 构成。这些元素互不相同，否则会出现小于 <span class="math notranslate nohighlight">\(t\)</span> 的正指数使幂等于 <span class="math notranslate nohighlight">\(e\)</span>。于是 <span class="math notranslate nohighlight">\(|\langle a\rangle|=t\)</span>，完成验证。进一步，由同一带余除法可得</p>
+<div class="math notranslate nohighlight">
+\[a^n=e\quad\Longleftrightarrow\quad t\mid n.\]</div>
+</li>
+<li><p>这里的 <span class="math notranslate nohighlight">\(1\)</span> 表示群的单位元。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id8">
+<h2>由一个集合生成的群<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c01-generated-subgroup">
+<div class="source-line source-label docutils container" id="p007-l08">
+<p>定义 1.8</p>
+</div>
+<div class="source-line docutils container" id="p007-l09">
+<p>给定群 <span class="math notranslate nohighlight">\(G\)</span> 的子集 <span class="math notranslate nohighlight">\(S\)</span>。我们用 <span class="math notranslate nohighlight">\(\langle S\rangle\)</span> 表示由 <span class="math notranslate nohighlight">\(S\)</span> 中所有有限多个元素幂乘积形成的子群。</p>
+</div>
+<div class="source-line docutils container" id="p007-l10">
+<p>若 <span class="math notranslate nohighlight">\(\langle S\rangle=G\)</span>，则称 <span class="math notranslate nohighlight">\(S\)</span> 生成 <span class="math notranslate nohighlight">\(G\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-15">
+<p class="admonition-title">注 17</p>
+<ul>
+<li><p>群中的幂乘积允许整数指数，在一般群中还须保留因子的排列次序。具体地，</p>
+<div class="math notranslate nohighlight">
+\[\langle S\rangle=\{s_1^{n_1}\cdots s_k^{n_k}:k\ge0,\ s_i\in S,\ n_i\in\mathbb Z\}.\]</div>
+</li>
+<li><p>当 <span class="math notranslate nohighlight">\(k=0\)</span> 时，乘积约定为 <span class="math notranslate nohighlight">\(e\)</span>。该集合对乘积与逆元封闭，且任何包含 <span class="math notranslate nohighlight">\(S\)</span> 的子群都包含这些乘积，因此它是包含 <span class="math notranslate nohighlight">\(S\)</span> 的最小子群。特别地，<span class="math notranslate nohighlight">\(\langle\varnothing\rangle=\{e\}\)</span>。</p></li>
+<li><p>条件 <span class="math notranslate nohighlight">\(\langle S\rangle=G\)</span> 表示可用 <span class="math notranslate nohighlight">\(S\)</span> 中的元素及其逆元，经有限次群运算得到 <span class="math notranslate nohighlight">\(G\)</span> 的每个元素；它不要求 <span class="math notranslate nohighlight">\(S\)</span> 中某一个元素单独生成 <span class="math notranslate nohighlight">\(G\)</span>。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c01-generating-set">
+<div class="source-line source-label docutils container" id="p009-l05">
+<p>例 1.8</p>
+</div>
+<div class="source-line docutils container" id="p009-l06">
+<p>在模 <span class="math notranslate nohighlight">\(6\)</span> 加法群中，<span class="math notranslate nohighlight">\(\{2,3\}\)</span> 可以生成整个群。</p>
+</div>
+<div class="source-line docutils container" id="p009-l07">
+<p>因为 <span class="math notranslate nohighlight">\(3-2=1\)</span>，且 <span class="math notranslate nohighlight">\(1\)</span> 生成整个模 <span class="math notranslate nohighlight">\(6\)</span> 加法群，所以 <span class="math notranslate nohighlight">\(\langle2,3\rangle=\mathbb Z_6\)</span>。</p>
+</div>
+<div class="dropdown reading-note admonition" id="c01-remark-19">
+<p class="admonition-title">注 18</p>
+<ul class="simple">
+<li><p>例如在模 <span class="math notranslate nohighlight">\(6\)</span> 加法群中，<span class="math notranslate nohighlight">\(\langle2\rangle=\{0,2,4\}\)</span>，<span class="math notranslate nohighlight">\(\langle3\rangle=\{0,3\}\)</span>，两者均不等于整个群；但 <span class="math notranslate nohighlight">\(3-2=1\)</span>，而 <span class="math notranslate nohighlight">\(1\)</span> 可以生成整个群，所以 <span class="math notranslate nohighlight">\(\{2,3\}\)</span> 是一个生成集。这说明“集合生成”与“单个元素生成”的区别。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id9">
+<h2>交互实验：模加法群<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>先选模数 <span class="math notranslate nohighlight">\(n\)</span> 和元素 <span class="math notranslate nohighlight">\(a\)</span>，观察 <span class="math notranslate nohighlight">\(0,a,2a,\ldots\)</span> 在模 <span class="math notranslate nohighlight">\(n\)</span> 运算下何时第一次回到 <span class="math notranslate nohighlight">\(0\)</span>。不同元素的个数就是 <span class="math notranslate nohighlight">\(a\)</span> 的阶；只有遍历整个群时，<span class="math notranslate nohighlight">\(a\)</span> 才是生成元。</p>
+<div class="cyclic-widget ff-widget"><h3>探索元素的阶与生成元</h3><label>模数 n <input class="cyclic-n" type="number" min="2" max="30" step="1" value="6"></label><label>元素 a <input class="cyclic-a" type="number" min="0" max="5" step="1" value="2"></label><button type="button" class="cyclic-run">计算</button><pre class="cyclic-result" aria-live="polite"></pre><noscript>此实验需要 JavaScript。模 6 时，2 生成 {0,2,4}，阶为 3；1 和 5 的阶为 6。</noscript></div><p>试一试：在模 <span class="math notranslate nohighlight">\(6\)</span> 加法群中依次取 <span class="math notranslate nohighlight">\(a=0,1,2,3,5\)</span>。比较元素阶、生成子群的大小与整个群的阶。</p>
+</section>
+<section id="id10">
+<h2>本章自测<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="交换律是交换群的附加条件；正方形对称群不满足交换律。" data-hint="回顾本章关于交换群的定义。"><p>每个群都必须满足交换律吗？</p><button data-correct="yes">否</button> <button data-correct="no">是</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id11">
+<h2>练习与解答<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>证明群的单位元与逆元各自唯一。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">参考解答</p>
+<p>若 <span class="math notranslate nohighlight">\(e,f\)</span> 都是单位元，则由 <span class="math notranslate nohighlight">\(f\)</span> 的右单位元性质和 <span class="math notranslate nohighlight">\(e\)</span> 的左单位元性质，</p>
+<div class="math notranslate nohighlight">
+\[e=ef=f.\]</div>
+<p>因此单位元唯一。</p>
+<p>固定 <span class="math notranslate nohighlight">\(a\in G\)</span>，设 <span class="math notranslate nohighlight">\(b,c\)</span> 都是 <span class="math notranslate nohighlight">\(a\)</span> 的逆元，则</p>
+<div class="math notranslate nohighlight">
+\[b=be=b(ac)=(ba)c=ec=c.\]</div>
+<p>其中 <span class="math notranslate nohighlight">\(ac=e\)</span>、<span class="math notranslate nohighlight">\(ba=e\)</span> 来自逆元条件，<span class="math notranslate nohighlight">\(b(ac)=(ba)c\)</span> 使用结合律，两端等式使用单位元性质。因此每个元素的逆元唯一；证明不需要交换律。</p>
+</div>
+</section>
+<section id="id12">
+<h2>学习检查<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] 从二元运算与群公理识别常见群。</p></li>
+<li><p>[ ] 区分群的阶和元素的阶，理解子群与循环群。</p></li>
+<li><p>[ ] 用正方形对称群说明结合律与交换律的区别。</p></li>
+</ul>
+</section>
+<section id="id13">
+<h2>学习笔记<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
+<span id="slide-001"></span><span id="slide-002"></span><span id="slide-003"></span><span id="slide-004"></span><span id="slide-005"></span><span id="slide-006"></span><span id="slide-007"></span><span id="slide-008"></span><span id="slide-009"></span>
+<label for="chapter-note-c01">本章笔记</label><textarea id="chapter-note-c01" class="local-note chapter-note" data-page="chapter" data-legacy-pages="1,2,3,4,5,6,7,8,9" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
+<button type="button" class="export-notes">导出本章笔记</button></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../knowledge.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">知识图谱与学习状态</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c02.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">第 2 章 等价关系与陪集</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p001-l01">二元运算与群公理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">群的记号与基本例子</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">一个非交换群：正方形的对称群</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#square-symmetry">交互动画：旋转、反射与复合</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">子群与循环群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">元素的阶</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">由一个集合生成的群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">交互实验：模加法群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">学习笔记</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

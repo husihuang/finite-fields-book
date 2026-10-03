@@ -1,0 +1,152 @@
+{
+  "pages": [
+    {
+      "path": "intro",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c01",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c02",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c03",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c04",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c05",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c06",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c07",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c08",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c09",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c10",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c11",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c12",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c13",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c14",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c15",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c16",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c17",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c18",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "chapters/c19",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "appendices/source",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "appendices/algorithms",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "appendices/references",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    },
+    {
+      "path": "appendices/experiments",
+      "mathErrors": 0,
+      "sourceWordingRemoved": true,
+      "mobilePassed": true
+    }
+  ],
+  "legacyNotesMigrated": true,
+  "notesExportPassed": true,
+  "advancedProofPreserved": true,
+  "browserErrors": []
+}

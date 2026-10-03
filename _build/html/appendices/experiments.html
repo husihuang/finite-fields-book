@@ -1,0 +1,828 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>有限域计算实验 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendices/experiments';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="参考文献与延伸阅读" href="references.html" />
+    <link rel="prev" title="有限域计算的 Python 实现" href="algorithms.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c01.html">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c03.html">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c08.html">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c10.html">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c14.html">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c15.html">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c16.html">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapters/c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendices/experiments.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>有限域计算实验</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gf-16">1. GF(16) 的指数表与算例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. 零、逆元与分配律</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f9">3. F₉ 的两种表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4. 本原元、共轭轨道和迹</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5. 幂基、对偶基与正规基</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathbb-f-7-lagrange">6.  <span class="math notranslate nohighlight">\(\mathbb F_7\)</span> 上的 Lagrange 插值</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7. 非零多项式与零函数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">继续探索</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>有限域计算实验<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>本附录通过可执行的 Python 程序探索有限域运算、本原元、共轭、迹、基和插值。程序使用系数位串编码存储二元域元素；编码与普通整数运算不同。</p>
+<p>使用 Python 3 内核，从上往下执行。修改输入后重新运行，比较参数变化带来的结果。断言用于核验有限例子，不替代一般定理的证明。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">finitefield</span><span class="w"> </span><span class="kn">import</span> <span class="n">GF2m</span><span class="p">,</span> <span class="n">irreducible</span>
+<span class="n">F4</span> <span class="o">=</span> <span class="n">GF2m</span><span class="p">(</span><span class="mb">0b111</span><span class="p">)</span>
+<span class="n">F16</span> <span class="o">=</span> <span class="n">GF2m</span><span class="p">(</span><span class="mb">0b10011</span><span class="p">)</span>
+<span class="n">F256</span> <span class="o">=</span> <span class="n">GF2m</span><span class="p">(</span><span class="mb">0b100011011</span><span class="p">)</span>
+<span class="k">assert</span> <span class="ow">not</span> <span class="n">irreducible</span><span class="p">(</span><span class="mb">0b101</span><span class="p">)</span>  <span class="c1"># x²+1 在 F2 中可约</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"F4 的 2×2（编码）："</span><span class="p">,</span> <span class="n">F4</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>F4 的 2×2（编码）： 3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="gf-16">
+<h2>1. GF(16) 的指数表与算例<a class="headerlink" href="#gf-16" title="Link to this heading">#</a></h2>
+<p>模多项式为 <span class="math notranslate nohighlight">\(x^4+x+1\)</span>，生成元 <span class="math notranslate nohighlight">\(\alpha=x+(f)\)</span> 的编码为 2。指数表第 0 项为 1，指数按模 15 约化。</p>
+<p><code class="docutils literal notranslate"><span class="pre">exp[k]</span></code> 存储 <span class="math notranslate nohighlight">\(\alpha^k\)</span> 的编码，<code class="docutils literal notranslate"><span class="pre">log[a]</span></code> 返回非零编码元素的指数。负的指数差也必须模 15 约化。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">exp</span><span class="p">,</span> <span class="n">log</span> <span class="o">=</span> <span class="n">F16</span><span class="o">.</span><span class="n">log_tables</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="k">assert</span> <span class="n">exp</span> <span class="o">==</span> <span class="n">expected</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"i   x^i 的整数编码"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">exp</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s2">2</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s2">2</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">12</span>
+<span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">F16</span><span class="o">.</span><span class="n">mul_log</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span>
+<span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="n">F16</span><span class="o">.</span><span class="n">div_log</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"11+7 ="</span><span class="p">,</span> <span class="n">F16</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"3×7 ="</span><span class="p">,</span> <span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"13÷10 ="</span><span class="p">,</span> <span class="n">F16</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"逆指数示例 3÷13 ="</span><span class="p">,</span> <span class="n">F16</span><span class="o">.</span><span class="n">div_log</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">13</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>i   x^i 的整数编码
+ 0   1
+ 1   2
+ 2   4
+ 3   8
+ 4   3
+ 5   6
+ 6  12
+ 7  11
+ 8   5
+ 9  10
+10   7
+11  14
+12  15
+13  13
+14   9
+11+7 = 12
+3×7 = 9
+13÷10 = 3
+逆指数示例 3÷13 = 12
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>2. 零、逆元与分配律<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>对 GF(16) 穷举域运算性质，对 GF(256) 核验全部非零元素的逆。GF(256) 的所选模多项式不可约，但编码 2 的阶为 51，故它不能直接用于生成全体非零元素的对数表。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">a</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">==</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span><span class="o">==</span><span class="n">F16</span><span class="o">.</span><span class="n">mul_log</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">c</span><span class="p">)</span><span class="o">==</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
+            <span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">F16</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">))</span><span class="o">==</span><span class="n">F16</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">),</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">c</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">F</span> <span class="ow">in</span> <span class="p">[</span><span class="n">F4</span><span class="p">,</span><span class="n">F16</span><span class="p">,</span><span class="n">F256</span><span class="p">]:</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">q</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">F</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">F</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">a</span><span class="p">))</span><span class="o">==</span><span class="mi">1</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">F16</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"除零已阻止："</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">F256</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">==</span><span class="mi">51</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"GF(16) 穷举检查通过；GF(256) 全部逆元检查通过。"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>除零已阻止： 0 没有乘法逆元
+GF(16) 穷举检查通过；GF(256) 全部逆元检查通过。
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="f9">
+<h2>3. F₉ 的两种表示<a class="headerlink" href="#f9" title="Link to this heading">#</a></h2>
+<p>用二元组 <span class="math notranslate nohighlight">\((a_0,a_1)\)</span> 表示 <span class="math notranslate nohighlight">\(a_0+a_1\alpha\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha^2=2\)</span>。系数运算在模 3 下进行。比较幂表示与多项式坐标，并观察定义元和本原元的区别。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">add9</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">%</span><span class="mi">3</span><span class="p">,(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">%</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mul9</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">%</span><span class="mi">3</span><span class="p">,(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">%</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pow9</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">r</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span> <span class="n">r</span><span class="o">=</span><span class="n">mul9</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">a</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">r</span>
+<span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="n">zeta</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">pow9</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">==</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pow9</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">!=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">pow9</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span><span class="o">==</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="n">pow9</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span><span class="o">!=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">assert</span> <span class="n">add9</span><span class="p">(</span><span class="n">add9</span><span class="p">(</span><span class="n">pow9</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">zeta</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">==</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">pow9</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">i</span><span class="p">))</span>
+<span class="k">assert</span> <span class="p">[</span><span class="n">pow9</span><span class="p">(</span><span class="n">zeta</span><span class="p">,</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">)]</span><span class="o">==</span><span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 (1, 1)
+2 (0, 2)
+3 (1, 2)
+4 (2, 0)
+5 (2, 2)
+6 (0, 1)
+7 (2, 1)
+8 (1, 0)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>4. 本原元、共轭轨道和迹<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>程序中的 <code class="docutils literal notranslate"><span class="pre">a</span></code> 是系数位串编码。改用 <code class="docutils literal notranslate"><span class="pre">F.power(2,</span> <span class="pre">k)</span></code> 选取 <span class="math notranslate nohighlight">\(\alpha^k\)</span>，或令 <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">0</span></code> 选取零元素，比较乘法阶和轨道长度。轨道长度决定在 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 上的次数，乘法阶决定是否为本原元。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">orbit</span><span class="o">=</span><span class="p">[];</span><span class="n">t</span><span class="o">=</span><span class="n">a</span>
+<span class="k">while</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">orbit</span><span class="p">:</span>
+    <span class="n">orbit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">);</span><span class="n">t</span><span class="o">=</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Frobenius 轨道："</span><span class="p">,</span><span class="n">orbit</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"乘法阶："</span><span class="p">,</span><span class="n">F16</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">a</span><span class="p">),</span><span class="s2">"极小多项式次数："</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">orbit</span><span class="p">))</span>
+<span class="n">primitive</span><span class="o">=</span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span> <span class="k">if</span> <span class="n">F16</span><span class="o">.</span><span class="n">order</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="mi">15</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"本原元编码："</span><span class="p">,</span><span class="n">primitive</span><span class="p">)</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">primitive</span><span class="p">)</span><span class="o">==</span><span class="mi">8</span>  <span class="c1"># φ(15)=8</span>
+<span class="n">traces</span><span class="o">=</span><span class="p">[</span><span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)]</span>
+<span class="k">assert</span> <span class="nb">set</span><span class="p">(</span><span class="n">traces</span><span class="p">)</span><span class="o">==</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span> <span class="ow">and</span> <span class="n">traces</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">==</span><span class="mi">8</span>
+<span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span>  <span class="c1"># Tr(1)=4=0，并不代表迹映射为零</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="n">y</span><span class="p">)</span><span class="o">==</span><span class="p">(</span><span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"迹为 0 的元素："</span><span class="p">,[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="k">if</span> <span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">assert</span> <span class="p">{</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)}</span><span class="o">==</span><span class="p">{</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="k">if</span> <span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">==</span><span class="mi">0</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Frobenius 轨道： [3, 5, 2, 4]
+乘法阶： 15 极小多项式次数： 4
+本原元编码： [2, 3, 4, 5, 9, 11, 13, 14]
+迹为 0 的元素： [0, 1, 2, 3, 4, 5, 6, 7]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>5. 幂基、对偶基与正规基<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>对偶基通过求解 <span class="math notranslate nohighlight">\(\operatorname{Tr}(\alpha_i\beta_j)=\delta_{ij}\)</span> 构造。小域中可以穷举 β。正规元的 Frobenius 共轭必须线性无关；仅要求共轭互不相同还不够。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basis</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">8</span><span class="p">]</span>
+<span class="n">dual</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">candidates</span><span class="o">=</span><span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span> <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">))</span><span class="o">==</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis</span><span class="p">))]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span><span class="o">==</span><span class="mi">1</span>
+    <span class="n">dual</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidates</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"幂基："</span><span class="p">,</span><span class="n">basis</span><span class="p">,</span><span class="s2">"对偶基："</span><span class="p">,</span><span class="n">dual</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+    <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">F16</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">F16</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">dual</span><span class="p">]</span>
+    <span class="n">reconstructed</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">basis</span><span class="p">,</span><span class="n">coords</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">c</span><span class="p">:</span> <span class="n">reconstructed</span><span class="o">^=</span><span class="n">a</span>
+    <span class="k">assert</span> <span class="n">reconstructed</span><span class="o">==</span><span class="n">x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">rank2</span><span class="p">(</span><span class="n">vectors</span><span class="p">):</span>
+    <span class="n">pivots</span><span class="o">=</span><span class="p">{}</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">vectors</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">x</span><span class="p">:</span>
+            <span class="n">p</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span>
+            <span class="k">if</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pivots</span><span class="p">:</span> <span class="n">x</span><span class="o">^=</span><span class="n">pivots</span><span class="p">[</span><span class="n">p</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">pivots</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="o">=</span><span class="n">x</span><span class="p">;</span><span class="k">break</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">pivots</span><span class="p">)</span>
+<span class="n">normal</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">):</span>
+    <span class="n">orbit</span><span class="o">=</span><span class="p">[</span><span class="n">F16</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">**</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)]</span>
+    <span class="k">if</span> <span class="n">rank2</span><span class="p">(</span><span class="n">orbit</span><span class="p">)</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span> <span class="n">normal</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"正规元编码："</span><span class="p">,</span><span class="n">normal</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"既本原又正规的编码："</span><span class="p">,</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">normal</span><span class="p">)</span><span class="o">&amp;</span><span class="nb">set</span><span class="p">(</span><span class="n">primitive</span><span class="p">)))</span>
+<span class="k">assert</span> <span class="n">normal</span>
+<span class="k">assert</span> <span class="nb">any</span><span class="p">(</span><span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">normal</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">primitive</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>幂基： [1, 2, 4, 8] 对偶基： [9, 4, 2, 1]
+正规元编码： [8, 9, 10, 11, 12, 13, 14, 15]
+既本原又正规的编码： [9, 11, 13, 14]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mathbb-f-7-lagrange">
+<h2>6.  <span class="math notranslate nohighlight">\(\mathbb F_7\)</span> 上的 Lagrange 插值<a class="headerlink" href="#mathbb-f-7-lagrange" title="Link to this heading">#</a></h2>
+<p>直接实现插值公式。相同节点会使分母为零，必须拒绝；本例只使用素域，不使用整数除法或浮点数。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">interpolate_value</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span><span class="n">values</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span><span class="o">!=</span><span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">x</span><span class="o">%</span><span class="n">p</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nodes</span><span class="p">))</span><span class="o">!=</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'节点必须模 p 互异，且节点与值数目相等'</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">ai</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+        <span class="n">num</span><span class="o">=</span><span class="n">den</span><span class="o">=</span><span class="mi">1</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">aj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nodes</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">j</span><span class="o">!=</span><span class="n">i</span><span class="p">:</span>
+                <span class="n">num</span><span class="o">=</span><span class="n">num</span><span class="o">*</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="n">aj</span><span class="p">)</span><span class="o">%</span><span class="n">p</span><span class="p">;</span><span class="n">den</span><span class="o">=</span><span class="n">den</span><span class="o">*</span><span class="p">(</span><span class="n">ai</span><span class="o">-</span><span class="n">aj</span><span class="p">)</span><span class="o">%</span><span class="n">p</span>
+        <span class="n">result</span><span class="o">=</span><span class="p">(</span><span class="n">result</span><span class="o">+</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">num</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">den</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">))</span><span class="o">%</span><span class="n">p</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="n">nodes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">];</span><span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># f(x)=x²+2x+1</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">):</span>
+    <span class="n">result</span><span class="o">=</span><span class="n">interpolate_value</span><span class="p">(</span><span class="n">nodes</span><span class="p">,</span><span class="n">values</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">result</span><span class="o">==</span><span class="p">(</span><span class="n">t</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">%</span><span class="mi">7</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 1
+1 4
+2 2
+3 2
+4 4
+5 1
+6 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>7. 非零多项式与零函数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>形式多项式 <span class="math notranslate nohighlight">\(x^2-x\)</span> 非零，但在 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 上取值全为 0。加入非零多线性条件后，<span class="math notranslate nohighlight">\(x_1x_2\)</span> 在三维立方体上恰有 <span class="math notranslate nohighlight">\(2^{3-2}=2\)</span> 个非零点，达到非零点数下界。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">product</span>
+<span class="k">assert</span> <span class="nb">all</span><span class="p">((</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">%</span><span class="mi">2</span><span class="o">==</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">points</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="n">repeat</span><span class="o">=</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">nonzero</span><span class="o">=</span><span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">points</span> <span class="k">if</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">%</span><span class="mi">2</span><span class="p">]</span>
+<span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">nonzero</span><span class="p">)</span><span class="o">==</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x₁x₂ 在 F₂³ 上非零的点："</span><span class="p">,</span><span class="n">nonzero</span><span class="p">)</span>
+<span class="c1"># Schwartz–Zippel 示例：f(x,y)=x+y，S=F₇，总次数 d=1。</span>
+<span class="n">zeros</span><span class="o">=</span><span class="nb">sum</span><span class="p">((</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span><span class="o">%</span><span class="mi">7</span><span class="o">==</span><span class="mi">0</span> <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span><span class="n">repeat</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">zeros</span><span class="o">==</span><span class="mi">7</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x+y 在 F₇² 的零点数："</span><span class="p">,</span><span class="n">zeros</span><span class="p">,</span><span class="s2">"概率："</span><span class="p">,</span><span class="n">zeros</span><span class="o">/</span><span class="mi">49</span><span class="p">,</span><span class="s2">"上界："</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x₁x₂ 在 F₂³ 上非零的点： [(1, 1, 0), (1, 1, 1)]
+x+y 在 F₇² 的零点数： 7 概率： 0.14285714285714285 上界： 0.14285714285714285
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>继续探索<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>修改模多项式、节点、基和实验元素，观察哪些结论依赖这些选择。先将计算结果写成猜想，再回到正文中的定理核对条件并给出一般证明。</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="algorithms.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">有限域计算的 Python 实现</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="references.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">参考文献与延伸阅读</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gf-16">1. GF(16) 的指数表与算例</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2. 零、逆元与分配律</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f9">3. F₉ 的两种表示</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">4. 本原元、共轭轨道和迹</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">5. 幂基、对偶基与正规基</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathbb-f-7-lagrange">6.  <span class="math notranslate nohighlight">\(\mathbb F_7\)</span> 上的 Lagrange 插值</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">7. 非零多项式与零函数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">继续探索</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

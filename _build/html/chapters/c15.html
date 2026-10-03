@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 15 章 割圆域与割圆多项式 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/c15';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 16 章 有限域的表示与实现" href="c16.html" />
+    <link rel="prev" title="第 14 章 基、对偶基与判别式" href="c14.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c01.html">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c03.html">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c08.html">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c10.html">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c14.html">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c16.html">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/experiments.html">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/c15.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 15 章 割圆域与割圆多项式</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">单位根与割圆域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">本原单位根与割圆多项式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">乘积分解与素数幂公式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">不同基域上的割圆扩张</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q">交互实验：<span class="math notranslate nohighlight">\(q\)</span>-陪集与割圆因子次数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 15 章 割圆域与割圆多项式<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>单位根的乘法阶连接循环群和多项式分解。学完后应能区分本原单位根与普通单位根，并由 q 模 n 的乘法阶确定有限域上的割圆因子次数。</p>
+<div class="tip chapter-goals admonition">
+<p class="admonition-title">学习目标</p>
+<ul class="simple">
+<li><p>区分单位根与本原单位根。</p></li>
+<li><p>理解割圆多项式的定义与乘积分解。</p></li>
+<li><p>根据特征和乘法阶分析有限域上的割圆因子。</p></li>
+</ul>
+</div>
+<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><section id="id2">
+<h2>单位根与割圆域<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c15-statement-001">
+<span id="p098-l01"></span><div class="source-line source-label docutils container" id="p098-l02">
+<p>定义 15.1</p>
+</div>
+<div class="source-line docutils container" id="p098-l03">
+<p>设 <span class="math notranslate nohighlight">\(n\)</span> 为正整数。多项式 <span class="math notranslate nohighlight">\(x^n-1\)</span> 在域 <span class="math notranslate nohighlight">\(K\)</span> 上的分裂域称为 <span class="math notranslate nohighlight">\(K\)</span> 上的 <span class="math notranslate nohighlight">\(n\)</span> 次割圆域，记为 <span class="math notranslate nohighlight">\(K^{(n)}\)</span>。多项式 <span class="math notranslate nohighlight">\(x^n-1\)</span> 在 <span class="math notranslate nohighlight">\(K^{(n)}\)</span> 中的根称为 <span class="math notranslate nohighlight">\(K\)</span> 上的 <span class="math notranslate nohighlight">\(n\)</span> 次单位根，所有这些根的集合记为 <span class="math notranslate nohighlight">\(E^{(n)}\)</span>。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-01">
+<p class="admonition-title">注 1</p>
+<ul class="simple">
+<li><p>单位根满足 <span class="math notranslate nohighlight">\(x^n=1\)</span>；本原单位根还要求乘法阶恰为 <span class="math notranslate nohighlight">\(n\)</span>。正特征下若特征整除 <span class="math notranslate nohighlight">\(n\)</span>，不同根的个数可能小于多项式次数。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c15-statement-002">
+<div class="source-line source-label docutils container" id="p099-l01">
+<p>定理 15.1</p>
+</div>
+<div class="source-line docutils container" id="p099-l02">
+<p>设<span class="math notranslate nohighlight">\( n\)</span> 为正整数，<span class="math notranslate nohighlight">\(K \)</span>为特征为 <span class="math notranslate nohighlight">\(p\geq0\)</span> 的域.</p>
+</div>
+<div class="source-line docutils container" id="p099-l03">
+<p>如果 <span class="math notranslate nohighlight">\(p=0\)</span> 或 <span class="math notranslate nohighlight">\(p \nmid n\)</span>，那么<span class="math notranslate nohighlight">\( n\)</span> 次单位根集合<span class="math notranslate nohighlight">\( E^{(n)} \)</span>在 <span class="math notranslate nohighlight">\(K^{(n)}\)</span> 中关于乘法构成一个阶为<span class="math notranslate nohighlight">\( n \)</span>的循环群.</p>
+</div>
+<div class="source-line docutils container" id="p099-l04">
+<p>如果 <span class="math notranslate nohighlight">\(p&gt;0\)</span> 且 <span class="math notranslate nohighlight">\(p\mid n\)</span>，则写成 <span class="math notranslate nohighlight">\(n=mp^e\)</span>，其中 <span class="math notranslate nohighlight">\(\gcd(m,p)=1\)</span>。我们有 <span class="math notranslate nohighlight">\(K^{(n)}=K^{(m)}\)</span>、<span class="math notranslate nohighlight">\(E^{(n)}=E^{(m)}\)</span>。多项式 <span class="math notranslate nohighlight">\(x^n-1\)</span> 在 <span class="math notranslate nohighlight">\(K^{(n)}\)</span> 中的根是 <span class="math notranslate nohighlight">\(E^{(m)}\)</span> 的 <span class="math notranslate nohighlight">\(m\)</span> 个元素，每个根的重数为 <span class="math notranslate nohighlight">\(p^e\)</span>。</p>
+</div>
+<div class="source-line source-label docutils container" id="p099-l05">
+<p>证明要点见本框备注。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-02">
+<p class="admonition-title">注 2</p>
+<ul class="simple">
+<li><p>写 <span class="math notranslate nohighlight">\(n=mp^e\)</span>、<span class="math notranslate nohighlight">\(p\nmid m\)</span>，则 <span class="math notranslate nohighlight">\(x^n-1=(x^m-1)^{p^e}\)</span>。后者的 <span class="math notranslate nohighlight">\(m\)</span> 个不同根各有重数 <span class="math notranslate nohighlight">\(p^e\)</span>，所以分裂域与根集都不变。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>本原单位根与割圆多项式<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="statement-box definition docutils container" id="c15-statement-003">
+<div class="source-line source-label docutils container" id="p100-l01">
+<p>定义 15.2</p>
+</div>
+<div class="source-line docutils container" id="p100-l02">
+<p>设<span class="math notranslate nohighlight">\( K \)</span>为特征为 <span class="math notranslate nohighlight">\(p\geq0\)</span> 的域，<span class="math notranslate nohighlight">\(n\)</span> 为正整数，且 <span class="math notranslate nohighlight">\(p=0\)</span> 或 <span class="math notranslate nohighlight">\(p\nmid n\)</span>. 那么循环群 <span class="math notranslate nohighlight">\(E^{(n)}\)</span> 的一个生成元称为 <span class="math notranslate nohighlight">\(K\)</span> 上的一个 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 次本原单位根.</p>
+</div>
+</div>
+<div class="statement-box corollary docutils container" id="c15-statement-004">
+<div class="source-line source-label docutils container" id="p100-l03">
+<p>推论 15.1</p>
+</div>
+<div class="source-line docutils container" id="p100-l04">
+<p>在 <span class="math notranslate nohighlight">\(K^{(n)}\)</span> 中恰好有 <span class="math notranslate nohighlight">\(\phi(n)\)</span> 个不同的 <span class="math notranslate nohighlight">\(n\)</span> 次本原单位根。如果 <span class="math notranslate nohighlight">\(\zeta\)</span> 是一个 <span class="math notranslate nohighlight">\(n\)</span> 次本原单位根，那么所有的 <span class="math notranslate nohighlight">\(n\)</span> 次本原单位根是：</p>
+</div>
+<div class="source-line docutils container" id="p100-l05">
+<div class="math notranslate nohighlight">
+\[\zeta^{s},1 \leq s \leq n,\gcd(s,n) = 1.\]</div>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-03">
+<p class="admonition-title">注 3</p>
+<ul class="simple">
+<li><p>这里的本原单位根位于割圆扩域，未必位于基域 <span class="math notranslate nohighlight">\(K\)</span>。对 <span class="math notranslate nohighlight">\(K=\mathbb F_q\)</span>，全部 <span class="math notranslate nohighlight">\(n\)</span> 次单位根属于 <span class="math notranslate nohighlight">\(K\)</span> 当且仅当 <span class="math notranslate nohighlight">\(n\mid q-1\)</span>。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box definition docutils container" id="c15-statement-005">
+<div class="source-line source-label docutils container" id="p101-l01">
+<p>定义 15.3</p>
+</div>
+<div class="source-line docutils container" id="p101-l02">
+<p>多项式</p>
+</div>
+<div class="source-line docutils container" id="p101-l03">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Q_n(x)=\prod_{\substack{1\leq s\leq n\\\gcd(s,n)=1}}(x-\zeta^s).
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p101-l04">
+<p>称为 <span class="math notranslate nohighlight">\(K\)</span> 上的 <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> 次割圆多项式.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-04">
+<p class="admonition-title">注 4</p>
+<ul class="simple">
+<li><p>割圆多项式的根恰是乘法阶为 <span class="math notranslate nohighlight">\(n\)</span> 的单位根，故次数为 <span class="math notranslate nohighlight">\(\phi(n)\)</span>。它也常记为 <span class="math notranslate nohighlight">\(\Phi_n\)</span>；本书采用记号 <span class="math notranslate nohighlight">\(Q_n\)</span>。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>乘积分解与素数幂公式<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c15-statement-006">
+<div class="source-line source-label docutils container" id="p102-l01">
+<p>定理 15.2</p>
+</div>
+<div class="source-line docutils container" id="p102-l02">
+<p>设<span class="math notranslate nohighlight">\( K \)</span>为特征为 <span class="math notranslate nohighlight">\(p\geq0\)</span> 的域，<span class="math notranslate nohighlight">\(n\)</span> 是正整数，且 <span class="math notranslate nohighlight">\(p=0\)</span> 或 <span class="math notranslate nohighlight">\(p\nmid n\)</span>. 我们有</p>
+</div>
+<div class="source-line docutils container" id="p102-l03">
+<p><span class="math notranslate nohighlight">\(x^{n} - 1 = \prod_{d|n}^{}{Q_{d}(x)}.\)</span></p>
+</div>
+<div class="source-line docutils container" id="p102-l04">
+<p><span class="math notranslate nohighlight">\(Q_n(x)\)</span> 的系数属于 <span class="math notranslate nohighlight">\(K\)</span> 的素子域。如果 <span class="math notranslate nohighlight">\(K\)</span> 的素子域为有理数域，那么这些系数属于 <span class="math notranslate nohighlight">\(\mathbb Z\)</span>。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-05">
+<p class="admonition-title">注 5</p>
+<ul class="simple">
+<li><p>按每个单位根的乘法阶 <span class="math notranslate nohighlight">\(d\mid n\)</span> 对根分组，即得乘积分解。特征为 <span class="math notranslate nohighlight">\(p\)</span> 时，割圆多项式也可由整数系数割圆多项式模 <span class="math notranslate nohighlight">\(p\)</span> 约化得到。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c15-statement-007">
+<div class="source-line source-label docutils container" id="p103-l01">
+<p>例 15.1</p>
+</div>
+<div class="source-line docutils container" id="p103-l02">
+<p>设 <span class="math notranslate nohighlight">\(r\)</span> 为素数且 <span class="math notranslate nohighlight">\(k\)</span> 为正整数，并设 <span class="math notranslate nohighlight">\(K\)</span> 的特征为 <span class="math notranslate nohighlight">\(0\)</span> 或不等于 <span class="math notranslate nohighlight">\(r\)</span>。则</p>
+</div>
+<div class="source-line docutils container" id="p103-l03">
+<div class="math notranslate nohighlight">
+\[
+Q_{r^k}(x)=1+x^{r^{k-1}}+x^{2r^{k-1}}+\cdots+x^{(r-1)r^{k-1}}.
+\]</div>
+</div>
+<div class="source-line docutils container" id="p103-l04">
+<p>特别地</p>
+</div>
+<div class="source-line docutils container" id="p103-l05">
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+Q_{r^k}(x)&amp;=\frac{x^{r^k}-1}{Q_1(x)Q_r(x)\cdots Q_{r^{k-1}}(x)} \\
+&amp;=\frac{x^{r^k}-1}{x^{r^{k-1}}-1}.
+\end{aligned}
+\end{split}\]</div>
+</div>
+<div class="source-line docutils container" id="p103-l06">
+<p>当<span class="math notranslate nohighlight">\( k = 1\)</span> 时，有<span class="math notranslate nohighlight">\(Q_{r}(x) = 1 + x + x^{2} + \cdots + x^{r - 1}.\)</span></p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-06">
+<p class="admonition-title">注 6</p>
+<ul class="simple">
+<li><p>公式来自等比数列求和，亦可写成 <span class="math notranslate nohighlight">\(Q_{r^k}(x)=\sum_{j=0}^{r-1}x^{jr^{k-1}}\)</span>。其中 <span class="math notranslate nohighlight">\(k\geq1\)</span>，每个指数都是 <span class="math notranslate nohighlight">\(j\)</span> 与 <span class="math notranslate nohighlight">\(r^{k-1}\)</span> 的乘积。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box lemma docutils container" id="c15-statement-010">
+<div class="source-line source-label docutils container" id="p106-l01">
+<p>引理 15.1</p>
+</div>
+<div class="source-line docutils container" id="p106-l02">
+<p>沿用前文条件，设 <span class="math notranslate nohighlight">\(K\)</span> 的特征为 <span class="math notranslate nohighlight">\(0\)</span>，或特征为素数 <span class="math notranslate nohighlight">\(p\)</span> 且 <span class="math notranslate nohighlight">\(p\nmid n\)</span>。如果 <span class="math notranslate nohighlight">\(d\)</span> 是正整数 <span class="math notranslate nohighlight">\(n\)</span> 的一个因子，且 <span class="math notranslate nohighlight">\(1\leq d&lt;n\)</span>，那么 <span class="math notranslate nohighlight">\(Q_n(x)\)</span> 整除 <span class="math notranslate nohighlight">\(\dfrac{x^n-1}{x^d-1}\)</span>。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-09">
+<p class="admonition-title">注 7</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(Q_n\)</span> 出现在 <span class="math notranslate nohighlight">\(x^n-1\)</span> 的割圆分解中，却不出现在 <span class="math notranslate nohighlight">\(x^d-1\)</span> 的分解中，因为 <span class="math notranslate nohighlight">\(n\nmid d\)</span>；因而它整除相应商式。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>不同基域上的割圆扩张<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c15-statement-008">
+<div class="source-line source-label docutils container" id="p104-l01">
+<p>定理 15.3</p>
+</div>
+<div class="source-line docutils container" id="p104-l02">
+<p>割圆域 <span class="math notranslate nohighlight">\(K^{(n)}\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 的一个单代数扩张。并且</p>
+</div>
+<div class="source-line docutils container" id="p104-l03">
+<p>如果<span class="math notranslate nohighlight">\( K = {\mathbb{Q}} \)</span>，则割圆多项式 <span class="math notranslate nohighlight">\(Q_{n}\)</span> 在 <span class="math notranslate nohighlight">\(K\)</span> 上不可约，且 <span class="math notranslate nohighlight">\([ K^{(n)}:K ] = \phi(n)\)</span>.</p>
+</div>
+<div class="source-line docutils container" id="p104-l04">
+<p>如果 <span class="math notranslate nohighlight">\(K=\mathbb F_q\)</span> 且 <span class="math notranslate nohighlight">\(\gcd(q,n)=1\)</span>，当 <span class="math notranslate nohighlight">\(n&gt;1\)</span> 时令 <span class="math notranslate nohighlight">\(d\)</span> 为满足 <span class="math notranslate nohighlight">\(q^d\equiv1\pmod n\)</span> 的最小正整数；当 <span class="math notranslate nohighlight">\(n=1\)</span> 时令 <span class="math notranslate nohighlight">\(d=1\)</span>。则 <span class="math notranslate nohighlight">\(Q_n\)</span> 可分解为 <span class="math notranslate nohighlight">\(\phi(n)/d\)</span> 个在 <span class="math notranslate nohighlight">\(K[x]\)</span> 中不同的首一不可约多项式，它们的次数均为 <span class="math notranslate nohighlight">\(d\)</span>。<span class="math notranslate nohighlight">\(K^{(n)}\)</span> 是任何一个这样的不可约因式在 <span class="math notranslate nohighlight">\(K\)</span> 上的分裂域，且 <span class="math notranslate nohighlight">\([K^{(n)}:K]=d\)</span>。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-07">
+<p class="admonition-title">注 8</p>
+<ul class="simple">
+<li><p>当 <span class="math notranslate nohighlight">\(n&gt;1\)</span> 时，<span class="math notranslate nohighlight">\(d=\operatorname{ord}_n(q)\)</span> 是 <span class="math notranslate nohighlight">\(q\)</span> 模 <span class="math notranslate nohighlight">\(n\)</span> 的乘法阶。每个本原单位根的 Frobenius 轨道长度都为 <span class="math notranslate nohighlight">\(d\)</span>，故每个不可约因子次数相同；<span class="math notranslate nohighlight">\(n=1\)</span> 时约定 <span class="math notranslate nohighlight">\(d=1\)</span>。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c15-statement-009">
+<div class="source-line source-label docutils container" id="p105-l01">
+<p>定理 15.4</p>
+</div>
+<div class="source-line docutils container" id="p105-l02">
+<p>有限域<span class="math notranslate nohighlight">\({ {\mathbb{F}}}_{q}\)</span> 是其任一子域上的 <span class="math notranslate nohighlight">\((q - 1)\)</span> 次割圆域.</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c15-remark-08">
+<p class="admonition-title">注 9</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb F_q^\ast\)</span> 的全部元素都是 <span class="math notranslate nohighlight">\((q-1)\)</span> 次单位根。在任一子域上添加这些根，即得到整个 <span class="math notranslate nohighlight">\(\mathbb F_q\)</span>。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="q">
+<h2>交互实验：<span class="math notranslate nohighlight">\(q\)</span>-陪集与割圆因子次数<a class="headerlink" href="#q" title="Link to this heading">#</a></h2>
+<div class="lesson-widget" data-kind="cyclotomic" aria-label="q-陪集与割圆因子次数"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
+<section id="id6">
+<h2>本章自测<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="\(\operatorname{ord}_8(3)=2\)。" data-hint="计算 \(3^2\) 模 8。"><p><span class="math">\(\mathbb F_3\)</span> 上 <span class="math">\(Q_8\)</span> 的不可约因子次数是多少？</p><button data-correct="yes">2</button> <button data-correct="no">4</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id7">
+<h2>练习与解答<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>分解 <span class="math notranslate nohighlight">\(\mathbb F_3\)</span> 上的 <span class="math notranslate nohighlight">\(Q_8(x)\)</span>。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">参考解答</p>
+<p><span class="math notranslate nohighlight">\(Q_8=x^4+1=(x^2+x+2)(x^2+2x+2)\)</span>。两因子在 <span class="math notranslate nohighlight">\(\mathbb F_3\)</span> 中均无根，故不可约。<span class="math notranslate nohighlight">\(\operatorname{ord}_8(3)=2\)</span>，与因子次数相符。</p>
+</div>
+</section>
+<section id="id8">
+<h2>学习检查<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] 区分单位根与本原单位根。</p></li>
+<li><p>[ ] 理解割圆多项式的定义与乘积分解。</p></li>
+<li><p>[ ] 根据特征和乘法阶分析有限域上的割圆因子。</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>学习笔记<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
+<span id="slide-098"></span><span id="slide-099"></span><span id="slide-100"></span><span id="slide-101"></span><span id="slide-102"></span><span id="slide-103"></span><span id="slide-104"></span><span id="slide-105"></span><span id="slide-106"></span>
+<label for="chapter-note-c15">本章笔记</label><textarea id="chapter-note-c15" class="local-note chapter-note" data-page="chapter" data-legacy-pages="98,99,100,101,102,103,104,105,106" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
+<button type="button" class="export-notes">导出本章笔记</button></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c14.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">第 14 章 基、对偶基与判别式</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c16.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">第 16 章 有限域的表示与实现</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">单位根与割圆域</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">本原单位根与割圆多项式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">乘积分解与素数幂公式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">不同基域上的割圆扩张</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q">交互实验：<span class="math notranslate nohighlight">\(q\)</span>-陪集与割圆因子次数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

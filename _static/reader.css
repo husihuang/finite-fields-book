@@ -1,0 +1,210 @@
+:root{--ff-navy:#12384b;--ff-teal:#007d82;--ff-cream:#f7f7f2}body{font-family:system-ui,'Noto Sans CJK SC','Microsoft YaHei',sans-serif}.bd-article-container{max-width:1080px!important}h1,h2,h3{color:var(--ff-navy)}.reader-toolbar{position:sticky;top:0;z-index:10;background:#fff;border:1px solid #ccd9dc;border-radius:12px;padding:12px;display:flex;gap:8px;flex-wrap:wrap;box-shadow:0 3px 12px #12384b15}.reader-toolbar button,.ff-widget button{background:#12384b;color:white;border:0;border-radius:7px;padding:8px 12px;cursor:pointer}.reader-toolbar output{padding:8px}.source-line{border-left:3px solid #dbe4e6;padding:8px 14px;margin:8px 0;border-radius:4px;position:relative;cursor:pointer;transition:background .15s}.source-line p:last-child{margin-bottom:0}.source-line::before{content:attr(data-line);font-size:11px;color:#657b83;display:block;font-family:monospace}.source-line.is-active{background:#fff3d6;outline:2px solid #cc9b3c}.source-line.is-active::before{font-weight:700;color:#614500}.source-line.definition{border-left-color:#168b71;background:#effaf5}.source-line.theorem{border-left-color:#3076bd;background:#eff6ff}.source-line.proposition{border-left-color:#8665b5;background:#f7f0ff}.source-line.lemma{border-left-color:#c27b1d;background:#fff7ea}.source-line.corollary{border-left-color:#478ba3;background:#f0f9fb}.admonition.definition{border-color:#168b71}.admonition.theorem{border-color:#3076bd}.admonition.proposition{border-color:#8665b5}.admonition.lemma{border-color:#c27b1d}.admonition.reading-note{border-color:#007d82;background:#f4faf9}.source-line details{margin-top:10px}.source-line summary{color:#006d72;font-size:14px}.reader-note{font-size:14px;color:#335b60;background:#f4faf9;padding:12px;margin-top:8px}.reader-original{margin-top:20px;background:#f5f6f8;padding:12px;border-radius:8px}.reader-original img{max-width:100%;height:auto}.hide-notes .reading-note,.hide-notes .reader-note{display:none}.ff-widget{background:#f1f7f7;border:1px solid #b9d2d4;border-radius:12px;padding:18px;margin:18px 0}.ff-widget label{display:inline-block;margin:6px 12px 6px 0}.ff-widget input,.ff-widget select{padding:7px;border:1px solid #b4c8ce;border-radius:5px;max-width:150px}.ff-widget pre{white-space:pre-wrap;background:white;margin-top:15px;padding:15px}.quiz-feedback{margin:8px;font-weight:600}.lecture-meta{color:#657b83;font-size:.85rem}.local-note{width:100%;min-height:65px;margin:10px 0}.reader-progress{font-size:13px}.bd-content .admonition-title{font-weight:700}@media print{.reader-toolbar,.ff-widget button,.local-note{display:none}}@media(prefers-color-scheme:dark){html[data-theme=dark] .source-line,html[data-theme=dark] .ff-widget,html[data-theme=dark] .reading-note{color:#142e37}html[data-theme=dark] .reader-toolbar{background:#202a30}html[data-theme=dark] h1,html[data-theme=dark] h2,html[data-theme=dark] h3{color:#83ced1}}
+
+/* A complete mathematical statement has one frame; its paragraphs remain navigable. */
+.statement-box {
+  border: 1px solid #ccd9dc;
+  border-left-width: 4px;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin: 18px 0;
+  background: #f7f9fa;
+}
+.statement-box.definition {
+  border-color: #168b71;
+  background: #effaf5;
+}
+.statement-box.theorem {
+  border-color: #3076bd;
+  background: #eff6ff;
+}
+.statement-box.proposition {
+  border-color: #8665b5;
+  background: #f7f0ff;
+}
+.statement-box.lemma {
+  border-color: #c27b1d;
+  background: #fff7ea;
+}
+.statement-box.corollary {
+  border-color: #478ba3;
+  background: #f0f9fb;
+}
+.statement-box.example {
+  border-color: #6c8994;
+  background: #f5f8fa;
+}
+.statement-box.notation {
+  border-color: #007d82;
+  background: #f4faf9;
+}
+.statement-box.exercise {
+  border-color: #c27b1d;
+  background: #fff7ea;
+}
+.statement-box .source-line {
+  border: 0;
+  margin: 0;
+  padding: 6px 0;
+  background: transparent;
+}
+.statement-box .source-line::before,
+.source-line.source-heading::before {
+  display: none;
+}
+.statement-box .source-label {
+  font-weight: 700;
+  color: var(--ff-navy);
+}
+.statement-box .source-line.is-active {
+  outline: none;
+  background: #fff3d6;
+}
+.source-line.source-heading {
+  border: 0;
+  padding: 0;
+  margin: 16px 0;
+  font-weight: 700;
+  background: transparent;
+  outline: none;
+}
+html[data-theme=dark] .statement-box {
+  color: #142e37;
+}
+
+/* Use solid black bullets for the numbered remarks in Chapter 1. */
+.admonition.reading-note[id^="c01-remark-"] > ul,
+.statement-box .admonition.chapter-remark > ul {
+  list-style-type: disc;
+  padding-inline-start: 1.4em;
+  margin-bottom: 0;
+}
+.admonition.reading-note[id^="c01-remark-"] > ul > li::marker,
+.statement-box .admonition.chapter-remark > ul > li::marker {
+  color: #000;
+}
+.admonition.reading-note[id^="c01-remark-"] > ul > li + li,
+.statement-box .admonition.chapter-remark > ul > li + li {
+  margin-top: 0.55rem;
+}
+
+/* Textbook reading, keyboard focus, and narrow screens. */
+.bd-article { line-height: 1.85; }
+.source-line:focus-visible, .reader-toolbar button:focus-visible,
+.quiz button:focus-visible, .ff-widget button:focus-visible {
+  outline: 3px solid #007d82; outline-offset: 3px;
+}
+.quiz { border: 1px solid #b9d2d4; border-radius: 8px; padding: 16px; margin: 20px 0; }
+.quiz button { padding: 7px 16px; border: 1px solid #6c8994; border-radius: 6px; cursor: pointer; }
+.local-note { padding: 10px; border: 1px solid #b4c8ce; border-radius: 6px; }
+.reader-original summary { cursor: pointer; }
+html[data-theme=dark] .reader-original { background: #202a30; color: #e0e8ed; }
+html[data-theme=dark] .reader-toolbar output { color: #e0e8ed; }
+html[data-theme=dark] .statement-box a,
+html[data-theme=dark] .statement-box .source-label { color: #12384b; }
+@media (max-width: 600px) {
+  .statement-box { padding: 10px 12px; }
+  .reader-toolbar { padding: 8px; gap: 6px; }
+  .reader-toolbar button { padding: 7px 9px; }
+  .ff-widget { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) { .source-line { transition: none; } }
+/* Theme choice can differ from the operating system's color scheme. */
+html[data-theme=dark] .reader-toolbar { background: #202a30; }
+html[data-theme=dark] .admonition.reading-note,
+html[data-theme=dark] .ff-widget { color: #142e37; }
+html[data-theme=dark] .source-line { color: inherit; }
+html[data-theme=dark] .source-line.is-active { color: #142e37; }
+.reader-toolbar { top: calc(var(--pst-header-height, 4rem) + .5rem); }
+/* Override the theme's Bootstrap container spacing for mathematical frames. */
+.bd-article .statement-box { padding: 12px 18px; }
+@media (max-width: 600px) { .bd-article .statement-box { padding: 10px 12px; } }
+/* The square animation stays readable in either theme and at phone widths. */
+.square-symmetry { padding: 20px; margin: 24px 0; border: 1px solid #b9d2d4; border-radius: 14px; background: var(--pst-color-surface, #f5f8fa); }
+.symmetry-workspace { display: grid; grid-template-columns: minmax(220px, 1fr) minmax(230px, 1fr); gap: 20px; align-items: start; }
+.square-symmetry svg { display: block; width: 100%; max-width: 340px; margin: 0 auto; }
+.symmetry-background { fill: #f8fafb; stroke: #d3dee2; }
+.symmetry-ghost { fill: none; stroke: #a0adb5; stroke-width: 2; stroke-dasharray: 5 5; }
+.symmetry-axis { stroke: #71838f; stroke-width: 1.5; stroke-dasharray: 4 5; }
+.symmetry-axis-label { fill: #536772; font-size: 12px; }
+.symmetry-center { fill: #71838f; }
+.symmetry-polygon { fill: #c4e9e966; stroke: #007d82; stroke-width: 3; stroke-linejoin: round; }
+.symmetry-vertex { fill: white; font: 700 16px system-ui, sans-serif; pointer-events: none; }
+.square-symmetry h4 { font-size: 1rem; margin: 0 0 10px; }
+.square-symmetry h5 { text-align: center; margin: 0 0 8px; }
+.symmetry-controls h4:not(:first-child) { margin-top: 20px; }
+.symmetry-actions, .symmetry-relations { display: flex; flex-wrap: wrap; gap: 8px; }
+.symmetry-elements { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.square-symmetry button { padding: 8px 12px; background: #12384b; color: white; border: 2px solid transparent; border-radius: 7px; cursor: pointer; font: inherit; line-height: 1.4; }
+.square-symmetry button:focus-visible { outline: 3px solid #007d82; outline-offset: 3px; }
+.square-symmetry button[aria-pressed=true] { background: #007d82; border-color: #12384b; box-shadow: 0 0 0 2px #9cd6d6; }
+.square-symmetry button:disabled { opacity: .55; cursor: wait; }
+.symmetry-state, .symmetry-sr-state, .symmetry-rs-state, .symmetry-history { font-size: .88rem; margin: 12px 0 0; }
+.symmetry-state { min-height: 5em; }
+.symmetry-comparison { border-top: 1px solid #b9d2d4; margin-top: 18px; padding-top: 18px; }
+.symmetry-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 18px 0; }
+.symmetry-caption { font-size: .83rem; color: var(--pst-color-text-muted, #536772); margin-bottom: 0; }
+@media (max-width: 700px) {
+ .square-symmetry { padding: 12px; }
+ .symmetry-workspace { grid-template-columns: 1fr; }
+ .symmetry-pair { grid-template-columns: 1fr; }
+ .symmetry-state { min-height: 0; }
+}
+@media print { .square-symmetry button { display: none; } }
+/* Leave room for the sticky reader controls when opening the animation link. */
+#square-symmetry, .square-symmetry { scroll-margin-top: 12rem; }
+.lesson-widget { border: 1px solid #b9d2d4; border-radius: 12px; padding: 18px; margin: 20px 0; background: var(--pst-color-surface,#f5f8fa); }
+.lesson-controls { display:flex; flex-wrap:wrap; align-items:end; gap:12px; }
+.lesson-controls label { display:flex; flex-direction:column; gap:4px; font-size:.9rem; }
+.lesson-controls input, .lesson-controls select { padding:7px; border:1px solid #b4c8ce; border-radius:6px; max-width:100%; }
+.lesson-controls input[type=number] { width:100px; }
+.lesson-controls input[type=text] { width:180px; }
+.lesson-controls button { color:#fff; background:#12384b; padding:8px 12px; border:0; border-radius:6px; cursor:pointer; }
+.lesson-result { white-space:pre-wrap; overflow-wrap:anywhere; font: .92rem/1.8 system-ui,'Microsoft YaHei',sans-serif; padding:14px; margin:16px 0; background:var(--pst-color-background,#fff); border-radius:6px; }
+.lesson-error { color:#b43b32; }
+.lesson-visual { overflow-x:auto; max-height:430px; }
+.lesson-table { border-collapse:collapse; width:100%; font-size:.88rem; }
+.lesson-table th,.lesson-table td { border:1px solid #b9d2d4; padding:7px 10px; }
+.lesson-table thead { position:sticky; top:0; background:var(--pst-color-background,#fff); z-index:1; }
+.lesson-caption { color:var(--pst-color-text-muted,#536772); font-size:.83rem; margin:12px 0 0; }
+.lesson-zero { background:#fff0dd; color:#704316; }
+.lesson-nonzero { background:#e7f7f0; color:#155d43; }
+.lesson-controls :focus-visible { outline:3px solid #007d82; outline-offset:2px; }
+@media(max-width:600px) { .lesson-widget { padding:12px; } .lesson-controls { gap:8px; } .lesson-controls label { max-width:100%; } }
+@media print { .lesson-controls { display:none; } .lesson-visual { max-height:none; } }
+/* Keep concept navigation and experiment links below sticky reader controls. */
+.bd-article section, .lesson-widget { scroll-margin-top: 12rem; }
+
+/* Interactive Hasse diagram of the finite-field subfield lattice. */
+.subfield-visual { max-height:none; overflow-x:auto; }
+.subfield-diagram { display:block; width:100%; min-width:340px; max-width:700px; margin:0 auto; }
+.subfield-edge { stroke:#9aaeb8; stroke-width:2; fill:none; }
+.subfield-edge.is-related { stroke:#007d82; stroke-width:3; }
+.subfield-arrowhead { fill:#567d8c; }
+.subfield-node { cursor:pointer; }
+.subfield-node rect { fill:var(--pst-color-background,#fff); stroke:#899eaa; stroke-width:1.5; }
+.subfield-node text { fill:var(--pst-color-text-base,#233845); pointer-events:none; font-family:system-ui,'Microsoft YaHei',sans-serif; }
+.subfield-label { font-size:22px; font-weight:600; }
+.subfield-degree { font-size:12px; }
+.subfield-node.is-contained rect { fill:#e7f7f0; stroke:#278065; }
+.subfield-node.is-containing rect { fill:#e8f1fc; stroke:#387cae; }
+.subfield-node.is-contained text,.subfield-node.is-containing text { fill:#193945; }
+.subfield-node.is-selected rect { fill:#007d82; stroke:#005c61; stroke-width:3; }
+.subfield-node.is-selected text { fill:white; }
+.subfield-node:focus-visible { outline:none; }
+.subfield-node:focus-visible rect { stroke:#e99412; stroke-width:4; }
+.subfield-detail { padding:12px 14px; margin-top:14px; background:var(--pst-color-background,#fff); border:1px solid #b9d2d4; border-radius:8px; font-size:.9rem; }
+.subfield-detail p { margin:0 0 6px; }
+.subfield-detail p:last-child { margin:0; }
+.subfield-legend { font-size:.83rem; color:var(--pst-color-text-muted,#536772); margin:12px 0 0; }
+html[data-theme=dark] .subfield-edge { stroke:#93aab6; }
+html[data-theme=dark] .subfield-edge.is-related { stroke:#69c9c8; }
+@media print { .subfield-diagram { min-width:0; } }
+
+/* Independent textbook headings and learning notes. */
+.statement-title { font-weight:700; color:var(--ff-navy); margin-bottom:8px; }
+.chapter-note { min-height:180px; padding:12px; font:inherit; }
+.export-notes { padding:8px 14px; background:#12384b; color:white; border:0; border-radius:6px; cursor:pointer; }
+.export-notes:focus-visible { outline:3px solid #007d82; outline-offset:3px; }
+.chapter-goals { margin:18px 0; }
+html[data-theme=dark] .chapter-note { background:#202a30; color:#e0e8ed; }
+@media print { .export-notes,.chapter-note { display:none; } }

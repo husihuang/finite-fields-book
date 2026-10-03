@@ -1,0 +1,742 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 3 章 循环群基本定理 &#8212; 有限域及其应用</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=ee1ad507" />
+    <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=6d67efaf" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../_static/documentation_options.js?v=946197a6"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = '展开说明';</script>
+    <script>let toggleHintHide = '收起说明';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>window.MathJax = {"svg": {"fontCache": "global"}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="../_static/math/tex-svg.mjs?v=50970ec6"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/c03';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <script src="../_static/reader.js?v=95ffe96b"></script>
+    <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
+    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
+    <script src="../_static/knowledge.js?v=ab631efd"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="第 4 章 环、理想与域" href="c04.html" />
+    <link rel="prev" title="第 2 章 等价关系与陪集" href="c02.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">有限域及其应用</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    有限域及其应用
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">学习导航</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../knowledge.html">知识图谱与学习状态</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">代数基础</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c01.html">第 1 章 群与运算</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c02.html">第 2 章 等价关系与陪集</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第 3 章 循环群基本定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c04.html">第 4 章 环、理想与域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c05.html">第 5 章 多项式与 Euclid 算法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c06.html">第 6 章 不可约多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c07.html">第 7 章 根与 Lagrange 插值</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">域扩张与有限域</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c08.html">第 8 章 子域与极小多项式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c09.html">第 9 章 域扩张与分裂域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c10.html">第 10 章 有限域的存在与子域</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c11.html">第 11 章 本原元</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c12.html">第 12 章 不可约多项式的根</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">有限域的进一步结构</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c13.html">第 13 章 迹与范数</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c14.html">第 14 章 基、对偶基与判别式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c15.html">第 15 章 割圆域与割圆多项式</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">表示与计算</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c16.html">第 16 章 有限域的表示与实现</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">多项式的组合应用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="c17.html">第 17 章 组合零点定理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c18.html">第 18 章 加法组合与零和问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="c19.html">第 19 章 Schwartz–Zippel 与多项式检验</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">附录</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../appendices/source.html">记号与常用结论</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/algorithms.html">有限域计算的 Python 实现</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/experiments.html">有限域计算实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendices/references.html">参考文献与延伸阅读</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapters/c03.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 3 章 循环群基本定理</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">循环群结构定理总览</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">子群为什么仍是循环群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">元素的阶与最大公因数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">子群的存在与唯一性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">生成元与指定阶元素的计数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">交互实验：循环群的阶与子群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">学习笔记</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第 3 章 循环群基本定理<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p>本章把循环群的子群、元素阶和生成元统一到整数的整除关系中。学完后应能由最大公因数计算元素阶，列出全部子群，并统计生成元。</p>
+<div class="tip chapter-goals admonition">
+<p class="admonition-title">学习目标</p>
+<ul class="simple">
+<li><p>计算循环群中元素的阶和生成子群。</p></li>
+<li><p>用整除关系确定子群的存在与唯一性。</p></li>
+<li><p>用欧拉函数计数生成元及指定阶的元素。</p></li>
+</ul>
+</div>
+<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><section id="id2">
+<h2>循环群结构定理总览<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c03-statement-001">
+<span id="p016-l01"></span><div class="source-line source-label docutils container" id="p016-l02">
+<p>定理 3.1</p>
+</div>
+<div class="source-line docutils container" id="p016-l03">
+<p>令 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 为阶为 <span class="math notranslate nohighlight">\(m\)</span> 的循环群. 我们有</p>
+</div>
+<div class="source-line docutils container" id="p016-l04">
+<p>（1）循环群的子群皆为循环群.</p>
+</div>
+<div class="source-line docutils container" id="p016-l05">
+<p>（2）<span class="math notranslate nohighlight">\(  | \langle a^{k} \rangle   | = \frac{m}{\gcd(k,m)}.\)</span></p>
+</div>
+<div class="source-line docutils container" id="p016-l06">
+<p>（3）若 <span class="math notranslate nohighlight">\(d|m\)</span>，则群 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 有且仅有一个指标为 <span class="math notranslate nohighlight">\(d\)</span> 的子群.</p>
+</div>
+<div class="source-line docutils container" id="p016-l07">
+<p>若 <span class="math notranslate nohighlight">\(f|m\)</span>，则群 <span class="math notranslate nohighlight">\(\langle a \rangle \)</span>有且仅有一个阶为 <span class="math notranslate nohighlight">\(f\)</span> 的子群.</p>
+</div>
+<div class="source-line docutils container" id="p016-l08">
+<p>（4）若 <span class="math notranslate nohighlight">\(f|m\)</span>，则群 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 包含 <span class="math notranslate nohighlight">\(\phi(f)\)</span> 个阶为 <span class="math notranslate nohighlight">\(f\)</span> 的元素.</p>
+</div>
+<div class="source-line docutils container" id="p016-l09">
+<p>（5）群 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 包含 <span class="math notranslate nohighlight">\(\phi(m)\)</span> 个生成元. 它们是元素 <span class="math notranslate nohighlight">\(a^{r}\)</span>，其中 <span class="math notranslate nohighlight">\(\gcd(r,m) = 1\)</span>.</p>
+</div>
+<div class="source-line docutils container" id="p016-l10">
+<p>下面我们将依次证明结论（1）-（5）</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c03-remark-01">
+<p class="admonition-title">注 1</p>
+<ul class="simple">
+<li><p>欧拉函数 <span class="math notranslate nohighlight">\(\phi(t)\)</span> 表示 <span class="math notranslate nohighlight">\(1,\ldots,t\)</span> 中与 <span class="math notranslate nohighlight">\(t\)</span> 互素的整数个数，约定 <span class="math notranslate nohighlight">\(\phi(1)=1\)</span>。若 <span class="math notranslate nohighlight">\(t=\prod_i p_i^{e_i}\)</span>，则 <span class="math notranslate nohighlight">\(\phi(t)=t\prod_i(1-1/p_i)\)</span>。</p></li>
+<li><p>子群的阶与指标分别是 <span class="math notranslate nohighlight">\(|H|\)</span> 和 <span class="math notranslate nohighlight">\([G:H]\)</span>，二者满足 <span class="math notranslate nohighlight">\(|G|=|H|[G:H]\)</span>；阅读本定理的第三、四条时应区分这两个量。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>子群为什么仍是循环群<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c03-statement-002">
+<div class="source-line source-label docutils container" id="p017-l01">
+<p>定理 3.2</p>
+</div>
+<div class="source-line docutils container" id="p017-l02">
+<p>令 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 为阶为 <span class="math notranslate nohighlight">\(m\)</span> 的循环群. 我们有</p>
+</div>
+<div class="source-line docutils container" id="p017-l03">
+<p>（1）循环群的子群皆为循环群.</p>
+</div>
+<div class="source-line source-label docutils container" id="p017-l04">
+<p>证明要点见本框备注。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c03-remark-02">
+<p class="admonition-title">注 2</p>
+<ul class="simple">
+<li><p>对非平凡子群 <span class="math notranslate nohighlight">\(H\leq\langle a\rangle\)</span>，选取使 <span class="math notranslate nohighlight">\(a^r\in H\)</span> 的最小正整数 <span class="math notranslate nohighlight">\(r\)</span>。将任意指数除以 <span class="math notranslate nohighlight">\(r\)</span>，余数的最小性给出 <span class="math notranslate nohighlight">\(H=\langle a^r\rangle\)</span>；平凡子群另取单位元为生成元。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>元素的阶与最大公因数<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c03-statement-003">
+<div class="source-line source-label docutils container" id="p018-l01">
+<p>定理 3.3</p>
+</div>
+<div class="source-line docutils container" id="p018-l02">
+<p>令 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 为阶为 <span class="math notranslate nohighlight">\(m\)</span> 的循环群. 我们有</p>
+</div>
+<div class="source-line docutils container" id="p018-l03">
+<p>（2）<span class="math notranslate nohighlight">\(  | \langle a^{k} \rangle   | = \frac{m}{\gcd(k,m)}.\)</span></p>
+</div>
+<div class="source-line source-label docutils container" id="p018-l04">
+<p>证明要点见本框备注。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c03-remark-03">
+<p class="admonition-title">注 3</p>
+<ul class="simple">
+<li><p>令 <span class="math notranslate nohighlight">\(d=\gcd(m,k)\)</span>，则 <span class="math notranslate nohighlight">\((a^k)^j=e\)</span> 等价于 <span class="math notranslate nohighlight">\(m\mid kj\)</span>，也等价于 <span class="math notranslate nohighlight">\((m/d)\mid j\)</span>。最小的正整数 <span class="math notranslate nohighlight">\(j\)</span> 因而是 <span class="math notranslate nohighlight">\(m/d\)</span>。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2>子群的存在与唯一性<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c03-statement-004">
+<div class="source-line source-label docutils container" id="p019-l01">
+<p>定理 3.4</p>
+</div>
+<div class="source-line docutils container" id="p019-l02">
+<p>令 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 为阶为 <span class="math notranslate nohighlight">\(m\)</span> 的循环群. 我们有</p>
+</div>
+<div class="source-line docutils container" id="p019-l03">
+<p>（3）若 <span class="math notranslate nohighlight">\(d|m\)</span>，则群 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 有且仅有一个指标为 <span class="math notranslate nohighlight">\(d\)</span> 的子群.</p>
+</div>
+<div class="source-line docutils container" id="p019-l04">
+<p>若 <span class="math notranslate nohighlight">\(f|m\)</span>，则群 <span class="math notranslate nohighlight">\(\langle a \rangle \)</span>有且仅有一个阶为 <span class="math notranslate nohighlight">\(f\)</span> 的子群.</p>
+</div>
+<div class="source-line source-label docutils container" id="p019-l05">
+<p>证明要点见本框备注。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c03-remark-04">
+<p class="admonition-title">注 4</p>
+<ul class="simple">
+<li><p>若 <span class="math notranslate nohighlight">\(f\mid m\)</span>，阶为 <span class="math notranslate nohighlight">\(f\)</span> 的子群是 <span class="math notranslate nohighlight">\(\langle a^{m/f}\rangle\)</span>，其指标为 <span class="math notranslate nohighlight">\(m/f\)</span>。循环群的子群均为循环群，这一表示同时说明唯一性。</p></li>
+</ul>
+</div>
+<div class="dropdown tip admonition">
+<p class="admonition-title">证明</p>
+<p>设 <span class="math notranslate nohighlight">\(G=\langle a\rangle\)</span>，<span class="math notranslate nohighlight">\(|G|=m\)</span>。子群 <span class="math notranslate nohighlight">\(H\)</span> 可写成 <span class="math notranslate nohighlight">\(\langle a^d\rangle\)</span>，其中 <span class="math notranslate nohighlight">\(d\)</span> 是满足 <span class="math notranslate nohighlight">\(a^d\in H\)</span> 的最小正整数（<span class="math notranslate nohighlight">\(H=\{e\}\)</span> 时取 <span class="math notranslate nohighlight">\(d=m\)</span>）。对 <span class="math notranslate nohighlight">\(m\)</span> 除以 <span class="math notranslate nohighlight">\(d\)</span>，余数的最小性给出 <span class="math notranslate nohighlight">\(d\mid m\)</span>；因此 <span class="math notranslate nohighlight">\(|H|=m/d\)</span>。指定阶 <span class="math notranslate nohighlight">\(f\mid m\)</span> 就唯一确定 <span class="math notranslate nohighlight">\(d=m/f\)</span>，指定指标 <span class="math notranslate nohighlight">\(d\mid m\)</span> 也就唯一确定 <span class="math notranslate nohighlight">\(H\)</span>。</p>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>生成元与指定阶元素的计数<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="statement-box theorem docutils container" id="c03-statement-006">
+<div class="source-line source-label docutils container" id="p021-l01">
+<p>定理 3.5</p>
+</div>
+<div class="source-line docutils container" id="p021-l02">
+<p>令 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 为阶为 <span class="math notranslate nohighlight">\(m\)</span> 的循环群. 我们有</p>
+</div>
+<div class="source-line docutils container" id="p021-l03">
+<p>（5）群 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 包含 <span class="math notranslate nohighlight">\(\phi(m)\)</span> 个生成元. 它们是元素 <span class="math notranslate nohighlight">\(a^{r}\)</span>，其中 <span class="math notranslate nohighlight">\(\gcd(r,m) = 1\)</span>.</p>
+</div>
+<div class="source-line source-label docutils container" id="p021-l04">
+<p>证明要点见本框备注。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c03-remark-06">
+<p class="admonition-title">注 5</p>
+<ul class="simple">
+<li><p>由 <span class="math notranslate nohighlight">\(\operatorname{ord}(a^k)=m/\gcd(m,k)\)</span>，<span class="math notranslate nohighlight">\(a^k\)</span> 生成全群当且仅当 <span class="math notranslate nohighlight">\(\gcd(m,k)=1\)</span>。</p></li>
+</ul>
+</div>
+</div>
+<div class="statement-box theorem docutils container" id="c03-statement-005">
+<div class="source-line source-label docutils container" id="p020-l01">
+<p>定理 3.6</p>
+</div>
+<div class="source-line docutils container" id="p020-l02">
+<p>令 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 为阶为 <span class="math notranslate nohighlight">\(m\)</span> 的循环群. 我们有</p>
+</div>
+<div class="source-line docutils container" id="p020-l03">
+<p>（4）若 <span class="math notranslate nohighlight">\(f|m\)</span>，则群 <span class="math notranslate nohighlight">\(\langle a \rangle\)</span> 包含 <span class="math notranslate nohighlight">\(\phi(f)\)</span> 个阶为 <span class="math notranslate nohighlight">\(f\)</span> 的元素.</p>
+</div>
+<div class="source-line source-label docutils container" id="p020-l04">
+<p>证明要点见本框备注。</p>
+</div>
+<div class="dropdown reading-note chapter-remark admonition" id="c03-remark-05">
+<p class="admonition-title">注 6</p>
+<ul class="simple">
+<li><p>阶为 <span class="math notranslate nohighlight">\(f\)</span> 的元素必须位于唯一的阶为 <span class="math notranslate nohighlight">\(f\)</span> 的子群中，并且恰好是该子群的生成元，故共有 <span class="math notranslate nohighlight">\(\phi(f)\)</span> 个。</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2>交互实验：循环群的阶与子群<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<div class="lesson-widget" data-kind="cyclic" aria-label="循环群的阶与子群"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
+<section id="id8">
+<h2>本章自测<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="\(12/\gcd(8,12)=3\)。" data-hint="使用元素阶公式。"><p>12 阶循环群中 <span class="math">\(a^8\)</span> 的阶是多少？</p><button data-correct="yes">3</button> <button data-correct="no">4</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id9">
+<h2>练习与解答<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>列出 <span class="math notranslate nohighlight">\(12\)</span> 阶循环群的全部子群及其生成元个数。</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">参考解答</p>
+<p>对 <span class="math notranslate nohighlight">\(f=1,2,3,4,6,12\)</span>，唯一的阶为 <span class="math notranslate nohighlight">\(f\)</span> 的子群为 <span class="math notranslate nohighlight">\(\langle a^{12/f}\rangle\)</span>，它们的生成元个数分别为 <span class="math notranslate nohighlight">\(1,1,2,2,2,4\)</span>。</p>
+</div>
+</section>
+<section id="id10">
+<h2>学习检查<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[ ] 计算循环群中元素的阶和生成子群。</p></li>
+<li><p>[ ] 用整除关系确定子群的存在与唯一性。</p></li>
+<li><p>[ ] 用欧拉函数计数生成元及指定阶的元素。</p></li>
+</ul>
+</section>
+<section id="id11">
+<h2>学习笔记<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
+<span id="slide-016"></span><span id="slide-017"></span><span id="slide-018"></span><span id="slide-019"></span><span id="slide-020"></span><span id="slide-021"></span>
+<label for="chapter-note-c03">本章笔记</label><textarea id="chapter-note-c03" class="local-note chapter-note" data-page="chapter" data-legacy-pages="16,17,18,19,20,21" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
+<button type="button" class="export-notes">导出本章笔记</button></section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c02.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">第 2 章 等价关系与陪集</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c04.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">第 4 章 环、理想与域</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">循环群结构定理总览</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">子群为什么仍是循环群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">元素的阶与最大公因数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">子群的存在与唯一性</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">生成元与指定阶元素的计数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">交互实验：循环群的阶与子群</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">学习笔记</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： 胡四煌
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
