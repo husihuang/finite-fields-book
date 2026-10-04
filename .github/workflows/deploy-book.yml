@@ -1,0 +1,55 @@
+name: 发布有限域教材
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 下载仓库
+        uses: actions/checkout@v6
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 安装构建依赖
+        run: python -m pip install -r requirements.txt
+
+      - name: 编译教材
+        run: |
+          jupyter-book clean . --all
+          jupyter-book build . --all
+          touch _build/html/.nojekyll
+
+      - name: 配置 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上传编译后的网页
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _build/html
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布网页
+        id: deployment
+        uses: actions/deploy-pages@v4
