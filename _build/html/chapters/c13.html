@@ -475,6 +475,57 @@
 </ul>
 </div>
 </div>
+<div class="statement-box example docutils container" id="c13-example-f4-automorphism">
+<div class="source-line source-label docutils container" id="c13-example-f4-title">
+<p>例 13.1：四元域上的非恒等自同构</p>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-field">
+<p>多项式 <span class="math notranslate nohighlight">\(x^2+x+1\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 上没有根，因而不可约。取 <span class="math notranslate nohighlight">\(F=\mathbb F_2(\alpha)\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha^2+\alpha+1=0\)</span>，则</p>
+<div class="math notranslate nohighlight">
+\[
+F=\{0,1,\alpha,\alpha+1\},\qquad \alpha^2=\alpha+1.
+\]</div>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-action">
+<p>定义映射 <span class="math notranslate nohighlight">\(\sigma:F\to F\)</span> 为 <span class="math notranslate nohighlight">\(\sigma(z)=z^2\)</span>。利用特征 <span class="math notranslate nohighlight">\(2\)</span> 下的运算，可得 <span class="math notranslate nohighlight">\(\sigma(\alpha)=\alpha+1\)</span>，以及 <span class="math notranslate nohighlight">\(\sigma(\alpha+1)=\alpha^2+1=\alpha\)</span>，因此：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(z\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\alpha+1\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\sigma(z)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha+1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-check">
+<p>对任意 <span class="math notranslate nohighlight">\(u,v\in F\)</span>，由于 <span class="math notranslate nohighlight">\(F\)</span> 的特征为 <span class="math notranslate nohighlight">\(2\)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\sigma(u+v)&amp;=(u+v)^2=u^2+v^2=\sigma(u)+\sigma(v),\\
+\sigma(uv)&amp;=(uv)^2=u^2v^2=\sigma(u)\sigma(v).
+\end{aligned}
+\end{split}\]</div>
+<p>此外，<span class="math notranslate nohighlight">\(\sigma(0)=0\)</span>、<span class="math notranslate nohighlight">\(\sigma(1)=1\)</span>，所以 <span class="math notranslate nohighlight">\(\sigma\)</span> 固定基域 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 的每个元素，满足定义 13.1 的全部条件。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-conclusion">
+<p>因此，<span class="math notranslate nohighlight">\(\sigma\)</span> 是 <span class="math notranslate nohighlight">\(F\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 上的自同构。它交换 <span class="math notranslate nohighlight">\(\alpha\)</span> 与 <span class="math notranslate nohighlight">\(\alpha+1\)</span>，故不是恒等映射；连续作用两次则回到原元素，即 <span class="math notranslate nohighlight">\(\sigma^2=\operatorname{id}_F\)</span>。这里的 <span class="math notranslate nohighlight">\(\sigma^2\)</span> 表示映射的复合 <span class="math notranslate nohighlight">\(\sigma\circ\sigma\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-counterexample">
+<p><strong>反例：</strong> 映射 <span class="math notranslate nohighlight">\(\tau:F\to F\)</span>，<span class="math notranslate nohighlight">\(\tau(z)=z+1\)</span>，虽然是双射，却把 <span class="math notranslate nohighlight">\(0\)</span> 映到 <span class="math notranslate nohighlight">\(1\)</span>，没有固定基域 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span>，所以不是 <span class="math notranslate nohighlight">\(F\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 上的自同构。</p>
+</div>
+</div>
 <div class="statement-box theorem docutils container" id="c13-statement-002">
 <div class="source-line source-label docutils container" id="p082-l04">
 <p>定理 13.1</p>
@@ -518,6 +569,58 @@
 <ul class="simple">
 <li><p>迹是全部共轭元之和，并落在基域中：对和取 <span class="math notranslate nohighlight">\(q\)</span> 次幂仅循环置换各项。若元素的次数小于扩张次数，共轭元按重数计入。</p></li>
 </ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c13-example-f4-trace">
+<div class="source-line source-label docutils container" id="c13-example-f4-trace-title">
+<p>例 13.2：四元域到二元域的迹</p>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-trace-field">
+<p>沿用例 13.1，取 <span class="math notranslate nohighlight">\(F=\mathbb F_2(\alpha)=\mathbb F_4\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha^2=\alpha+1\)</span>，基域为 <span class="math notranslate nohighlight">\(K=\mathbb F_2\)</span>。这里 <span class="math notranslate nohighlight">\(q=2\)</span>、<span class="math notranslate nohighlight">\(m=2\)</span>，所以对任意 <span class="math notranslate nohighlight">\(z\in F\)</span>，定义 13.2 给出</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Tr}_{F/K}(z)=z+z^2=z+\sigma(z).
+\]</div>
+<p>也就是说，迹是恒等映射与例 13.1 中的自同构作用所得的两个元素之和。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-trace-values">
+<p>利用上一例的映射表，逐个计算可得：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(z\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\alpha+1\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(z)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例如，<span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(\alpha)=\alpha+(\alpha+1)=1\)</span>；而 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(1)=1+1=0\)</span>，因为域的特征为 <span class="math notranslate nohighlight">\(2\)</span>。因此，非零元素的迹也可能为零；即使元素 <span class="math notranslate nohighlight">\(1\)</span> 被自同构固定，定义中的两项仍要分别计入。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-trace-coordinates">
+<p>每个元素都可唯一写成 <span class="math notranslate nohighlight">\(z=a+b\alpha\)</span>，其中 <span class="math notranslate nohighlight">\(a,b\in\mathbb F_2\)</span>。直接计算得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\operatorname{Tr}_{F/K}(a+b\alpha)
+&amp;=(a+b\alpha)+(a+b\alpha)^2\\
+&amp;=(a+b\alpha)+(a+b\alpha^2)\\
+&amp;=b(\alpha+\alpha^2)=b.
+\end{aligned}
+\end{split}\]</div>
+<p>可见这些迹值都落在基域 <span class="math notranslate nohighlight">\(K\)</span> 中。在本例选定的基 <span class="math notranslate nohighlight">\((1,\alpha)\)</span> 下，迹恰好取出 <span class="math notranslate nohighlight">\(\alpha\)</span> 的坐标 <span class="math notranslate nohighlight">\(b\)</span>；这一坐标描述取决于所选的基。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-f4-trace-absolute">
+<p>由于 <span class="math notranslate nohighlight">\(K=\mathbb F_2\)</span> 是 <span class="math notranslate nohighlight">\(F\)</span> 的素子域，这里计算的相对迹也是绝对迹，即 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F}(z)=\operatorname{Tr}_{F/K}(z)\)</span>。</p>
 </div>
 </div>
 <div class="statement-box definition docutils container" id="c13-statement-004">
@@ -622,6 +725,22 @@ A=\begin{pmatrix}0&amp;0&amp;\cdots&amp;0&amp;-a_0\\1&amp;0&amp;\cdots&amp;0&amp
 </ul>
 </div>
 </div>
+<div class="statement-box notation docutils container" id="c13-trace-functional-intuition">
+<div class="source-line source-label docutils container" id="c13-trace-functional-intuition-title">
+<p>直观理解：先乘一个固定元素，再取迹</p>
+</div>
+<div class="source-line docutils container" id="c13-trace-functional-intuition-reading">
+<p>把 <span class="math notranslate nohighlight">\(F\)</span> 看作基域 <span class="math notranslate nohighlight">\(K\)</span> 上的向量空间，从 <span class="math notranslate nohighlight">\(F\)</span> 到 <span class="math notranslate nohighlight">\(K\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 线性映射就是一个线性“读数规则”，也称线性泛函。固定 <span class="math notranslate nohighlight">\(\beta\in F\)</span> 后，可以按下面两个步骤对元素 <span class="math notranslate nohighlight">\(z\)</span> 取读数：</p>
+<div class="math notranslate nohighlight">
+\[
+z\ \xrightarrow{\text{乘以 }\beta}\ \beta z
+\ \xrightarrow{\text{取迹}}\ \operatorname{Tr}_{F/K}(\beta z)=L_\beta(z).
+\]</div>
+</div>
+<div class="source-line docutils container" id="c13-trace-functional-intuition-meaning">
+<p>定理 13.3 说明，<strong>每个从 <span class="math notranslate nohighlight">\(F\)</span> 到 <span class="math notranslate nohighlight">\(K\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 线性读数规则，都能通过“先乘一个固定元素，再取迹”实现，而且这个固定元素唯一</strong>。这里的 <span class="math notranslate nohighlight">\(\beta\)</span> 标记读数规则；改变 <span class="math notranslate nohighlight">\(\beta\)</span>，就得到不同的规则。下面的四元域例子将展示怎样用这些规则读取坐标。</p>
+</div>
+</div>
 <div class="statement-box theorem docutils container" id="c13-statement-007">
 <div class="source-line source-label docutils container" id="p087-l01">
 <p>定理 13.3</p>
@@ -634,7 +753,7 @@ A=\begin{pmatrix}0&amp;0&amp;\cdots&amp;0&amp;-a_0\\1&amp;0&amp;\cdots&amp;0&amp
 \[{ L}_{\beta}(\alpha) = \operatorname{Tr}_{F/K}(\beta\alpha),\forall\alpha \in F.\]</div>
 </div>
 <div class="source-line docutils container" id="p087-l04">
-<p>那么当 <span class="math notranslate nohighlight">\(\beta \neq \gamma\)</span> 时我们有<span class="math notranslate nohighlight">\({ L}_{\beta} \neq L_{\gamma}.\)</span> 并且从<span class="math notranslate nohighlight">\( F\)</span> 到 <span class="math notranslate nohighlight">\(K\)</span> 的所有线性变换就是映射 <span class="math notranslate nohighlight">\(L_{\beta},\)</span> <span class="math notranslate nohighlight">\(\beta \in F.\)</span></p>
+<p>每个 <span class="math notranslate nohighlight">\(L_\beta\)</span> 都是从 <span class="math notranslate nohighlight">\(F\)</span> 到 <span class="math notranslate nohighlight">\(K\)</span> 的 <span class="math notranslate nohighlight">\(K\)</span> 线性映射。当 <span class="math notranslate nohighlight">\(\beta\ne\gamma\)</span> 时，<span class="math notranslate nohighlight">\(L_\beta\ne L_\gamma\)</span>；而且从 <span class="math notranslate nohighlight">\(F\)</span> 到 <span class="math notranslate nohighlight">\(K\)</span> 的每个 <span class="math notranslate nohighlight">\(K\)</span> 线性映射，都唯一地写成 <span class="math notranslate nohighlight">\(L_\beta\)</span>，其中 <span class="math notranslate nohighlight">\(\beta\in F\)</span>。</p>
 </div>
 <div class="source-line source-label docutils container" id="p087-l05">
 <p>证明要点见本框备注。</p>
@@ -646,6 +765,88 @@ A=\begin{pmatrix}0&amp;0&amp;\cdots&amp;0&amp;-a_0\\1&amp;0&amp;\cdots&amp;0&amp
 </ul>
 </div>
 </div>
+<div class="statement-box example docutils container" id="c13-example-trace-coordinates">
+<div class="source-line source-label docutils container" id="c13-example-trace-coordinates-title">
+<p>例 13.3：用迹读取四元域中的坐标</p>
+</div>
+<div class="source-line docutils container" id="c13-example-trace-coordinates-setup">
+<p>沿用例 13.2，取 <span class="math notranslate nohighlight">\(F=\mathbb F_2(\alpha)=\mathbb F_4\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha^2=\alpha+1\)</span>，基域为 <span class="math notranslate nohighlight">\(K=\mathbb F_2\)</span>。在基 <span class="math notranslate nohighlight">\((1,\alpha)\)</span> 下，每个元素都唯一写成 <span class="math notranslate nohighlight">\(z=a+b\alpha\)</span>，其中 <span class="math notranslate nohighlight">\(a,b\in\mathbb F_2\)</span>，并且 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(z)=b\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-trace-coordinates-table">
+<p>让固定元素 <span class="math notranslate nohighlight">\(\beta\)</span> 遍历 <span class="math notranslate nohighlight">\(F\)</span>，四个读数规则 <span class="math notranslate nohighlight">\(L_\beta(z)=\operatorname{Tr}_{F/K}(\beta z)\)</span> 分别为：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>固定元素 <span class="math notranslate nohighlight">\(\beta\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(L_\beta(a+b\alpha)\)</span></p></th>
+<th class="head"><p>读数含义</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p>恒为零</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(b\)</span></p></td>
+<td><p>读取第二个坐标</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a+b\)</span></p></td>
+<td><p>读取两个坐标之和</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\alpha+1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a\)</span></p></td>
+<td><p>读取第一个坐标</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="source-line docutils container" id="c13-example-trace-coordinates-calculation">
+<p>例如，利用 <span class="math notranslate nohighlight">\(\alpha^2=\alpha+1\)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\alpha(a+b\alpha)&amp;=b+(a+b)\alpha,\\
+L_\alpha(a+b\alpha)&amp;=a+b.
+\end{aligned}
+\end{split}\]</div>
+<p>同样，<span class="math notranslate nohighlight">\((\alpha+1)(a+b\alpha)=(a+b)+a\alpha\)</span>，所以 <span class="math notranslate nohighlight">\(L_{\alpha+1}(a+b\alpha)=a\)</span>。表中的加法均在 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 中进行。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-trace-coordinates-completeness">
+<p>这四个规则互不相同。另一方面，每个 <span class="math notranslate nohighlight">\(\mathbb F_2\)</span> 线性映射 <span class="math notranslate nohighlight">\(L:F\to\mathbb F_2\)</span> 都满足</p>
+<div class="math notranslate nohighlight">
+\[
+L(a+b\alpha)=aL(1)+bL(\alpha).
+\]</div>
+<p><span class="math notranslate nohighlight">\(L(1)\)</span> 与 <span class="math notranslate nohighlight">\(L(\alpha)\)</span> 各有 <span class="math notranslate nohighlight">\(0,1\)</span> 两种选择，因此共有 <span class="math notranslate nohighlight">\(2^2=4\)</span> 个线性映射，恰好就是表中的四个。这样便在具体例子中看到了定理的两个结论：不同的 <span class="math notranslate nohighlight">\(\beta\)</span> 给出不同的规则，而且所有线性规则都能以这种方式得到。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-trace-coordinates-dual-basis">
+<p>因此，若要读取 <span class="math notranslate nohighlight">\(z=a+b\alpha\)</span> 的第一个坐标 <span class="math notranslate nohighlight">\(a\)</span>，就先乘 <span class="math notranslate nohighlight">\(\alpha+1\)</span> 再取迹；若要读取第二个坐标 <span class="math notranslate nohighlight">\(b\)</span>，就直接取迹：</p>
+<div class="math notranslate nohighlight">
+\[
+a=\operatorname{Tr}_{F/K}((\alpha+1)z),\qquad
+b=\operatorname{Tr}_{F/K}(z).
+\]</div>
+<p>这正是下一章对偶基的思想：与基 <span class="math notranslate nohighlight">\((1,\alpha)\)</span> 对应的对偶基为 <span class="math notranslate nohighlight">\((\alpha+1,1)\)</span>，用迹配对可以逐个读取坐标。</p>
+</div>
+</div>
+<div class="statement-box notation docutils container" id="c13-frobenius-difference-intuition">
+<div class="source-line source-label docutils container" id="c13-frobenius-difference-intuition-title">
+<p>直观理解：Frobenius 变化量与零迹</p>
+</div>
+<div class="source-line docutils container" id="c13-frobenius-difference-intuition-reading">
+<p>令 <span class="math notranslate nohighlight">\(\sigma(\beta)=\beta^q\)</span>。元素 <span class="math notranslate nohighlight">\(D(\beta)=\sigma(\beta)-\beta\)</span> 表示 <span class="math notranslate nohighlight">\(\beta\)</span> 经过 Frobenius 映射后的“变化量”。定理 13.4 说明，<strong>迹为零的元素，恰好就是这些变化量</strong>。</p>
+<p>从解方程的角度看，对给定的 <span class="math notranslate nohighlight">\(z\in F\)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[
+\beta^q-\beta=z\text{ 在 }F\text{ 中有解}
+\quad\Longleftrightarrow\quad
+\operatorname{Tr}_{F/K}(z)=0.
+\]</div>
+<p>因此，取迹便能判断这个方程在当前域中是否有解。</p>
+</div>
+</div>
 <div class="statement-box theorem docutils container" id="c13-statement-008">
 <div class="source-line source-label docutils container" id="p088-l01">
 <p>定理 13.4</p>
@@ -654,13 +855,83 @@ A=\begin{pmatrix}0&amp;0&amp;\cdots&amp;0&amp;-a_0\\1&amp;0&amp;\cdots&amp;0&amp
 <p>设 <span class="math notranslate nohighlight">\(F\)</span> 是 <span class="math notranslate nohighlight">\(K=\mathbb F_q\)</span> 的一个有限扩张。对于 <span class="math notranslate nohighlight">\(\alpha\in F\)</span>，有 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(\alpha)=0\)</span> 当且仅当存在 <span class="math notranslate nohighlight">\(\beta\in F\)</span> 使得 <span class="math notranslate nohighlight">\(\alpha=\beta^q-\beta\)</span>。</p>
 </div>
 <div class="source-line source-label docutils container" id="p088-l03">
-<p>证明要点见本框备注。</p>
+<p>下面先用四元域说明这个判据，再给出两步证明。</p>
 </div>
 <div class="dropdown reading-note chapter-remark admonition" id="c13-remark-08">
 <p class="admonition-title">注 8</p>
 <ul class="simple">
-<li><p>映射 <span class="math notranslate nohighlight">\(D(\beta)=\beta^q-\beta\)</span> 的核为 <span class="math notranslate nohighlight">\(K\)</span>，像的维数为 <span class="math notranslate nohighlight">\(m-1\)</span>。又有 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(D(\beta))=0\)</span>，而迹核同样具有维数 <span class="math notranslate nohighlight">\(m-1\)</span>，故两者相等。</p></li>
+<li><p>若方程 <span class="math notranslate nohighlight">\(\beta^q-\beta=z\)</span> 有一个解 <span class="math notranslate nohighlight">\(\beta_0\)</span>，则它在 <span class="math notranslate nohighlight">\(F\)</span> 中的全部解为 <span class="math notranslate nohighlight">\(\beta_0+K\)</span>，共有 <span class="math notranslate nohighlight">\(q\)</span> 个；这是因为 <span class="math notranslate nohighlight">\(D\)</span> 是加法映射，且其核恰好是 <span class="math notranslate nohighlight">\(K\)</span>，见后面的证明。</p></li>
 </ul>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c13-example-frobenius-difference">
+<div class="source-line source-label docutils container" id="c13-example-frobenius-difference-title">
+<p>例 13.4：四元域中的变化量与方程可解性</p>
+</div>
+<div class="source-line docutils container" id="c13-example-frobenius-difference-table">
+<p>沿用例 13.2，取 <span class="math notranslate nohighlight">\(F=\mathbb F_2(\alpha)=\mathbb F_4\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha^2=\alpha+1\)</span>，基域为 <span class="math notranslate nohighlight">\(K=\mathbb F_2\)</span>。令 <span class="math notranslate nohighlight">\(D(\beta)=\beta^2-\beta\)</span>。在特征 <span class="math notranslate nohighlight">\(2\)</span> 下，减法与加法相同，因此：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(\beta\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(0\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(1\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\alpha\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\alpha+1\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(D(\beta)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>例如，<span class="math notranslate nohighlight">\(D(\alpha)=\alpha^2+\alpha=(\alpha+1)+\alpha=1\)</span>。表中所有可能的变化量为 <span class="math notranslate nohighlight">\(\{0,1\}\)</span>；例 13.2 已算出，迹为零的元素也恰好是 <span class="math notranslate nohighlight">\(\{0,1\}\)</span>。所以在这个域中，<span class="math notranslate nohighlight">\(\operatorname{im}D=\ker\operatorname{Tr}_{F/K}\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="c13-example-frobenius-difference-solutions">
+<p><strong>有解的例子：</strong> 方程 <span class="math notranslate nohighlight">\(\beta^2-\beta=1\)</span> 在 <span class="math notranslate nohighlight">\(F\)</span> 中有两个解 <span class="math notranslate nohighlight">\(\alpha\)</span> 和 <span class="math notranslate nohighlight">\(\alpha+1\)</span>，与 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(1)=0\)</span> 一致。这两个解相差 <span class="math notranslate nohighlight">\(1\in K\)</span>。</p>
+<p><strong>无解的例子：</strong> 方程 <span class="math notranslate nohighlight">\(\beta^2-\beta=\alpha\)</span> 在 <span class="math notranslate nohighlight">\(F\)</span> 中无解，因为 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(\alpha)=1\ne0\)</span>；从表中也可直接看出，<span class="math notranslate nohighlight">\(D\)</span> 的值不会等于 <span class="math notranslate nohighlight">\(\alpha\)</span>。</p>
+<p>这里的“无解”限定在 <span class="math notranslate nohighlight">\(F=\mathbb F_4\)</span> 中。</p>
+</div>
+</div>
+<div class="statement-box proof docutils container" id="c13-frobenius-difference-proof">
+<div class="source-line source-label docutils container" id="c13-frobenius-difference-proof-title">
+<p>证明：定理 13.4</p>
+</div>
+<div class="source-line docutils container" id="c13-frobenius-difference-proof-setup">
+<p>设 <span class="math notranslate nohighlight">\([F:K]=m\)</span>，则 <span class="math notranslate nohighlight">\(F=\mathbb F_{q^m}\)</span>。记 <span class="math notranslate nohighlight">\(T=\operatorname{Tr}_{F/K}\)</span>，并令 <span class="math notranslate nohighlight">\(D:F\to F\)</span>，<span class="math notranslate nohighlight">\(D(\beta)=\beta^q-\beta\)</span>。我们证明 <span class="math notranslate nohighlight">\(\operatorname{im}D=\ker T\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="c13-frobenius-difference-proof-inclusion">
+<p><strong>第一步：每个变化量的迹都为零。</strong> 对任意 <span class="math notranslate nohighlight">\(\beta\in F\)</span>，由 Frobenius 映射保持加法与减法，有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+T(D(\beta))
+&amp;=\sum_{j=0}^{m-1}(\beta^q-\beta)^{q^j}\\
+&amp;=\sum_{j=0}^{m-1}\bigl(\beta^{q^{j+1}}-\beta^{q^j}\bigr)\\
+&amp;=(\beta^q-\beta)+(\beta^{q^2}-\beta^q)+\cdots
+  +(\beta^{q^m}-\beta^{q^{m-1}})\\
+&amp;=\beta^{q^m}-\beta=0.
+\end{aligned}
+\end{split}\]</div>
+<p>中间项依次相消，最后一个等号使用了 <span class="math notranslate nohighlight">\(\beta\in\mathbb F_{q^m}\)</span>。因此 <span class="math notranslate nohighlight">\(\operatorname{im}D\subseteq\ker T\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="c13-frobenius-difference-proof-count">
+<p><strong>第二步：比较两边的元素个数。</strong> 因为 <span class="math notranslate nohighlight">\(a^q=a\)</span> 对所有 <span class="math notranslate nohighlight">\(a\in K\)</span> 成立，<span class="math notranslate nohighlight">\(D\)</span> 是 <span class="math notranslate nohighlight">\(K\)</span> 线性映射。它的核由满足 <span class="math notranslate nohighlight">\(\beta^q=\beta\)</span> 的元素组成。<span class="math notranslate nohighlight">\(K\)</span> 中的 <span class="math notranslate nohighlight">\(q\)</span> 个元素都满足这个方程，而多项式 <span class="math notranslate nohighlight">\(x^q-x\)</span> 在域中至多有 <span class="math notranslate nohighlight">\(q\)</span> 个根，所以 <span class="math notranslate nohighlight">\(\ker D=K\)</span>，其 <span class="math notranslate nohighlight">\(K\)</span> 维数为 <span class="math notranslate nohighlight">\(1\)</span>。</p>
+<p>由秩与零度定理，<span class="math notranslate nohighlight">\(\dim_K\operatorname{im}D=m-1\)</span>，从而</p>
+<div class="math notranslate nohighlight">
+\[
+|\operatorname{im}D|=q^{m-1}.
+\]</div>
+<p>由定理 13.2，迹映射 <span class="math notranslate nohighlight">\(T:F\to K\)</span> 是满射的 <span class="math notranslate nohighlight">\(K\)</span> 线性映射。因此它的像维数为 <span class="math notranslate nohighlight">\(1\)</span>，同样由秩与零度定理得</p>
+<div class="math notranslate nohighlight">
+\[
+\dim_K\ker T=m-1,\qquad |\ker T|=q^{m-1}.
+\]</div>
+<p>结合第一步的包含关系和相等的元素个数，得到 <span class="math notranslate nohighlight">\(\operatorname{im}D=\ker T\)</span>。这正是 <span class="math notranslate nohighlight">\(T(z)=0\)</span> 当且仅当存在 <span class="math notranslate nohighlight">\(\beta\in F\)</span> 使得 <span class="math notranslate nohighlight">\(z=\beta^q-\beta\)</span>，定理得证。</p>
 </div>
 </div>
 <div class="statement-box theorem docutils container" id="c13-statement-009">
