@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=208119c8" />
     <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=d5585877" />
+    <link rel="stylesheet" type="text/css" href="../_static/cyclotomic.css?v=2a02d837" />
   
   <!-- So that users can add custom icons -->
   <script defer src="../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
@@ -65,7 +66,8 @@
     <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="../_static/reader.js?v=95ffe96b"></script>
     <script src="../_static/symmetry.js?v=6b3dd5f4"></script>
-    <script src="../_static/lessons.js?v=4c99e392"></script>
+    <script src="../_static/cyclotomic.js?v=783c2517"></script>
+    <script src="../_static/lessons.js?v=a59d0547"></script>
     <script src="../_static/knowledge-data.js?v=fcefdcf4"></script>
     <script src="../_static/knowledge.js?v=ab631efd"></script>
     <script src="../_static/navigation.js?v=e03ff1b1"></script>
@@ -414,12 +416,13 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">坐标映射与对偶基</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正规基及其存在性</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">迹矩阵与判别式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">科研联系：基的选择与计算成本（高阶选读）</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moore">Moore 行列式判据</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathrm-gf-4">交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(4)\)</span> 的基、对偶基与迹矩阵</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">本章自测</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">练习与解答</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学习检查</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习笔记</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
 </ul>
             </nav>
         </div>
@@ -565,6 +568,128 @@ c_j:F&amp;\longrightarrow K, \\
 </div>
 </div>
 </section>
+<section id="id5">
+<h2>科研联系：基的选择与计算成本（高阶选读）<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>本节为高阶选读，介绍基的选择与计算成本之间的联系。初读时可先跳过，不影响后续 Moore 行列式判据的学习。</p>
+<div class="statement-box notation docutils container" id="c14-preview-trace-cost">
+<div class="source-line source-label docutils container" id="c14-preview-trace-cost-title">
+<p>科研联系一（高阶选读）：让迹配对的计算更简单</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-trace-cost-formula">
+<p>定理 14.2 用迹矩阵的可逆性判断一组元素是否构成基。科研中还会进一步问：能否选择一组基，让这个矩阵特别简单，从而减少后续反复计算的成本？</p>
+<p>设 <span class="math notranslate nohighlight">\(B=(e_1,\ldots,e_m)\)</span> 是 <span class="math notranslate nohighlight">\(F/K\)</span> 的一组基，<span class="math notranslate nohighlight">\(G=(\operatorname{Tr}_{F/K}(e_i e_j))\)</span>。若 <span class="math notranslate nohighlight">\(x=\sum_i u_i e_i\)</span>、<span class="math notranslate nohighlight">\(y=\sum_i v_i e_i\)</span>，则</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Tr}_{F/K}(xy)=u^{\mathsf T}Gv,
+\qquad u=(u_1,\ldots,u_m)^{\mathsf T},\quad
+v=(v_1,\ldots,v_m)^{\mathsf T}.
+\]</div>
+</div>
+<div class="source-line docutils container" id="c14-preview-trace-cost-table">
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>基的性质</p></th>
+<th class="head"><p>迹矩阵</p></th>
+<th class="head"><p>迹配对的坐标公式</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>一般基</p></td>
+<td><p>可逆矩阵 <span class="math notranslate nohighlight">\(G=(g_{ij})\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_{i,j}g_{ij}u_i v_j\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>迹正交基</p></td>
+<td><p>对角矩阵 <span class="math notranslate nohighlight">\(\operatorname{diag}(d_1,\ldots,d_m)\)</span>，各 <span class="math notranslate nohighlight">\(d_i\ne0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_i d_i u_i v_i\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>自对偶基</p></td>
+<td><p>单位矩阵 <span class="math notranslate nohighlight">\(I_m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\sum_i u_i v_i\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>因此，在坐标与迹矩阵已经给定、直接按上表公式计算的模型下，一般稠密矩阵需要处理约 <span class="math notranslate nohighlight">\(m^2\)</span> 个交叉项，对角矩阵只需处理 <span class="math notranslate nohighlight">\(m\)</span> 项。这里按基域 <span class="math notranslate nohighlight">\(K\)</span> 中的算术运算计成本，构造基、换基和预计算的成本另算；这不是对所有迹计算算法的下界比较。</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-trace-cost-reference">
+<p>这说明了“先构造一个好基，再反复使用”的意义。Seroussi 与 Lempel 的论文 <em>Factorization of Symmetric Matrices and Trace-Orthogonal Bases in Finite Fields</em> 将有限域上的对称矩阵分解用于迹正交基的构造。<a class="reference external" href="https://doi.org/10.1137/0209059">论文：SIAM Journal on Computing 9(4) (1980), 758–767</a>。上面的运算量比较是根据坐标公式给出的教学说明。</p>
+</div>
+</div>
+<div class="statement-box notation docutils container" id="c14-preview-normal-complexity">
+<div class="source-line source-label docutils container" id="c14-preview-normal-complexity-title">
+<p>科研联系二（高阶选读）：自对偶正规基与乘法复杂度</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-normal-complexity-shift">
+<p>取 <span class="math notranslate nohighlight">\(F=\mathbb F_{q^m}\)</span>、<span class="math notranslate nohighlight">\(K=\mathbb F_q\)</span>。若正规基 <span class="math notranslate nohighlight">\(B=(e_0,\ldots,e_{m-1})\)</span>，<span class="math notranslate nohighlight">\(e_i=\theta^{q^i}\)</span>，同时满足 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(e_i e_j)=\delta_{ij}\)</span>，就称其为自对偶正规基。此时 <span class="math notranslate nohighlight">\(G=I_m\)</span>，故判别式为 <span class="math notranslate nohighlight">\(1\)</span>。</p>
+<p>正规基使 Frobenius 映射变成坐标的循环移位：</p>
+<div class="math notranslate nohighlight">
+\[
+x=\sum_{i=0}^{m-1}u_i e_i
+\quad\Longrightarrow\quad
+x^q=u_{m-1}e_0+u_0e_1+\cdots+u_{m-2}e_{m-1}.
+\]</div>
+<p>这样不必为取 <span class="math notranslate nohighlight">\(q\)</span> 次幂执行一般的域乘法；具体实现中仍可能需要坐标搬运。</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-normal-complexity-matrix">
+<p>乘法的成本则可以通过另一张矩阵研究。将“乘以 <span class="math notranslate nohighlight">\(\theta\)</span>”的线性算子写成</p>
+<div class="math notranslate nohighlight">
+\[
+\theta e_j=\sum_{i=0}^{m-1}\lambda_{ij}e_i.
+\]</div>
+<p>由于基是自对偶的，系数可直接由迹读出：</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{ij}=\operatorname{Tr}_{F/K}(\theta e_i e_j).
+\]</div>
+<p>文献将这张矩阵中非零项的个数记为正规基复杂度 <span class="math notranslate nohighlight">\(C(B)\)</span>。非零项越少，相应乘法公式需要保留的项就越少；例如，对 <span class="math notranslate nohighlight">\(x=\sum_i u_i e_i\)</span>、<span class="math notranslate nohighlight">\(y=\sum_j v_j e_j\)</span>，乘积的第零个坐标为 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/K}(\theta xy)=\sum_{i,j}\lambda_{ij}u_i v_j\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-normal-complexity-bound">
+<p>正规基复杂度满足下界 <span class="math notranslate nohighlight">\(C(B)\ge 2m-1\)</span>；达到下界的称为<strong>最优正规基</strong>。Arnault、Pickett 与 Vinatier 的论文 <em>Construction of self-dual normal bases and their complexity</em> 研究自对偶正规基的构造，并通过搜索比较其乘法复杂度。<a class="reference external" href="https://doi.org/10.1016/j.ffa.2011.10.002">论文：Finite Fields and Their Applications 18(2) (2012), 458–472</a>，<a class="reference external" href="https://arxiv.org/abs/1007.4899">开放全文入口</a>。</p>
+<p>自对偶性简化迹配对，乘法矩阵的稀疏性减少相应乘法公式的项数。自对偶正规基并非在每个有限域扩张中都存在，也不一定达到最优复杂度；<span class="math notranslate nohighlight">\(C(B)\)</span> 衡量结构常数的稀疏程度，不等于具体程序的运行时间或最少逻辑门数。</p>
+</div>
+</div>
+<div class="statement-box example docutils container" id="c14-preview-f4-optimal">
+<div class="source-line source-label docutils container" id="c14-preview-f4-optimal-title">
+<p>例 14.2（高阶选读）：亲手计算一个最优正规基</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-f4-optimal-basis">
+<p>沿用第十三章的四元域，取 <span class="math notranslate nohighlight">\(F=\mathbb F_2(\alpha)\)</span>，其中 <span class="math notranslate nohighlight">\(\alpha^2=\alpha+1\)</span>。于是 <span class="math notranslate nohighlight">\(\alpha^3=1\)</span>、<span class="math notranslate nohighlight">\(\alpha^4=\alpha\)</span>。考虑元素组 <span class="math notranslate nohighlight">\(B=(e_0,e_1)=(\alpha,\alpha^2)\)</span>，它由 Frobenius 共轭元组成。</p>
+<p>由 <span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/\mathbb F_2}(1)=0\)</span>、<span class="math notranslate nohighlight">\(\operatorname{Tr}_{F/\mathbb F_2}(\alpha)=\operatorname{Tr}_{F/\mathbb F_2}(\alpha^2)=1\)</span>，其迹矩阵为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+G=\begin{pmatrix}
+\operatorname{Tr}(\alpha^2)&amp;\operatorname{Tr}(\alpha^3)\\
+\operatorname{Tr}(\alpha^3)&amp;\operatorname{Tr}(\alpha^4)
+\end{pmatrix}
+=\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix}.
+\end{split}\]</div>
+<p>以下的 <span class="math notranslate nohighlight">\(\operatorname{Tr}\)</span> 均指 <span class="math notranslate nohighlight">\(F/\mathbb F_2\)</span> 的迹。由定理 14.2，<span class="math notranslate nohighlight">\(\det G=1\)</span> 保证 <span class="math notranslate nohighlight">\(B\)</span> 是一组基；再结合共轭形式与 <span class="math notranslate nohighlight">\(G=I_2\)</span>，可知它是自对偶正规基。</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-f4-optimal-multiplication">
+<p>再计算“乘以 <span class="math notranslate nohighlight">\(\alpha\)</span>”：</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha e_0=e_1,\qquad
+\alpha e_1=1=e_0+e_1.
+\]</div>
+<p>按列记录两次乘法的坐标，就得到</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+(\lambda_{ij})=\begin{pmatrix}0&amp;1\\1&amp;1\end{pmatrix},
+\qquad C(B)=3=2\cdot2-1.
+\end{split}\]</div>
+<p>矩阵只有三个非零项，达到 <span class="math notranslate nohighlight">\(m=2\)</span> 时的下界，所以这是一组最优正规基。</p>
+</div>
+<div class="source-line docutils container" id="c14-preview-f4-optimal-product">
+<p>更具体地，若 <span class="math notranslate nohighlight">\(x=a e_0+b e_1\)</span>、<span class="math notranslate nohighlight">\(y=c e_0+d e_1\)</span>，其中 <span class="math notranslate nohighlight">\(a,b,c,d\in\mathbb F_2\)</span>，则</p>
+<div class="math notranslate nohighlight">
+\[
+xy=(ad+bc+bd)e_0+(ac+ad+bc)e_1.
+\]</div>
+<p>每个输出坐标的直接表达式都只有三个乘积项。两个坐标之间还可共享中间结果，因此这里的复杂度 <span class="math notranslate nohighlight">\(3\)</span> 不应理解为“完整乘法恰好需要三个逻辑门”。</p>
+</div>
+</div>
+</section>
 <section id="moore">
 <h2>Moore 行列式判据<a class="headerlink" href="#moore" title="Link to this heading">#</a></h2>
 <div class="statement-box corollary docutils container" id="c14-statement-007">
@@ -596,27 +721,27 @@ c_j:F&amp;\longrightarrow K, \\
 <h2>交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(4)\)</span> 的基、对偶基与迹矩阵<a class="headerlink" href="#mathrm-gf-4" title="Link to this heading">#</a></h2>
 <p>输入采用 <span class="math notranslate nohighlight">\(\alpha\)</span> 的幂表示，零元素单独选择。本实验采用本原多项式模型；输出中的向量与对偶基使用域元素的代数表示，而非整数编码。</p>
 <div class="lesson-widget" data-kind="basis" aria-label="GF(4) 的基、对偶基与迹矩阵"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
-<section id="id5">
-<h2>本章自测<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<div class="quiz" data-explain="共轭基向量被依次排列。" data-hint="跟踪基向量的 \(q\) 次幂。"><p>正规基中的 Frobenius 对坐标执行什么？</p><button data-correct="yes">循环移位</button> <button data-correct="no">逐项求逆</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
 <section id="id6">
-<h2>练习与解答<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2>本章自测<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<div class="quiz" data-explain="共轭基向量被依次排列。" data-hint="跟踪基向量的 \(q\) 次幂。"><p>正规基中的 Frobenius 对坐标执行什么？</p><button data-correct="yes">循环移位</button> <button data-correct="no">逐项求逆</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
+<section id="id7">
+<h2>练习与解答<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p>给出正规基存在性的一条线性代数证明路线。</p>
 <div class="dropdown tip admonition">
 <p class="admonition-title">参考解答</p>
 <p>令 <span class="math notranslate nohighlight">\(\sigma(z)=z^q\)</span>，把 <span class="math notranslate nohighlight">\(F\)</span> 看作 <span class="math notranslate nohighlight">\(m\)</span> 维 <span class="math notranslate nohighlight">\(K\)</span> 向量空间。<span class="math notranslate nohighlight">\(\sigma^m=I\)</span>。若次数小于 <span class="math notranslate nohighlight">\(m\)</span> 的非零多项式 <span class="math notranslate nohighlight">\(\sum c_iT^i\)</span> 消去 <span class="math notranslate nohighlight">\(\sigma\)</span>，则非零线性化多项式 <span class="math notranslate nohighlight">\(\sum c_iz^{q^i}\)</span> 在 <span class="math notranslate nohighlight">\(q^m\)</span> 个点全部为零，但其次数至多 <span class="math notranslate nohighlight">\(q^{m-1}\)</span>，与根数界矛盾。故 <span class="math notranslate nohighlight">\(\sigma\)</span> 的极小多项式次数为 <span class="math notranslate nohighlight">\(m\)</span>。使用线性代数中的循环向量定理（极小多项式次数等于空间维数时存在循环向量），可取 <span class="math notranslate nohighlight">\(\alpha\)</span> 使 <span class="math notranslate nohighlight">\(\alpha,\sigma\alpha,\ldots,\sigma^{m-1}\alpha\)</span> 为基，即正规基。</p>
 </div>
 </section>
-<section id="id7">
-<h2>学习检查<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h2>学习检查<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>[ ] 理解幂基、对偶基与正规基。</p></li>
 <li><p>[ ] 用迹配对构造对偶基。</p></li>
 <li><p>[ ] 用 Moore 矩阵与判别式判断线性无关。</p></li>
 </ul>
 </section>
-<section id="id8">
-<h2>学习笔记<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h2>学习笔记<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
 <span id="slide-093"></span><span id="slide-094"></span><span id="slide-095"></span><span id="slide-096"></span><span id="slide-097"></span>
 <label for="chapter-note-c14">本章笔记</label><textarea id="chapter-note-c14" class="local-note chapter-note" data-page="chapter" data-legacy-pages="93,94,95,96,97" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
@@ -673,12 +798,13 @@ c_j:F&amp;\longrightarrow K, \\
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">坐标映射与对偶基</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">正规基及其存在性</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">迹矩阵与判别式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">科研联系：基的选择与计算成本（高阶选读）</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moore">Moore 行列式判据</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathrm-gf-4">交互实验：<span class="math notranslate nohighlight">\(\mathrm{GF}(4)\)</span> 的基、对偶基与迹矩阵</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">本章自测</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">练习与解答</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学习检查</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习笔记</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
 </ul>
   </nav></div>
 

@@ -1,0 +1,39 @@
+/* Diagrams keep real root labels separate from exponent arithmetic. */
+.lesson-widget[data-kind=cyclotomic] { color:var(--pst-color-text-base,#233845); }
+.cyclotomic-circle { margin:18px 0;padding:16px;border:1px solid #9ab7bd;border-radius:10px;background:var(--pst-color-background,#fff);color:var(--pst-color-text-base,#233845); }
+.cyclotomic-circle-controls,.cyclotomic-orbit-controls { display:flex;flex-wrap:wrap;align-items:center;gap:10px; }
+.cyclotomic-circle-controls label { display:flex;align-items:center;gap:8px;margin:0; }
+.cyclotomic-circle-controls button,.cyclotomic-circle-controls select,.cyclotomic-orbit-controls button { min-height:44px;padding:8px 12px;border:1px solid #708b98;border-radius:6px;background:var(--pst-color-surface,#f3f7f8);color:var(--pst-color-text-base,#233845);font:500 14px/1.5 system-ui,'Microsoft YaHei',sans-serif;cursor:pointer; }
+.cyclotomic-circle-controls button:disabled { opacity:.5;cursor:default; }
+.cyclotomic-circle-status,.cyclotomic-circle-route,.cyclotomic-orbit-status { margin:12px 0;font-size:16px;line-height:1.8; }
+.cyclotomic-circle-svg { display:block;width:100%;max-width:560px;margin:auto; }
+.cyclotomic-unit-circle { fill:none;stroke:#879da6;stroke-width:1.5; }
+.cyclotomic-edge { stroke:#00777c;stroke-width:2.5;fill:none; }
+.cyclotomic-arrowhead { fill:#00777c; }
+.cyclotomic-circle-node { cursor:pointer; }
+.cyclotomic-circle-node circle,.cyclotomic-orbit-node rect { fill:var(--pst-color-background,#fff);stroke:#6d8792;stroke-width:2; }
+.cyclotomic-circle-node text,.cyclotomic-orbit-node text { fill:var(--pst-color-text-base,#233845);font-family:system-ui,'Microsoft YaHei',sans-serif; }
+.cyclotomic-circle-node text { font-size:23px; }
+.cyclotomic-circle-node.is-visited circle { fill:var(--pst-color-surface,#eaf4f4);stroke:#00777c;stroke-width:3; }
+.cyclotomic-circle-node.is-current circle,.cyclotomic-orbit-node.is-current rect { fill:#00777c;stroke:#005c61;stroke-width:3; }
+.cyclotomic-orbit-node.is-current text { fill:#fff; }
+.cyclotomic-circle-node[aria-pressed=true] circle { stroke-dasharray:4 2; }
+.cyclotomic-circle-node:focus-visible circle { stroke:#c57400;stroke-width:5; }
+.cyclotomic-circle-controls :focus-visible,.cyclotomic-orbit-controls button:focus-visible,.cyclotomic-diagram-scroll:focus-visible { outline:3px solid #b97500;outline-offset:3px; }
+.lesson-visual.cyclotomic-orbits { max-height:none;overflow:visible; }
+.cyclotomic-orbit-card { margin:18px 0;padding:14px;border:1px solid #9ab7bd;border-radius:10px;background:var(--pst-color-background,#fff);color:var(--pst-color-text-base,#233845); }
+.cyclotomic-orbit-card h3 { margin:0 0 10px;font:600 17px/1.6 system-ui,'Microsoft YaHei',sans-serif;color:inherit; }
+.cyclotomic-diagram-scroll { max-width:100%;overflow-x:auto; }
+.cyclotomic-orbit-svg { display:block;margin:auto;max-width:none; }
+.cyclotomic-return { stroke-dasharray:5 4; }
+.cyclotomic-orbit-svg .cyclotomic-edge { stroke:#69838e;stroke-width:1.6; }
+.cyclotomic-orbit-svg .cyclotomic-edge.is-current { stroke:#00777c;stroke-width:3; }
+.cyclotomic-root-label { font-size:20px; }
+.cyclotomic-exponent-label { font-size:12px; }
+html[data-theme=dark] .cyclotomic-edge,html[data-theme=dark] .cyclotomic-orbit-svg .cyclotomic-edge.is-current { stroke:#78d5d5; }
+html[data-theme=dark] .cyclotomic-arrowhead { fill:#78d5d5; }
+html[data-theme=dark] .cyclotomic-circle-node text,html[data-theme=dark] .cyclotomic-orbit-node text { fill:var(--pst-color-text-base,#d8e2e8); }
+html[data-theme=dark] .cyclotomic-orbit-node.is-current text { fill:#fff; }
+.ff-presentation-content .cyclotomic-circle,.ff-presentation-content .cyclotomic-orbit-card { margin-top:18px; }
+@media(max-width:600px) { .cyclotomic-circle,.cyclotomic-orbit-card { padding:10px; } .cyclotomic-circle-controls { gap:8px; } }
+@media print { .cyclotomic-circle-controls,.cyclotomic-orbit-controls { display:none; } .cyclotomic-diagram-scroll { overflow:visible; } .cyclotomic-orbit-svg { max-width:100%; } }

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
  function table(parent,headers,rows){const t=el('table',null,parent,{class:'lesson-table'});const h=el('tr',null,el('thead',null,t));headers.forEach(x=>el('th',String(x),h,{scope:'col'}));const body=el('tbody',null,t);rows.forEach(row=>{const tr=el('tr',null,body);row.forEach(v=>el('td',String(v),tr));});return t;}
  document.querySelectorAll('.lesson-widget').forEach(w=>{
   const kind=w.dataset.kind;
-  const controls=el('div',null,w,{class:'lesson-controls'}), output=el(['subfields','primitive','minimal','conjugates','trace','basis'].includes(kind)?'div':'pre','',w,{'aria-live':'polite',class:'lesson-result'}), visual=el('div',null,w,{class:'lesson-visual'});
+  const controls=el('div',null,w,{class:'lesson-controls'}), output=el(['subfields','primitive','minimal','conjugates','trace','basis','cyclotomic'].includes(kind)?'div':'pre','',w,{'aria-live':'polite',class:'lesson-result'}), visual=el('div',null,w,{class:'lesson-visual'});
   let compute;
   if(['cosets','cyclic','residues'].includes(kind)){
    const n=input(controls,'模数 n',kind==='cyclic'?12:kind==='cosets'?12:6,2,30);
@@ -195,15 +195,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if(det){const dual=vs.map((_,i)=>Array.from({length:4},(_,v)=>v).find(v=>vs.every((x,j)=>F.trace(F.mul(v,x))===(i===j?1:0))));math(line('对偶基：'),`(${dual.map(name).join(',')})`);const t=table(visual,['原基向量','对偶基向量'],vs.map(()=>['','']));[...t.querySelectorAll('tbody tr')].forEach((row,i)=>{math(row.children[0],name(vs[i]));math(row.children[1],name(dual[i]));});}
    };
   }else if(kind==='cyclotomic'){
-   const q=select(controls,'基域大小 q',[[3,'3'],[2,'2'],[4,'4'],[5,'5'],[7,'7'],[8,'8'],[9,'9'],[16,'16']]),n=input(controls,'单位根阶 n',8,1,60);
+   const q=select(controls,'基域大小 q',[[3,'3'],[2,'2'],[4,'4'],[5,'5'],[7,'7'],[8,'8'],[9,'9'],[16,'16']]),n=input(controls,'单位根阶 n',Number(w.dataset.n)||8,1,60);
+   if(w.dataset.q)q.value=w.dataset.q;
    compute=()=>{const Q=Number(q.value),N=integer(n,1,60),p=Q%2===0?2:Q%3===0?3:Q;
-    if(gcd(Q,N)!==1){let M=N,e=0;while(M%p===0){M/=p;e++;}output.textContent=`特征 ${p} 整除 n=${N}，互素情形的因子次数公式不适用。\nx^${N}−1 = (x^${M}−1)^${p**e}。\n不同单位根只有 ${M} 个，每根重数 ${p**e}；不存在乘法阶为 ${N} 的元素。`;return;}
-    if(N===1){output.textContent='Q₁(x) = x−1，次数和分裂域次数均为 1；唯一单位根为 1。';return;}
+    output.replaceChildren();const line=text=>el('p',text,output);
+    if(gcd(Q,N)!==1){let M=N,e=0;while(M%p===0){M/=p;e++;}line(`特征 ${p} 整除 n=${N}，互素情形的因子次数公式不适用。`);math(line('重根分解：'),`x^{${N}}-1=(x^{${M}}-1)^{${p**e}}`);line(`不同单位根只有 ${M} 个，每根重数 ${p**e}；不存在乘法阶为 ${N} 的元素。`);return;}
+    if(N===1){math(line('唯一割圆因子：'),'Q_1(x)=x-1');line('因子次数和分裂域次数均为 1；唯一单位根为 1。');window.FFCyclotomic.renderOrbits(visual,[[0]],Q,N);return;}
     const remaining=new Set(Array.from({length:N},(_,i)=>i).filter(i=>gcd(i,N)===1)),orbits=[];
     while(remaining.size){const first=remaining.values().next().value;let v=first,o=[];do{o.push(v);remaining.delete(v);v=Q*v%N;}while(v!==first);orbits.push(o);}
     const d=orbits[0].length;
-    output.textContent=`ord_${N}(${Q}) = ${d}；φ(${N}) = ${phi(N)}。\nQ_${N} 在 F_${Q} 上分为 ${orbits.length} 个不同不可约因子，每个次数 ${d}。\n分裂域为 F_(${Q}^${d})。以下是本原单位根指数的 q-轨道。`;
-    table(visual,['轨道编号','指数轨道','对应因子次数'],orbits.map((o,i)=>[i+1,o.join(' → '),o.length]));
+    math(line('返回起点所需步数：'),`\\operatorname{ord}_{${N}}(${Q})=${d},\\quad\\phi(${N})=${phi(N)}`);
+    const result=line('因子分组：');math(result,`Q_{${N}}`);result.append(` 在 `);math(result,`\\mathbb F_{${Q}}`);result.append(` 上分为 ${orbits.length} 个不同的首一不可约因子，每个次数为 ${d}。`);
+    math(line('分裂域：'),`\\mathbb F_{${Q}^{${d}}}`);line(`图中每个箭头都把指数乘以 ${Q} 再模 ${N}。虚线箭头返回起点，闭合一条共轭轨道。`);
+    window.FFCyclotomic.renderOrbits(visual,orbits,Q,N);
    };
   }else if(['grid','identity'].includes(kind)){
    const p=select(controls,'系数域',[[5,'F₅'],[2,'F₂'],[3,'F₃'],[7,'F₇']]),poly=select(controls,'多项式',[[0,'x+y'],[1,'xy'],[2,'x^p−x（形式非零，函数恒零）']]),size=input(controls,'每个变量的抽样集合大小 k',3,1,7);
@@ -225,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     table(visual,['a \\ b',...B],A.map(x=>[x,...B.map(y=>(x+y)%P)]));
    };
   }else{output.textContent='未知实验类型。';return;}
-  const run=()=>{window.MathJax?.typesetClear?.([visual,output]);visual.replaceChildren();try{compute();output.classList.remove('lesson-error');if(['minimal','conjugates','trace','basis'].includes(kind)&&window.MathJax?.typesetPromise)window.MathJax.startup.promise.then(()=>window.MathJax.typesetPromise([output,visual])).catch(()=>{});}catch(e){output.textContent=e.message;output.classList.add('lesson-error');}};
+  const run=()=>{window.MathJax?.typesetClear?.([visual,output]);visual.replaceChildren();try{compute();output.classList.remove('lesson-error');if(['minimal','conjugates','trace','basis','cyclotomic'].includes(kind)&&window.MathJax?.typesetPromise)window.MathJax.startup.promise.then(()=>window.MathJax.typesetPromise([output,visual])).catch(()=>{});}catch(e){output.textContent=e.message;output.classList.add('lesson-error');}};
   controls.addEventListener('input',run);controls.addEventListener('change',run);run();
   el('p','所有运算均在浏览器中完成。改变参数可以观察具体例子；数值实验用于理解，证明仍需使用正文中的定理与条件。',w,{class:'lesson-caption'});
  });
