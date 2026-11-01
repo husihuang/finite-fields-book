@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }else if(kind==='encoding'){
    const m=select(controls,'扩域模型',[[4,'GF(16)，x⁴+x+1'],[2,'GF(4)，x²+x+1'],[8,'GF(256)，x⁸+x⁴+x³+x+1']]),a=input(controls,'元素 a 的系数位串编码',2,0,255);
    compute=()=>{const F=field(Number(m.value));a.max=F.q-1;const A=integer(a,0,F.q-1),generator=Array.from({length:F.q-1},(_,i)=>i+1).find(v=>F.order(v)===F.q-1);let powers=[],v=1;for(let i=0;i<F.q-1;i++){powers.push(v);v=F.mul(v,generator);}
-    output.textContent=`输入的是系数位串的存储编码，不是域中的普通整数。\na 的编码 = ${A}，位串 = ${A.toString(2).padStart(F.m,'0')}，多项式 = ${binpoly(A)}。\n本表基于生成元编码 ${generator}（${binpoly(generator)}）。\nlog(a) = ${A?powers.indexOf(A):'未定义（零元素）'}；指数按 ${F.q-1} 取模。\n域加法为 XOR；不要使用整数编码的普通加法。`;
+    output.textContent=`输入的是系数位串的存储编码，不是域中的普通整数。\n令 α = x + (f)，f(x) = ${binpoly(F.f)}。\na 的编码 = ${A}，位串 = ${A.toString(2).padStart(F.m,'0')}，代表多项式 = ${binpoly(A)}，域元素表达式 = ${binpoly(A).replaceAll('x','α')}。\n本表选取本原元 g = ${binpoly(generator).replaceAll('x','α')}，编码 ${generator}，乘法阶 ${F.q-1}。\nlog_g(a) = ${A?powers.indexOf(A):'未定义（零元素）'}；指数按 ${F.q-1} 取模。\n只有当 α 本身为本原元时，才可选 g = α。\n域加法为 XOR；不要使用整数编码的普通加法。`;
     table(visual,['指数 i','生成元的 i 次幂编码','位串','多项式'],powers.map((v,i)=>[i,v,v.toString(2).padStart(F.m,'0'),binpoly(v)]));
    };
   }else if(kind==='subfields'){
