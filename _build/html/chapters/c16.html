@@ -921,6 +921,124 @@ x^{N/\ell_j}\not\equiv1\pmod{h(x)}\qquad(j=1,\ldots,r),
 \end{split}\]</div>
 <p>下面的数值沿用例 16.7 中 <span class="math notranslate nohighlight">\(f=x^4+x+1\)</span> 的模型，此时 <span class="math notranslate nohighlight">\(N=15\)</span>。</p>
 </div>
+<div class="source-line docutils container" id="c16-example-09-exp-table">
+<p><strong>指数表 <span class="math notranslate nohighlight">\(\operatorname{gfilog}\)</span>：指数 <span class="math notranslate nohighlight">\(k\mapsto\alpha^k\)</span> 的存储编码。</strong> 表中指数取 <span class="math notranslate nohighlight">\(0,1,\ldots,14\)</span>；例如 <span class="math notranslate nohighlight">\(\operatorname{gfilog}(4)=3\)</span>、<span class="math notranslate nohighlight">\(\operatorname{gfilog}(14)=9\)</span>。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>指数 <span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\operatorname{gfilog}(k)=\operatorname{enc}(\alpha^k)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>0</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>1</p></td>
+<td class="text-right"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>2</p></td>
+<td class="text-right"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>3</p></td>
+<td class="text-right"><p>8</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>4</p></td>
+<td class="text-right"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>5</p></td>
+<td class="text-right"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>6</p></td>
+<td class="text-right"><p>12</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>7</p></td>
+<td class="text-right"><p>11</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>8</p></td>
+<td class="text-right"><p>5</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>9</p></td>
+<td class="text-right"><p>10</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>10</p></td>
+<td class="text-right"><p>7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>11</p></td>
+<td class="text-right"><p>14</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>12</p></td>
+<td class="text-right"><p>15</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>13</p></td>
+<td class="text-right"><p>13</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>14</p></td>
+<td class="text-right"><p>9</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>指数每增加 <span class="math notranslate nohighlight">\(15\)</span>，表值重复一次，因为 <span class="math notranslate nohighlight">\(\alpha^{15}=1\)</span>。指数表不会输出零元素的编码 <span class="math notranslate nohighlight">\(0\)</span>。</p>
+</div>
+<div class="source-line docutils container" id="c16-example-09-log-table">
+<p><strong>对数表 <span class="math notranslate nohighlight">\(\operatorname{gflog}\)</span>：非零元素的存储编码 <span class="math notranslate nohighlight">\(c\mapsto\)</span> 指数 <span class="math notranslate nohighlight">\(k\)</span>。</strong> 它是上面指数表的逆表；例如 <span class="math notranslate nohighlight">\(\operatorname{gflog}(3)=4\)</span>、<span class="math notranslate nohighlight">\(\operatorname{gflog}(7)=10\)</span>。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p>非零编码 <span class="math notranslate nohighlight">\(c\)</span></p></th>
+<th class="head text-right"><p><span class="math notranslate nohighlight">\(\operatorname{gflog}(c)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>3</p></td>
+<td class="text-right"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>4</p></td>
+<td class="text-right"><p>2</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>5</p></td>
+<td class="text-right"><p>8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>6</p></td>
+<td class="text-right"><p>5</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>7</p></td>
+<td class="text-right"><p>10</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>8</p></td>
+<td class="text-right"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>9</p></td>
+<td class="text-right"><p>14</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>10</p></td>
+<td class="text-right"><p>9</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>11</p></td>
+<td class="text-right"><p>7</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>12</p></td>
+<td class="text-right"><p>6</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>13</p></td>
+<td class="text-right"><p>13</p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p>14</p></td>
+<td class="text-right"><p>11</p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p>15</p></td>
+<td class="text-right"><p>12</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><span class="math notranslate nohighlight">\(\operatorname{gflog}(0)\)</span> 不定义；编码 <span class="math notranslate nohighlight">\(0\)</span> 的乘除运算应按下方注 11 单独处理。由两表可以直接核对 <span class="math notranslate nohighlight">\(\operatorname{gfilog}(\operatorname{gflog}(c))=c\)</span>（<span class="math notranslate nohighlight">\(1\leq c\leq15\)</span>）。</p>
+</div>
 <div class="source-line source-label docutils container" id="p116-l05">
 <p>乘法</p>
 </div>
