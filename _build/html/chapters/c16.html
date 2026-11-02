@@ -36,7 +36,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=208119c8" />
+    <link rel="stylesheet" type="text/css" href="../_static/reader.css?v=88ba913c" />
     <link rel="stylesheet" type="text/css" href="../_static/knowledge.css?v=d5585877" />
     <link rel="stylesheet" type="text/css" href="../_static/cyclotomic.css?v=2a02d837" />
   
@@ -925,54 +925,40 @@ x^{N/\ell_j}\not\equiv1\pmod{h(x)}\qquad(j=1,\ldots,r),
 <p><strong>指数表 <span class="math notranslate nohighlight">\(\operatorname{gfilog}\)</span>：指数 <span class="math notranslate nohighlight">\(k\mapsto\alpha^k\)</span> 的存储编码。</strong> 表中指数取 <span class="math notranslate nohighlight">\(0,1,\ldots,14\)</span>；例如 <span class="math notranslate nohighlight">\(\operatorname{gfilog}(4)=3\)</span>、<span class="math notranslate nohighlight">\(\operatorname{gfilog}(14)=9\)</span>。</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-right"><p>指数 <span class="math notranslate nohighlight">\(k\)</span></p></th>
-<th class="head text-right"><p><span class="math notranslate nohighlight">\(\operatorname{gfilog}(k)=\operatorname{enc}(\alpha^k)\)</span></p></th>
+<tr class="row-odd"><th class="head text-left"><p>指数 <span class="math notranslate nohighlight">\(k\)</span></p></th>
+<th class="head text-right"><p>0</p></th>
+<th class="head text-right"><p>1</p></th>
+<th class="head text-right"><p>2</p></th>
+<th class="head text-right"><p>3</p></th>
+<th class="head text-right"><p>4</p></th>
+<th class="head text-right"><p>5</p></th>
+<th class="head text-right"><p>6</p></th>
+<th class="head text-right"><p>7</p></th>
+<th class="head text-right"><p>8</p></th>
+<th class="head text-right"><p>9</p></th>
+<th class="head text-right"><p>10</p></th>
+<th class="head text-right"><p>11</p></th>
+<th class="head text-right"><p>12</p></th>
+<th class="head text-right"><p>13</p></th>
+<th class="head text-right"><p>14</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-right"><p>0</p></td>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\operatorname{gfilog}(k)\)</span></p></td>
 <td class="text-right"><p>1</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>1</p></td>
 <td class="text-right"><p>2</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>2</p></td>
 <td class="text-right"><p>4</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>3</p></td>
 <td class="text-right"><p>8</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>4</p></td>
 <td class="text-right"><p>3</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>5</p></td>
 <td class="text-right"><p>6</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>6</p></td>
 <td class="text-right"><p>12</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>7</p></td>
 <td class="text-right"><p>11</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>8</p></td>
 <td class="text-right"><p>5</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>9</p></td>
 <td class="text-right"><p>10</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>10</p></td>
 <td class="text-right"><p>7</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>11</p></td>
 <td class="text-right"><p>14</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>12</p></td>
 <td class="text-right"><p>15</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>13</p></td>
 <td class="text-right"><p>13</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>14</p></td>
 <td class="text-right"><p>9</p></td>
 </tr>
 </tbody>
@@ -984,54 +970,40 @@ x^{N/\ell_j}\not\equiv1\pmod{h(x)}\qquad(j=1,\ldots,r),
 <p><strong>对数表 <span class="math notranslate nohighlight">\(\operatorname{gflog}\)</span>：非零元素的存储编码 <span class="math notranslate nohighlight">\(c\mapsto\)</span> 指数 <span class="math notranslate nohighlight">\(k\)</span>。</strong> 它是上面指数表的逆表；例如 <span class="math notranslate nohighlight">\(\operatorname{gflog}(3)=4\)</span>、<span class="math notranslate nohighlight">\(\operatorname{gflog}(7)=10\)</span>。</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head text-right"><p>非零编码 <span class="math notranslate nohighlight">\(c\)</span></p></th>
-<th class="head text-right"><p><span class="math notranslate nohighlight">\(\operatorname{gflog}(c)\)</span></p></th>
+<tr class="row-odd"><th class="head text-left"><p>非零编码 <span class="math notranslate nohighlight">\(c\)</span></p></th>
+<th class="head text-right"><p>1</p></th>
+<th class="head text-right"><p>2</p></th>
+<th class="head text-right"><p>3</p></th>
+<th class="head text-right"><p>4</p></th>
+<th class="head text-right"><p>5</p></th>
+<th class="head text-right"><p>6</p></th>
+<th class="head text-right"><p>7</p></th>
+<th class="head text-right"><p>8</p></th>
+<th class="head text-right"><p>9</p></th>
+<th class="head text-right"><p>10</p></th>
+<th class="head text-right"><p>11</p></th>
+<th class="head text-right"><p>12</p></th>
+<th class="head text-right"><p>13</p></th>
+<th class="head text-right"><p>14</p></th>
+<th class="head text-right"><p>15</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-right"><p>1</p></td>
+<tr class="row-even"><td class="text-left"><p><span class="math notranslate nohighlight">\(\operatorname{gflog}(c)\)</span></p></td>
 <td class="text-right"><p>0</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>2</p></td>
 <td class="text-right"><p>1</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>3</p></td>
 <td class="text-right"><p>4</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>4</p></td>
 <td class="text-right"><p>2</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>5</p></td>
 <td class="text-right"><p>8</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>6</p></td>
 <td class="text-right"><p>5</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>7</p></td>
 <td class="text-right"><p>10</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>8</p></td>
 <td class="text-right"><p>3</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>9</p></td>
 <td class="text-right"><p>14</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>10</p></td>
 <td class="text-right"><p>9</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>11</p></td>
 <td class="text-right"><p>7</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>12</p></td>
 <td class="text-right"><p>6</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>13</p></td>
 <td class="text-right"><p>13</p></td>
-</tr>
-<tr class="row-odd"><td class="text-right"><p>14</p></td>
 <td class="text-right"><p>11</p></td>
-</tr>
-<tr class="row-even"><td class="text-right"><p>15</p></td>
 <td class="text-right"><p>12</p></td>
 </tr>
 </tbody>

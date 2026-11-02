@@ -279,6 +279,14 @@ dialog[open] .ff-sidebar-close {
 @media print { .ff-present-button,.ff-presentation { display:none!important; } }
 
 /* No extra spacing beside punctuation or inside/displayed mathematics. */
+#c16-example-09-exp-table .pst-scrollable-table-container,
+#c16-example-09-log-table .pst-scrollable-table-container { overflow-x:auto; max-width:100%; }
+#c16-example-09-exp-table table,
+#c16-example-09-log-table table { width:max-content; min-width:100%; white-space:nowrap; }
+#c16-example-09-exp-table th:first-child,
+#c16-example-09-exp-table td:first-child,
+#c16-example-09-log-table th:first-child,
+#c16-example-09-log-table td:first-child { position:sticky;left:0;z-index:1;background:#f5f8fa; }
 :root { --ff-inline-math-gap: 0.18em; }
 .bd-article .ff-math-gap-before { margin-left:var(--ff-inline-math-gap); }
 .bd-article .ff-math-gap-after { margin-right:var(--ff-inline-math-gap); }
