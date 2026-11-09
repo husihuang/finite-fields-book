@@ -17,6 +17,7 @@ html:
   use_fullscreen_button: true
 sphinx:
   config:
+    exclude_patterns: ["_build", "_build/**", ".preview-*", ".preview-*/**", ".git/**", "**/.ipynb_checkpoints/**"]
     # Browser experiments use reader.js; Notebook execution remains local.
     # Omit the unused Thebe extension, whose inline config is duplicated by this build.
     extensions:

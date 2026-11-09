@@ -413,14 +413,24 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">有限网格上的根数界</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">网格消失理想与带余除法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">组合零点定理的系数判别</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">交互实验：网格取值与逐变量次数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">从四个网格点出发</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">有限网格上的根数界</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">回看前面的反例：次数条件不能少</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">网格消失理想与带余除法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">去掉在网格上必为零的部分</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">组合零点定理的系数判别</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">由系数预判存在非零取值</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">交互实验：网格取值与逐变量次数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">学习笔记</a></li>
 </ul>
             </nav>
         </div>
@@ -444,7 +454,43 @@
 </ul>
 </div>
 <div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><section id="id2">
-<h2>有限网格上的根数界<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>从四个网格点出发<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在 <span class="math notranslate nohighlight">\(\mathbb F_3\)</span> 中取 <span class="math notranslate nohighlight">\(S_1=S_2=\{0,1\}\)</span>，研究 <span class="math notranslate nohighlight">\(f(x,y)=(x+y)(x+y-1)\)</span>。所有计算均模 <span class="math notranslate nohighlight">\(3\)</span>。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><span class="math notranslate nohighlight">\(y\backslash x\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(0\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(f(0,0)=0\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(f(1,0)=0\)</span></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(f(0,1)=0\)</span></p></td>
+<td class="text-center"><p><span class="math notranslate nohighlight">\(f(1,1)=2\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>直接计算找到了非零点 <span class="math notranslate nohighlight">\((1,1)\)</span>。组合零点定理则能在不逐点计算的情况下，保证至少有一个非零点。</p>
+<p>接下来依次思考：</p>
+<ol class="arabic simple">
+<li><p>在整个网格上为零的多项式，是否一定是零多项式？</p></li>
+<li><p>加上什么次数限制后，网格取值才能唯一确定多项式？</p></li>
+<li><p>不逐点计算，怎样保证多项式在网格上至少有一个非零取值？</p></li>
+</ol>
+<p>先看第一个问题。令</p>
+<div class="math notranslate nohighlight">
+\[
+g_1(x)=x(x-1),\qquad g_2(y)=y(y-1).
+\]</div>
+<p>它们都是非零多项式，却在整个网格 <span class="math notranslate nohighlight">\(\{0,1\}^2\)</span> 上处处取零。例如 <span class="math notranslate nohighlight">\(g_1\)</span> 只取决于 <span class="math notranslate nohighlight">\(x\)</span>；无论 <span class="math notranslate nohighlight">\(y\)</span> 是 <span class="math notranslate nohighlight">\(0\)</span> 还是 <span class="math notranslate nohighlight">\(1\)</span>，只要 <span class="math notranslate nohighlight">\(x\in\{0,1\}\)</span>，就有 <span class="math notranslate nohighlight">\(g_1(x)=0\)</span>。所以<strong>网格上处处为零，并不能直接推出多项式为零</strong>。究竟需要增加什么条件？</p>
+</section>
+<section id="id3">
+<h2>有限网格上的根数界<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <div class="statement-box lemma docutils container" id="c17-statement-001">
 <span id="p117-l01"></span><div class="source-line source-label docutils container" id="p117-l02">
 <p>引理 17.1</p>
@@ -473,9 +519,13 @@
 </ul>
 </div>
 </div>
+<section id="id4">
+<h3>回看前面的反例：次数条件不能少<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>在 <span class="math notranslate nohighlight">\(\mathbb F_3[x,y]\)</span> 中，<span class="math notranslate nohighlight">\(\deg_x g_1=2\)</span>、<span class="math notranslate nohighlight">\(\deg_y g_1=0\)</span>；同理 <span class="math notranslate nohighlight">\(\deg_x g_2=0\)</span>、<span class="math notranslate nohighlight">\(\deg_y g_2=2\)</span>。这里的次数按<strong>形式多项式</strong>计算，不因它们在网格上取零而改变。由于 <span class="math notranslate nohighlight">\(|S_1|=|S_2|=2\)</span>，<span class="math notranslate nohighlight">\(g_1\)</span> 不满足 <span class="math notranslate nohighlight">\(\deg_x P&lt;|S_1|\)</span>，<span class="math notranslate nohighlight">\(g_2\)</span> 不满足 <span class="math notranslate nohighlight">\(\deg_y P&lt;|S_2|\)</span>，所以它们不与引理矛盾。引理给出的答案是：<strong>每个变量的次数都严格小于相应集合的大小</strong>时，网格上恒为零才迫使多项式为零。</p>
 </section>
-<section id="id3">
-<h2>网格消失理想与带余除法<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+</section>
+<section id="id5">
+<h2>网格消失理想与带余除法<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <div class="statement-box theorem docutils container" id="c17-statement-002">
 <div class="source-line source-label docutils container" id="p118-l01">
 <p>定理 17.1</p>
@@ -497,9 +547,20 @@
 </ul>
 </div>
 </div>
+<section id="id6">
+<h3>去掉在网格上必为零的部分<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+f(x,y)&amp;=x^2+2xy+y^2-x-y\\
+&amp;=\underbrace{x(x-1)}_{g_1(x)}+\underbrace{y(y-1)}_{g_2(y)}+2xy.
+\end{aligned}
+\end{split}\]</div>
+<p>因此，<span class="math notranslate nohighlight">\(f\)</span> 与 <span class="math notranslate nohighlight">\(2xy\)</span> <strong>在网格上的取值相同</strong>，但它们不是相同的多项式。<span class="math notranslate nohighlight">\(2xy\)</span> 对两个变量的次数都小于 <span class="math notranslate nohighlight">\(2=|S_i|\)</span>。引理 17.1 保证：在此逐变量次数限制下，网格取值唯一确定多项式。<span class="math notranslate nohighlight">\(2xy\)</span> 只在 <span class="math notranslate nohighlight">\((1,1)\)</span> 处取非零值 <span class="math notranslate nohighlight">\(2\)</span>。</p>
 </section>
-<section id="id4">
-<h2>组合零点定理的系数判别<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+</section>
+<section id="id7">
+<h2>组合零点定理的系数判别<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <div class="statement-box theorem docutils container" id="c17-statement-003">
 <div class="source-line source-label docutils container" id="p119-l01">
 <p>定理 17.2</p>
@@ -529,31 +590,45 @@ f(s_1,\ldots,s_n)\ne0.
 <p>若 <span class="math notranslate nohighlight">\(S_i\)</span> 无限，先从中选取 <span class="math notranslate nohighlight">\(t_i+1\)</span> 个元素，故只需证明有限情形。反设 <span class="math notranslate nohighlight">\(f\)</span> 在整个网格为零，由上一节定理写成 <span class="math notranslate nohighlight">\(f=\sum_i h_ig_i\)</span>，且 <span class="math notranslate nohighlight">\(\deg(h_ig_i)\leq\deg f\)</span>。由于 <span class="math notranslate nohighlight">\(g_i\)</span> 的首项是 <span class="math notranslate nohighlight">\(x_i^{|S_i|}\)</span>，其余各项次数更低，最高总次数层只能来自 <span class="math notranslate nohighlight">\(h_i\)</span> 与该首项的乘积。这些单项式的 <span class="math notranslate nohighlight">\(x_i\)</span> 指数至少为 <span class="math notranslate nohighlight">\(|S_i|&gt;t_i\)</span>，不可能产生 <span class="math notranslate nohighlight">\(\prod_i x_i^{t_i}\)</span>，与其系数非零矛盾。</p>
 </div>
 </div>
+<section id="id8">
+<h3>由系数预判存在非零取值<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>取 <span class="math notranslate nohighlight">\(t_1=t_2=1\)</span>。由上面的展开式可见</p>
+<div class="math notranslate nohighlight">
+\[
+\deg f=2=t_1+t_2,\qquad [xy]f=2\ne0,\qquad |S_1|=|S_2|=2&gt;1.
+\]</div>
+<p>这些正是组合零点定理的条件。因此，即使不计算四个函数值，也能断定至少存在一点使 <span class="math notranslate nohighlight">\(f\)</span> 不为零。定理只保证<strong>存在</strong>；查表才知道该点是 <span class="math notranslate nohighlight">\((1,1)\)</span>。</p>
+<p>在本例中还可以直接看出证明中的矛盾：假如 <span class="math notranslate nohighlight">\(f\)</span> 在四点上全为零，消失理想定理会给出 <span class="math notranslate nohighlight">\(f=h_1g_1+h_2g_2\)</span>。由于 <span class="math notranslate nohighlight">\(\deg f=\deg g_1=\deg g_2=2\)</span>，定理给出的次数界迫使 <span class="math notranslate nohighlight">\(h_1,h_2\)</span> 为常数（或零）。但常数倍的 <span class="math notranslate nohighlight">\(g_1,g_2\)</span> 都不含 <span class="math notranslate nohighlight">\(xy\)</span> 项，无法产生 <span class="math notranslate nohighlight">\(f\)</span> 中非零的 <span class="math notranslate nohighlight">\(xy\)</span> 系数。</p>
+<div class="tip admonition">
+<p class="admonition-title">回看本章主线</p>
+<p>网格上的零多项式由各坐标的消失多项式生成；逐变量次数受限时，网格取值唯一确定多项式；指定最高总次数单项式的系数非零时，网格上必有非零取值。</p>
+</div>
 </section>
-<section id="id5">
-<h2>交互实验：网格取值与逐变量次数<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+</section>
+<section id="id9">
+<h2>交互实验：网格取值与逐变量次数<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <div class="lesson-widget" data-kind="grid" aria-label="网格取值与逐变量次数"><noscript>此实验需要 JavaScript。可阅读正文中的定理与章末推理练习。</noscript></div></section>
-<section id="id6">
-<h2>本章自测<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id10">
+<h2>本章自测<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <div class="quiz" data-explain="网格消失理想的生成多项式要求有限集合。" data-hint="查看 \(g_i\) 的定义。"><p>网格消失定理是否需要集合 <span class="math">\(S_i\)</span> 有限？</p><button data-correct="yes">需要</button> <button data-correct="no">不需要</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
-<section id="id7">
-<h2>练习与解答<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id11">
+<h2>练习与解答<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>证明有限非空网格上的任意函数都有逐变量次数受限的唯一插值代表。</p>
 <div class="dropdown tip admonition">
 <p class="admonition-title">参考解答</p>
 <p>对每个变量分别取 Lagrange 基多项式，再将它们相乘并按函数值加权，即得插值多项式，满足 <span class="math notranslate nohighlight">\(\deg_{x_i}f&lt;|S_i|\)</span>。两个代表之差在网格上恒零，逐变量根数引理迫使差为零，故代表唯一。</p>
 </div>
 </section>
-<section id="id8">
-<h2>学习检查<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<section id="id12">
+<h2>学习检查<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>运用有限网格上的逐变量根数界。</p></li>
 <li><p>理解网格消失理想及其生成多项式。</p></li>
 <li><p>用系数判别证明组合零点结论。</p></li>
 </ul>
 </section>
-<section id="id9">
-<h2>学习笔记<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<section id="id13">
+<h2>学习笔记<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
 <p>记录本章的疑问、证明思路和计算结果。笔记自动保存在当前浏览器，可导出为文本文件。</p>
 <span id="slide-117"></span><span id="slide-118"></span><span id="slide-119"></span>
 <label for="chapter-note-c17">本章笔记</label><textarea id="chapter-note-c17" class="local-note chapter-note" data-page="chapter" data-legacy-pages="117,118,119" placeholder="写下概念之间的联系、需要复习的证明，或交互实验中的发现。"></textarea>
@@ -607,14 +682,24 @@ f(s_1,\ldots,s_n)\ne0.
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">有限网格上的根数界</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">网格消失理想与带余除法</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">组合零点定理的系数判别</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">交互实验：网格取值与逐变量次数</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">本章自测</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">练习与解答</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">学习检查</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">学习笔记</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">从四个网格点出发</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">有限网格上的根数界</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">回看前面的反例：次数条件不能少</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">网格消失理想与带余除法</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">去掉在网格上必为零的部分</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">组合零点定理的系数判别</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">由系数预判存在非零取值</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">交互实验：网格取值与逐变量次数</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">本章自测</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">练习与解答</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">学习检查</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">学习笔记</a></li>
 </ul>
   </nav></div>
 

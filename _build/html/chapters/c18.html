@@ -444,7 +444,8 @@
 <li><p>将多项式方法应用于零和问题。</p></li>
 </ul>
 </div>
-<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><section id="cauchydavenport">
+<div class="reader-toolbar" role="region" aria-label="逐行阅读控制"><button id="reader-prev">上一段 ↑</button><button id="reader-next">下一段 ↓</button><button id="reader-reset">从头阅读</button><button id="reader-notes" aria-pressed="false">隐藏注释</button><output id="reader-position" aria-live="polite"></output></div><p>本章有三种看似不同的问题：两个集合相加后会产生多少种结果？若方程的变量足够多，零点数受到什么限制？一列整数至少多长，才能保证从中选出指定项数使和为零？下面依次用第 17 章的组合零点定理、有限域上的幂和，以及零点计数来回答。</p>
+<section id="cauchydavenport">
 <h2>和集与 Cauchy–Davenport 定理<a class="headerlink" href="#cauchydavenport" title="Link to this heading">#</a></h2>
 <div class="statement-box theorem docutils container" id="c18-statement-001">
 <div class="source-line source-label docutils container" id="p120-l01">
@@ -465,8 +466,20 @@
 </div>
 <div class="dropdown tip admonition">
 <p class="admonition-title">证明</p>
-<p>若 <span class="math notranslate nohighlight">\(|A|+|B|&gt;p\)</span>，任意 <span class="math notranslate nohighlight">\(c\in\mathbb F_p\)</span> 都使 <span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(c-B\)</span> 相交，因此 <span class="math notranslate nohighlight">\(A+B=\mathbb F_p\)</span>。否则，若 <span class="math notranslate nohighlight">\(|A+B|\leq |A|+|B|-2\)</span>，选取含 <span class="math notranslate nohighlight">\(A+B\)</span> 的集合 <span class="math notranslate nohighlight">\(C\)</span>，使 <span class="math notranslate nohighlight">\(|C|=|A|+|B|-2&lt;p\)</span>。多项式 <span class="math notranslate nohighlight">\(P(x,y)=\prod_{c\in C}(x+y-c)\)</span> 在 <span class="math notranslate nohighlight">\(A\times B\)</span> 上恒零，但 <span class="math notranslate nohighlight">\(x^{|A|-1}y^{|B|-1}\)</span> 的系数为 <span class="math notranslate nohighlight">\(\binom{|C|}{|A|-1}\ne0\)</span>，组合零点定理给出矛盾。若 <span class="math notranslate nohighlight">\(|A|=|B|=1\)</span>，结论直接成立。</p>
+<p>记 <span class="math notranslate nohighlight">\(a=|A|,b=|B|\)</span>。若 <span class="math notranslate nohighlight">\(a+b&gt;p\)</span>，对任意 <span class="math notranslate nohighlight">\(c\in\mathbb F_p\)</span>，集合 <span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(c-B=\{c-y:y\in B\}\)</span> 的大小之和超过 <span class="math notranslate nohighlight">\(p\)</span>，故两集合必相交。于是 <span class="math notranslate nohighlight">\(c=x+y\)</span>，其中 <span class="math notranslate nohighlight">\(x\in A,y\in B\)</span>，所以 <span class="math notranslate nohighlight">\(A+B=\mathbb F_p\)</span>。</p>
+<p>下面设 <span class="math notranslate nohighlight">\(a+b\leq p\)</span>。反设 <span class="math notranslate nohighlight">\(|A+B|\leq a+b-2\)</span>。取 <span class="math notranslate nohighlight">\(C\supseteq A+B\)</span> 且 <span class="math notranslate nohighlight">\(|C|=a+b-2\)</span>；由于 <span class="math notranslate nohighlight">\(a+b-2&lt;p\)</span>，这样的 <span class="math notranslate nohighlight">\(C\subseteq\mathbb F_p\)</span> 存在。构造</p>
+<div class="math notranslate nohighlight">
+\[P(X,Y)=\prod_{c\in C}(X+Y-c).\]</div>
+<p>对每个 <span class="math notranslate nohighlight">\((x,y)\in A\times B\)</span>，都有 <span class="math notranslate nohighlight">\(x+y\in C\)</span>，故 <span class="math notranslate nohighlight">\(P(x,y)=0\)</span>。另一方面，<span class="math notranslate nohighlight">\(P\)</span> 的总次数为 <span class="math notranslate nohighlight">\(a+b-2\)</span>；它的最高次齐次部分是 <span class="math notranslate nohighlight">\((X+Y)^{a+b-2}\)</span>，从而</p>
+<div class="math notranslate nohighlight">
+\[[X^{a-1}Y^{b-1}]P=\binom{a+b-2}{a-1}\ne0\quad\text{在 }\mathbb F_p\text{ 中}.\]</div>
+<p>最后一步成立是因为 <span class="math notranslate nohighlight">\(0\leq a-1,b-1,a+b-2&lt;p\)</span>，阶乘均不被 <span class="math notranslate nohighlight">\(p\)</span> 整除。组合零点定理应用于 <span class="math notranslate nohighlight">\(S_1=A,S_2=B,t_1=a-1,t_2=b-1\)</span>，断言 <span class="math notranslate nohighlight">\(P\)</span> 在 <span class="math notranslate nohighlight">\(A\times B\)</span> 上有非零取值，矛盾。故 <span class="math notranslate nohighlight">\(|A+B|\geq a+b-1\)</span>。当 <span class="math notranslate nohighlight">\(a=b=1\)</span> 时也包含在上述论证中（此时 <span class="math notranslate nohighlight">\(C=\varnothing\)</span>，空积为 <span class="math notranslate nohighlight">\(1\)</span>）。</p>
 </div>
+</div>
+<div class="example admonition">
+<p class="admonition-title">例：和集怎样增长</p>
+<p>在 <span class="math notranslate nohighlight">\(\mathbb F_7\)</span> 中取 <span class="math notranslate nohighlight">\(A=\{0,1,2\}\)</span>、<span class="math notranslate nohighlight">\(B=\{0,1,2\}\)</span>，则 <span class="math notranslate nohighlight">\(A+B=\{0,1,2,3,4\}\)</span>，恰有 <span class="math notranslate nohighlight">\(3+3-1=5\)</span> 个元素，说明下界可以取到。若把 <span class="math notranslate nohighlight">\(B\)</span> 换成 <span class="math notranslate nohighlight">\(\{0,1,2,3,4\}\)</span>，则 <span class="math notranslate nohighlight">\(|A|+|B|=8&gt;7\)</span>，每个剩余类都可写成 <span class="math notranslate nohighlight">\(a+b\)</span>，和集成为整个 <span class="math notranslate nohighlight">\(\mathbb F_7\)</span>。两个例子分别展示了定理中的 <span class="math notranslate nohighlight">\(|A|+|B|-1\)</span> 和 <span class="math notranslate nohighlight">\(p\)</span> 两种情形。</p>
+<p>在第一个例子中若假设和集只有 <span class="math notranslate nohighlight">\(4\)</span> 个元素，就要取 <span class="math notranslate nohighlight">\(|C|=4\)</span>，构造 <span class="math notranslate nohighlight">\(\prod_{c\in C}(X+Y-c)\)</span>。它的 <span class="math notranslate nohighlight">\(X^2Y^2\)</span> 系数是 <span class="math notranslate nohighlight">\(\binom42=6\ne0\)</span>（模 <span class="math notranslate nohighlight">\(7\)</span>），因此不可能在 <span class="math notranslate nohighlight">\(A\times B\)</span> 上恒为零。</p>
 </div>
 </section>
 <section id="chevalleywarning">
@@ -500,12 +513,22 @@ P_m&amp;=P_m(x_1,x_2,\ldots,x_n).
 <div class="dropdown reading-note chapter-remark admonition" id="c18-remark-02">
 <p class="admonition-title">注 2</p>
 <ul class="simple">
-<li><p>在 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 中对所有点求和，表达式 <span class="math notranslate nohighlight">\(\prod_i(1-P_i(x)^{p-1})\)</span> 只在公共零点取 <span class="math notranslate nohighlight">\(1\)</span>。次数条件使其总和为零，从而公共零点数被 <span class="math notranslate nohighlight">\(p\)</span> 整除；这不保证一定有非零解。</p></li>
+<li><p>在 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 中对所有点求和，表达式 <span class="math notranslate nohighlight">\(\prod_i(1-P_i(x)^{p-1})\)</span> 只在公共零点取 <span class="math notranslate nohighlight">\(1\)</span>。次数条件使总和为零，从而公共零点数被 <span class="math notranslate nohighlight">\(p\)</span> 整除。方程组可能没有解；若已知零向量是一个公共零点，则公共零点至少有 <span class="math notranslate nohighlight">\(p\)</span> 个，因而一定还有非零解。</p></li>
 </ul>
 </div>
 <div class="dropdown tip admonition">
 <p class="admonition-title">证明</p>
-<p>也可对任意 <span class="math notranslate nohighlight">\(q=p^r\)</span> 证明。公共零点的指示函数为 <span class="math notranslate nohighlight">\(\prod_i(1-P_i(x)^{q-1})\)</span>。展开后每个单项式的总次数小于 <span class="math notranslate nohighlight">\(n(q-1)\)</span>，因此至少有一个变量的指数小于 <span class="math notranslate nohighlight">\(q-1\)</span>。对该变量求和得到 <span class="math notranslate nohighlight">\(0\)</span>：指数为 <span class="math notranslate nohighlight">\(0\)</span> 时总和为 <span class="math notranslate nohighlight">\(q=0\)</span>，指数在 <span class="math notranslate nohighlight">\(1,\ldots,q-2\)</span> 时由乘法群循环性得到幂和为 <span class="math notranslate nohighlight">\(0\)</span>。逐变量求和可知公共零点数在域中为 <span class="math notranslate nohighlight">\(0\)</span>，即被特征 <span class="math notranslate nohighlight">\(p\)</span> 整除。零多项式可从方程组中删除。</p>
+<p>先在 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 上证明。费马小定理给出：<span class="math notranslate nohighlight">\(u^{p-1}=0\)</span>（<span class="math notranslate nohighlight">\(u=0\)</span>）或 <span class="math notranslate nohighlight">\(1\)</span>（<span class="math notranslate nohighlight">\(u\ne0\)</span>）。因此</p>
+<div class="math notranslate nohighlight">
+\[I(x_1,\ldots,x_n)=\prod_{i=1}^{m}\bigl(1-P_i(x_1,\ldots,x_n)^{p-1}\bigr)\]</div>
+<p>在公共零点取 <span class="math notranslate nohighlight">\(1\)</span>，在其他点取 <span class="math notranslate nohighlight">\(0\)</span>。若公共零点数为 <span class="math notranslate nohighlight">\(N\)</span>，则作为 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 中的等式，</p>
+<div class="math notranslate nohighlight">
+\[N=\sum_{x\in\mathbb F_p^n}I(x).\]</div>
+<p>展开 <span class="math notranslate nohighlight">\(I\)</span>。任一出现的单项式 <span class="math notranslate nohighlight">\(c x_1^{e_1}\cdots x_n^{e_n}\)</span> 满足</p>
+<div class="math notranslate nohighlight">
+\[e_1+\cdots+e_n\leq(p-1)\sum_i\deg P_i&lt;n(p-1).\]</div>
+<p>所以至少有一个 <span class="math notranslate nohighlight">\(e_j&lt;p-1\)</span>。对该单项式在整个 <span class="math notranslate nohighlight">\(\mathbb F_p^n\)</span> 上求和，可按坐标分离为 <span class="math notranslate nohighlight">\(c\prod_j\sum_{u\in\mathbb F_p}u^{e_j}\)</span>，其中 <span class="math notranslate nohighlight">\(u^0=1\)</span>。当 <span class="math notranslate nohighlight">\(e_j=0\)</span> 时，该因子为 <span class="math notranslate nohighlight">\(p=0\)</span>；当 <span class="math notranslate nohighlight">\(1\leq e_j&lt;p-1\)</span> 时，非零元素的幂和为 <span class="math notranslate nohighlight">\(0\)</span>（取 <span class="math notranslate nohighlight">\(\mathbb F_p^\times\)</span> 的生成元并求等比级数）。因此每个单项式的总和都是 <span class="math notranslate nohighlight">\(0\)</span>，进而 <span class="math notranslate nohighlight">\(N=0\)</span> 在 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 中成立，即整数 <span class="math notranslate nohighlight">\(N\)</span> 被 <span class="math notranslate nohighlight">\(p\)</span> 整除。</p>
+<p>同样的论证适用于 <span class="math notranslate nohighlight">\(\mathbb F_q\)</span>：把 <span class="math notranslate nohighlight">\(p-1\)</span> 换为 <span class="math notranslate nohighlight">\(q-1\)</span>，并用 <span class="math notranslate nohighlight">\(\sum_{u\in\mathbb F_q}1=q=0\)</span>。所得结论仍是**特征 <span class="math notranslate nohighlight">\(p\)</span>**整除公共零点数，而不是要求 <span class="math notranslate nohighlight">\(q\)</span> 整除。</p>
 </div>
 </div>
 <div class="statement-box exercise docutils container" id="c18-statement-003">
@@ -515,6 +538,11 @@ P_m&amp;=P_m(x_1,x_2,\ldots,x_n).
 <div class="source-line docutils container" id="p121-l10">
 <p>证明若在任意有限域<span class="math notranslate nohighlight">\(\mathbb{F}\)</span>上考虑该问题，结论换成公共零点数目是域的特征的倍数</p>
 </div>
+</div>
+<div class="example admonition">
+<p class="admonition-title">例：逐点计数与整除结论</p>
+<p>在 <span class="math notranslate nohighlight">\(\mathbb F_3^3\)</span> 中考虑 <span class="math notranslate nohighlight">\(P(x,y,z)=x+y+z\)</span>。它的次数为 <span class="math notranslate nohighlight">\(1&lt;3\)</span>。任取 <span class="math notranslate nohighlight">\(x,y\in\mathbb F_3\)</span>，恰有一个 <span class="math notranslate nohighlight">\(z=-x-y\)</span> 使 <span class="math notranslate nohighlight">\(P=0\)</span>，所以公共零点（此处只有一个方程）的数目是 <span class="math notranslate nohighlight">\(3^2=9\)</span>，确实被 <span class="math notranslate nohighlight">\(3\)</span> 整除。证明中的指示函数是 <span class="math notranslate nohighlight">\(1-(x+y+z)^2\)</span>：在这 <span class="math notranslate nohighlight">\(9\)</span> 个零点上取 <span class="math notranslate nohighlight">\(1\)</span>，在其余 <span class="math notranslate nohighlight">\(18\)</span> 个点上取 <span class="math notranslate nohighlight">\(0\)</span>。</p>
+<p>整除不等于必有解。例如常数方程 <span class="math notranslate nohighlight">\(1=0\)</span> 没有解，零点数 <span class="math notranslate nohighlight">\(0\)</span> 仍被 <span class="math notranslate nohighlight">\(3\)</span> 整除；但若方程组已知有零向量这个解，零点数就至少是 <span class="math notranslate nohighlight">\(3\)</span>，必另有非零解。</p>
 </div>
 </section>
 <section id="id2">
@@ -548,6 +576,10 @@ P_m&amp;=P_m(x_1,x_2,\ldots,x_n).
 </ul>
 </div>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">下界的证明与例子</p>
+<p>当 <span class="math notranslate nohighlight">\(n\geq2\)</span> 时，取 <span class="math notranslate nohighlight">\(n-1\)</span> 个 <span class="math notranslate nohighlight">\(0\)</span> 和 <span class="math notranslate nohighlight">\(n-1\)</span> 个 <span class="math notranslate nohighlight">\(1\)</span>，总长 <span class="math notranslate nohighlight">\(2n-2\)</span>。从中选 <span class="math notranslate nohighlight">\(n\)</span> 项时，既不可能全选 <span class="math notranslate nohighlight">\(0\)</span>，也不可能全选 <span class="math notranslate nohighlight">\(1\)</span>；所选的 <span class="math notranslate nohighlight">\(1\)</span> 的个数介于 <span class="math notranslate nohighlight">\(1\)</span> 与 <span class="math notranslate nohighlight">\(n-1\)</span> 之间，所以这 <span class="math notranslate nohighlight">\(n\)</span> 项的和不被 <span class="math notranslate nohighlight">\(n\)</span> 整除。因此所求的最小长度至少为 <span class="math notranslate nohighlight">\(2n-1\)</span>。例如 <span class="math notranslate nohighlight">\(n=3\)</span> 时，序列 <span class="math notranslate nohighlight">\((0,0,1,1)\)</span> 中任取三项，和只能是 <span class="math notranslate nohighlight">\(1\)</span> 或 <span class="math notranslate nohighlight">\(2\)</span>；长度再增加到 <span class="math notranslate nohighlight">\(5\)</span>，下文的定理保证一定能选出三项零和。</p>
+</div>
 </section>
 <section id="erdosginzburgziv">
 <h2>Erdős–Ginzburg–Ziv 定理<a class="headerlink" href="#erdosginzburgziv" title="Link to this heading">#</a></h2>
@@ -568,8 +600,24 @@ P_m&amp;=P_m(x_1,x_2,\ldots,x_n).
 </div>
 <div class="dropdown tip admonition">
 <p class="admonition-title">证明</p>
-<p>对序列 <span class="math notranslate nohighlight">\(a_1,\ldots,a_{2p-1}\)</span>，考虑 <span class="math notranslate nohighlight">\(\sum_i x_i^{p-1}=0\)</span> 与 <span class="math notranslate nohighlight">\(\sum_i a_ix_i^{p-1}=0\)</span>。两式次数之和至多 <span class="math notranslate nohighlight">\(2(p-1)&lt;2p-1\)</span>，故公共解数被 <span class="math notranslate nohighlight">\(p\)</span> 整除。零向量是一个解，所以必有另一个解。非零坐标个数是 <span class="math notranslate nohighlight">\(p\)</span> 的正倍数，又不超过 <span class="math notranslate nohighlight">\(2p-1\)</span>，因此恰为 <span class="math notranslate nohighlight">\(p\)</span>。每个非零坐标的 <span class="math notranslate nohighlight">\(p-1\)</span> 次幂为 <span class="math notranslate nohighlight">\(1\)</span>，对应的 <span class="math notranslate nohighlight">\(p\)</span> 个序列元素之和便为 <span class="math notranslate nohighlight">\(0\)</span>。一般 <span class="math notranslate nohighlight">\(n\)</span> 的情形由章末因子递推练习完成。</p>
+<p>记 <span class="math notranslate nohighlight">\(N=2p-1\)</span>。对给定的 <span class="math notranslate nohighlight">\(a_1,\ldots,a_N\in\mathbb F_p\)</span>，引入 <span class="math notranslate nohighlight">\(N\)</span> 个变量，考虑方程组</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=1}^{N}x_i^{p-1}=0,\qquad \sum_{i=1}^{N}a_i x_i^{p-1}=0.\]</div>
+<p>两式的次数之和不超过 <span class="math notranslate nohighlight">\(2(p-1)&lt;N\)</span>。由 Chevalley–Warning 定理，公共解的数目被 <span class="math notranslate nohighlight">\(p\)</span> 整除。零向量是其中一个解，因此公共解不可能只有一个，必有非零解 <span class="math notranslate nohighlight">\((x_i)\)</span>。</p>
+<p>设 <span class="math notranslate nohighlight">\(T=\{i:x_i\ne0\}\)</span>。在 <span class="math notranslate nohighlight">\(\mathbb F_p\)</span> 中，<span class="math notranslate nohighlight">\(x_i^{p-1}\)</span> 对 <span class="math notranslate nohighlight">\(i\in T\)</span> 等于 <span class="math notranslate nohighlight">\(1\)</span>，对其余下标等于 <span class="math notranslate nohighlight">\(0\)</span>。第一式于是变为 <span class="math notranslate nohighlight">\(|T|=0\)</span>（模 <span class="math notranslate nohighlight">\(p\)</span>）。由于 <span class="math notranslate nohighlight">\(1\leq |T|\leq2p-1\)</span>，只能有 <span class="math notranslate nohighlight">\(|T|=p\)</span>。第二式随即变为 <span class="math notranslate nohighlight">\(\sum_{i\in T}a_i=0\)</span>。这些互不相同的下标给出所需的 <span class="math notranslate nohighlight">\(p\)</span> 项子序列。</p>
 </div>
+</div>
+<div class="example admonition">
+<p class="admonition-title">例：从非零解读出零和子序列</p>
+<p>在 <span class="math notranslate nohighlight">\(\mathbb F_3\)</span> 中，序列 <span class="math notranslate nohighlight">\((0,0,1,1,2)\)</span> 有 <span class="math notranslate nohighlight">\(2\cdot3-1=5\)</span> 项。取下标 <span class="math notranslate nohighlight">\(T=\{1,3,5\}\)</span>，相应的三项为 <span class="math notranslate nohighlight">\(0,1,2\)</span>，和为 <span class="math notranslate nohighlight">\(0\)</span>（模 <span class="math notranslate nohighlight">\(3\)</span>）。在命题证明的方程组中，取 <span class="math notranslate nohighlight">\(x_1=x_3=x_5=1\)</span>、其余 <span class="math notranslate nohighlight">\(x_i=0\)</span>，便得到一个非零公共解。变量 <span class="math notranslate nohighlight">\(x_i\)</span> 的非零与否只负责标记<strong>选取哪些下标</strong>。</p>
+</div>
+<div class="dropdown tip admonition">
+<p class="admonition-title">定理 18.3 的完整证明：从素数走向任意正整数</p>
+<p>命题 18.2 已证明素数 <span class="math notranslate nohighlight">\(p\)</span> 的情形。再证明一个合成步骤：假设结论对正整数 <span class="math notranslate nohighlight">\(a,b\)</span> 都成立，则对 <span class="math notranslate nohighlight">\(n=ab\)</span> 也成立。给定 <span class="math notranslate nohighlight">\(2ab-1\)</span> 项整数，反复从剩余项中选出互不相交的 <span class="math notranslate nohighlight">\(a\)</span> 项组，使每组的和被 <span class="math notranslate nohighlight">\(a\)</span> 整除。选取第 <span class="math notranslate nohighlight">\(j\)</span> 组之前（<span class="math notranslate nohighlight">\(1\leq j\leq2b-1\)</span>），尚有</p>
+<div class="math notranslate nohighlight">
+\[2ab-1-(j-1)a\geq2ab-1-(2b-2)a=2a-1\]</div>
+<p>项，因此可从剩余项中取 <span class="math notranslate nohighlight">\(2a-1\)</span> 项并应用 <span class="math notranslate nohighlight">\(a\)</span> 的结论。这样得到 <span class="math notranslate nohighlight">\(2b-1\)</span> 个互不相交的 <span class="math notranslate nohighlight">\(a\)</span> 项组，其组和分别写为 <span class="math notranslate nohighlight">\(a u_1,\ldots,a u_{2b-1}\)</span>，其中 <span class="math notranslate nohighlight">\(u_i\)</span> 是整数。对 <span class="math notranslate nohighlight">\(u_1,\ldots,u_{2b-1}\)</span> 应用 <span class="math notranslate nohighlight">\(b\)</span> 的结论，选出 <span class="math notranslate nohighlight">\(b\)</span> 个使其和被 <span class="math notranslate nohighlight">\(b\)</span> 整除。对应的 <span class="math notranslate nohighlight">\(b\)</span> 个组共有 <span class="math notranslate nohighlight">\(ab\)</span> 个不同下标，原序列中这些项的和为 <span class="math notranslate nohighlight">\(a\)</span> 乘以 <span class="math notranslate nohighlight">\(b\)</span> 的倍数，因而被 <span class="math notranslate nohighlight">\(ab\)</span> 整除。</p>
+<p>以 <span class="math notranslate nohighlight">\(n=1\)</span> 为起点，结合素数情形和正整数的素因子分解，反复使用合成步骤即可证明任意 <span class="math notranslate nohighlight">\(n\)</span> 的上界 <span class="math notranslate nohighlight">\(m\leq2n-1\)</span>。前面的下界给出 <span class="math notranslate nohighlight">\(m\geq2n-1\)</span>，所以 <span class="math notranslate nohighlight">\(m=2n-1\)</span>。</p>
 </div>
 </section>
 <section id="id3">
@@ -580,10 +628,10 @@ P_m&amp;=P_m(x_1,x_2,\ldots,x_n).
 <div class="quiz" data-explain="零也被 \(p\) 整除。" data-hint="区分整除和存在性。"><p>Chevalley–Warning 的整除结论能保证零点个数非零吗？</p><button data-correct="yes">不能</button> <button data-correct="no">能</button><p class="quiz-feedback" aria-live="polite"></p></div></section>
 <section id="id5">
 <h2>练习与解答<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
-<p>说明零和定理的合数情形如何从两个因子情形递推。</p>
+<p>以 <span class="math notranslate nohighlight">\(n=6=2\cdot3\)</span> 为例，说明如何从任意 <span class="math notranslate nohighlight">\(11\)</span> 项整数中选出 <span class="math notranslate nohighlight">\(6\)</span> 项，使其和被 <span class="math notranslate nohighlight">\(6\)</span> 整除。指出要先取多少个互不相交的二项组，以及每个阶段至少剩余多少项。</p>
 <div class="dropdown tip admonition">
 <p class="admonition-title">参考解答</p>
-<p>设 <span class="math notranslate nohighlight">\(n=ab\)</span>，<span class="math notranslate nohighlight">\(a,b\geq2\)</span>。从长度 <span class="math notranslate nohighlight">\(2ab-1\)</span> 的序列依次选取 <span class="math notranslate nohighlight">\(2b-1\)</span> 个互不相交的 <span class="math notranslate nohighlight">\(a\)</span> 项组，使每组和被 <span class="math notranslate nohighlight">\(a\)</span> 整除；选最后一组前剩余 <span class="math notranslate nohighlight">\(2a-1\)</span> 项，因此各次都能应用 <span class="math notranslate nohighlight">\(a\)</span> 的结论。将各组和除以 <span class="math notranslate nohighlight">\(a\)</span> 得到 <span class="math notranslate nohighlight">\(2b-1\)</span> 个整数，再应用 <span class="math notranslate nohighlight">\(b\)</span> 的结论选出 <span class="math notranslate nohighlight">\(b\)</span> 组，其并集有 <span class="math notranslate nohighlight">\(ab\)</span> 项，和被 <span class="math notranslate nohighlight">\(ab\)</span> 整除。<span class="math notranslate nohighlight">\(n=1\)</span> 直接成立，素数情形由正文命题证明。</p>
+<p>先依次取 <span class="math notranslate nohighlight">\(2\cdot3-1=5\)</span> 个互不相交的二项组，每组的和为偶数。选第五组之前，原来 <span class="math notranslate nohighlight">\(11\)</span> 项中已经使用 <span class="math notranslate nohighlight">\(8\)</span> 项，仍剩 <span class="math notranslate nohighlight">\(3=2\cdot2-1\)</span> 项，所以仍能用 <span class="math notranslate nohighlight">\(n=2\)</span> 的结论选出一组。将五个组和分别除以 <span class="math notranslate nohighlight">\(2\)</span>，得到五个整数；由 <span class="math notranslate nohighlight">\(n=3\)</span> 的结论选出其中三个，使其和被 <span class="math notranslate nohighlight">\(3\)</span> 整除。这三个组包含六个不同下标，原来六项之和等于 <span class="math notranslate nohighlight">\(2\)</span> 乘以 <span class="math notranslate nohighlight">\(3\)</span> 的倍数，故被 <span class="math notranslate nohighlight">\(6\)</span> 整除。</p>
 </div>
 </section>
 <section id="id6">
