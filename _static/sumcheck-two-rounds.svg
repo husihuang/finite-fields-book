@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 650" role="img" aria-labelledby="title desc">
+  <title id="title">有限域七上的两轮求和检验对话</title>
+  <desc id="desc">证明者声称 f(x1,x2)=x1x2+x1 在布尔平方上的和 H 为 3。第一轮发送 g1(X)=3X；验证者检查 g1(0)+g1(1)=3，然后选 r1=2，得到 C1=6。第二轮发送 g2(Y)=2Y+2；验证者检查 g2(0)+g2(1)=2+4=6，再选 r2=3，得到 C2=1。最后验证者直接计算 f(2,3)=1，接受。</desc>
+  <defs>
+    <marker id="message-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#276884"/></marker>
+    <marker id="challenge-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#b16c17"/></marker>
+  </defs>
+  <rect x="1" y="1" width="938" height="648" rx="18" fill="#f7fafb" stroke="#c5d8dc" stroke-width="2"/>
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif" fill="#12384b">
+    <text x="218" y="46" text-anchor="middle" font-size="24" font-weight="700">证明者 P</text>
+    <text x="722" y="46" text-anchor="middle" font-size="24" font-weight="700">验证者 V</text>
+    <text x="470" y="78" text-anchor="middle" font-size="18">f(x₁,x₂) = x₁x₂ + x₁；声称 H = 3（在 𝔽₇ 中）</text>
+  </g>
+  <line x1="463" y1="94" x2="463" y2="607" stroke="#c8d9dd" stroke-width="2" stroke-dasharray="7 9"/>
+
+  <rect x="37" y="110" width="367" height="58" rx="10" fill="#e6f1f7" stroke="#8db8c9" stroke-width="2"/>
+  <text x="221" y="146" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="650" fill="#12384b">第 1 轮：发送 g₁(X) = 3X</text>
+  <line x1="406" y1="139" x2="523" y2="139" stroke="#276884" stroke-width="3" marker-end="url(#message-arrow)"/>
+  <rect x="533" y="102" width="365" height="74" rx="10" fill="#e8f5f1" stroke="#92c8b8" stroke-width="2"/>
+  <text x="715" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="650" fill="#12384b">检查次数 ≤ 1</text>
+  <text x="715" y="158" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">g₁(0) + g₁(1) = 0 + 3 = 3 ✓</text>
+  <line x1="533" y1="204" x2="407" y2="204" stroke="#b16c17" stroke-width="3" marker-end="url(#challenge-arrow)"/>
+  <text x="470" y="193" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#835113">随机选 r₁ = 2</text>
+  <rect x="533" y="226" width="365" height="47" rx="9" fill="#fff0d9" stroke="#d9a653" stroke-width="2"/>
+  <text x="715" y="256" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">新声称 C₁ = g₁(2) = 6</text>
+
+  <line x1="75" y1="306" x2="865" y2="306" stroke="#c8d9dd" stroke-width="2" stroke-dasharray="5 8"/>
+  <text x="470" y="333" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" fill="#657b83">上一轮的挑战 r₁ 已公开；下一轮可以依赖 r₁</text>
+
+  <rect x="37" y="355" width="367" height="58" rx="10" fill="#e6f1f7" stroke="#8db8c9" stroke-width="2"/>
+  <text x="221" y="391" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="650" fill="#12384b">第 2 轮：发送 g₂(Y) = 2Y + 2</text>
+  <line x1="406" y1="384" x2="523" y2="384" stroke="#276884" stroke-width="3" marker-end="url(#message-arrow)"/>
+  <rect x="533" y="347" width="365" height="74" rx="10" fill="#e8f5f1" stroke="#92c8b8" stroke-width="2"/>
+  <text x="715" y="377" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="650" fill="#12384b">检查次数 ≤ 1</text>
+  <text x="715" y="403" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">g₂(0) + g₂(1) = 2 + 4 = 6 ✓</text>
+  <line x1="533" y1="449" x2="407" y2="449" stroke="#b16c17" stroke-width="3" marker-end="url(#challenge-arrow)"/>
+  <text x="470" y="438" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#835113">随机选 r₂ = 3</text>
+  <rect x="533" y="470" width="365" height="47" rx="9" fill="#fff0d9" stroke="#d9a653" stroke-width="2"/>
+  <text x="715" y="500" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">新声称 C₂ = g₂(3) = 1</text>
+
+  <rect x="533" y="541" width="365" height="72" rx="10" fill="#e8f5f1" stroke="#92c8b8" stroke-width="2"/>
+  <text x="715" y="570" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="650" fill="#12384b">最终独立计算 f(2,3) = 1</text>
+  <text x="715" y="596" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">与 C₂ 相等，接受 ✓</text>
+  <text x="470" y="637" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#596d76">每轮都是先收到多项式并检查，再选取该轮随机数。</text>
+</svg>

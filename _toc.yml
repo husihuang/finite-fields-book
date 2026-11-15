@@ -33,6 +33,7 @@ parts:
       - file: chapters/c17
       - file: chapters/c18
       - file: chapters/c19
+      - file: chapters/c20
   - caption: 附录
     chapters:
       - file: appendices/source

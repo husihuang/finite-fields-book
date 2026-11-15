@@ -35,7 +35,7 @@ function start(){
   if(!app){chapterPanel();return;}
   app.className='kg-app';
   let selected=null,zoom=1,expanded=false;
-  const header=element('div',{class:'kg-header'});header.append(element('p',{class:'kg-eyebrow'},'学习导航 · 自我评估'),element('p',{},`${D.nodes.length} 个核心概念 · ${D.edges.length} 条学习联系 · 19 章`));
+  const header=element('div',{class:'kg-header'});header.append(element('p',{class:'kg-eyebrow'},'学习导航 · 自我评估'),element('p',{},`${D.nodes.length} 个核心概念 · ${D.edges.length} 条学习联系 · ${D.chapters.length} 章`));
   const tabs=element('div',{class:'kg-tabs','aria-label':'导航视图'});
   const mapTab=button('知识图谱',()=>switchTab('map'),{id:'kg-map-tab','aria-pressed':'true'}),studyTab=button('我的学习状态',()=>switchTab('study'),{id:'kg-study-tab','aria-pressed':'false'});tabs.append(mapTab,studyTab);
   const alert=element('p',{id:'kg-storage-message',role:'status','aria-live':'polite'});

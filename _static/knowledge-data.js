@@ -1,7 +1,7 @@
 /* Authored learning relationships, not an automatically inferred proof graph. */
 (() => {
 'use strict';
-const chapters = ['群与运算','等价关系与陪集','循环群基本定理','环、理想与域','多项式与 Euclid 算法','不可约多项式','根与 Lagrange 插值','子域与极小多项式','域扩张与分裂域','有限域的存在与子域','本原元','不可约多项式的根','迹与范数','基、对偶基与判别式','割圆域与割圆多项式','有限域的表示与实现','组合零点定理','加法组合与零和问题','Schwartz–Zippel 与多项式检验'].map((name,i)=>({id:`c${String(i+1).padStart(2,'0')}`,name,number:i+1,part:i<7?0:i<12?1:i<15?2:i<16?3:4}));
+const chapters = ['群与运算','等价关系与陪集','循环群基本定理','环、理想与域','多项式与 Euclid 算法','不可约多项式','根与 Lagrange 插值','子域与极小多项式','域扩张与分裂域','有限域的存在与子域','本原元','不可约多项式的根','迹与范数','基、对偶基与判别式','割圆域与割圆多项式','有限域的表示与实现','组合零点定理','加法组合与零和问题','Schwartz–Zippel 与多项式检验','Schwartz–Zippel 引理的应用'].map((name,i)=>({id:`c${String(i+1).padStart(2,'0')}`,name,number:i+1,part:i<7?0:i<12?1:i<15?2:i<16?3:4}));
 const parts=['代数基础','域扩张与有限域','有限域的进一步结构','表示与计算','多项式的组合应用'];
 // id | chapter | statement number or named anchor | title | kind | summary | formula | conditions / common confusion
 const rows=String.raw`
@@ -139,6 +139,10 @@ schwartz-zippel|19|001|Schwartz–Zippel 引理|定理|非零多元多项式在�
 multilinear|19|002|多线性多项式|定义|每个变量的次数至多为一，适合在布尔立方体上估计支撑大小。|\deg_{x_i}f\le1|这是分别次数条件，不等于总次数至多一。
 nonzero-bound|19|002|布尔立方体非零点下界|定理|非零多线性多项式的低总次数保证有较多非零取值点。|\#\{a\in\{0,1\}^n:f(a)\ne0\}\ge2^{n-d}|系数在 \(\mathbb F_2\)，非零多线性，总次数 \(d\le n\)。
 identity-test|19|003|随机多项式恒等检验|方法|独立取样代入，多次零结果降低将非零多项式误判为零的概率。|\Pr[\text{误判}]\le(d/\lvert S\rvert)^k|要求采样集大小大于总次数 d，k 次独立采样；这是单侧概率保证。
+matrix-check|20|matrix|矩阵乘法随机核验|方法|用随机向量把矩阵乘积的核验降为矩阵向量乘法。|A(Br)=Cr|若 AB\ne C，随机向量独立均匀取自 S 的各坐标，漏检概率至多 1/\lvert S\rvert。
+matching-test|20|matching|二分图完美匹配检验|方法|符号邻接矩阵的行列式非零当且仅当有完美匹配。|\det M\not\equiv0|不同匹配对应不同单项式；随机赋值漏检概率至多 n/\lvert S\rvert。
+sumcheck|20|sumcheck|求和检验协议|方法|逐轮将布尔立方体求和声称归约为随机点处的求值。|\Pr[\text{接受错误声称}]\le\sum_i d_i/\lvert S\rvert|验证者须知道逐变量次数界，且能核验最后的点值。
+crypto-proof|20|crypto|多项式证明系统|应用|随机挑战检查编码后的多项式约束，构成可验证计算与密码学证明的一环。|P(r)=Q(r)|还需承诺绑定性与正确的挑战时序；SZ 引理只给出代数错误概率。
 `.trim().split('\n');
 const nodes=rows.map(row=>{const [id,c,a,title,kind,summary,formula,conditions]=row.split('|');const chapter=chapters[Number(c)-1];return {id,chapter:chapter.id,part:chapter.part,title,kind,summary,formula,conditions,anchor:`${chapter.id}-${/^\d+$/.test(a)?'statement-':''}${a}`};});
 const relations={prerequisite:{label:'先修知识',color:'#64748b',dash:'5 4'},characterization:{label:'定义与刻画',color:'#9564bc',dash:'2 3'},deduction:{label:'定理推导',color:'#247bb5',dash:''},construction:{label:'构造方法',color:'#22866b',dash:''},application:{label:'计算与应用',color:'#be7026',dash:''}};
@@ -158,7 +162,7 @@ vector-extension>basis-coordinates basis-coordinates>dual-basis basis-coordinate
 root>unit-root order>primitive-root unit-root>unit-root-group primitive-root>cyclotomic cyclotomic>cyclotomic-product cyclotomic>cyclotomic-prime conjugates>finite-cyclotomic power-order>finite-cyclotomic
 field>polynomial-model power-basis>polynomial-model primitive>power-model polynomial>companion companion>matrix-model characteristic>binary-model basis-coordinates>binary-model binary-model>xor power-model>log-table
 degree>grid-root root-bound>grid-root divisibility>grid-vanishing grid-root>coefficient interpolation>coefficient coefficient>cauchy-davenport sumset>cauchy-davenport field>chevalley-warning zero-sequence>egz
-degree>schwartz-zippel root-bound>schwartz-zippel multilinear>nonzero-bound schwartz-zippel>identity-test
+degree>schwartz-zippel root-bound>schwartz-zippel multilinear>nonzero-bound schwartz-zippel>identity-test identity-test>matrix-check identity-test>matching-test schwartz-zippel>sumcheck sumcheck>crypto-proof
 `);
 connect('characterization',`
 group>abelian generated>cyclic order>cyclic residue>quotient coset>index domain>field ring>unit-ring ring>comm-ring ideal>principal algebraic>transcendental minimal-kernel>minimal prime-power>characteristic primitive>power-model unit-root>primitive-root
@@ -187,7 +191,7 @@ const routes=[
 {name:'有限域的子域与本原元',ids:['extension-degree','tower','field-size','subfields','cyclic','power-order','mult-cyclic','primitive','simple-extension']},
 {name:'共轭、迹、范数与基',ids:['minimal','conjugates','finite-automorphism','trace','norm','trace-pair','basis-coordinates','dual-basis','normal-basis']},
 {name:'从抽象域到计算实现',ids:['quotient-field','power-basis','primitive','polynomial-model','power-model','primitive-test','binary-model','xor','log-table']},
-{name:'多项式方法与组合应用',ids:['root-bound','interpolation','grid-root','coefficient','cauchy-davenport','chevalley-warning','egz','schwartz-zippel','identity-test']}
+{name:'多项式方法与组合应用',ids:['root-bound','interpolation','grid-root','coefficient','cauchy-davenport','chevalley-warning','egz','schwartz-zippel','identity-test','matrix-check','matching-test','sumcheck','crypto-proof']}
 ];
 const byId=new Map(nodes.map(n=>[n.id,n]));
 nodes.find(n=>n.id==='splitting-unique').extra={label:'高阶选读证明',anchor:'c09-splitting-field-proof'};

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 790" role="img" aria-labelledby="title desc">
+  <title id="title">sum-check 协议逐轮交互图</title>
+  <desc id="desc">左列是证明者，右列是验证者。从初始声称 C0 等于 H 开始，每轮证明者先发送低次数一元多项式 gi，验证者检查次数及 gi 在 0 与 1 处的和，检查通过后才抽取并公开随机挑战 ri，令 Ci 等于 gi 在 ri 处的值。第 n 轮后验证者自行计算 f 在所有随机挑战组成的点处的值并与 Cn 比较。</desc>
+  <defs>
+    <marker id="arrow-right" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#276884"/></marker>
+    <marker id="arrow-left" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#b16c17"/></marker>
+  </defs>
+  <rect x="1" y="1" width="938" height="788" rx="18" fill="#f7fafb" stroke="#c5d8dc" stroke-width="2"/>
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif" fill="#12384b">
+    <text x="220" y="45" text-anchor="middle" font-size="25" font-weight="700">证明者 P</text>
+    <text x="720" y="45" text-anchor="middle" font-size="25" font-weight="700">验证者 V</text>
+    <text x="470" y="75" text-anchor="middle" font-size="17">先发消息，后抽取本轮随机挑战</text>
+  </g>
+  <line x1="440" y1="95" x2="440" y2="725" stroke="#c8d9dd" stroke-width="2" stroke-dasharray="8 9"/>
+  <g font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="17" text-anchor="middle" fill="#12384b">
+    <text x="470" y="117">初始声称：C₀ = H</text>
+  </g>
+
+  <rect x="62" y="142" width="310" height="62" rx="10" fill="#e6f1f7" stroke="#8db8c9" stroke-width="2"/>
+  <text x="217" y="181" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="650" fill="#12384b">发送 g₁(X)，次数 ≤ d₁</text>
+  <line x1="375" y1="173" x2="554" y2="173" stroke="#276884" stroke-width="3" marker-end="url(#arrow-right)"/>
+  <rect x="563" y="134" width="325" height="77" rx="10" fill="#e8f5f1" stroke="#92c8b8" stroke-width="2"/>
+  <text x="725" y="163" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="650" fill="#12384b">检查 deg g₁ ≤ d₁</text>
+  <text x="725" y="189" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">g₁(0) + g₁(1) = C₀</text>
+  <text x="725" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" fill="#9a4b32">不通过 → 拒绝</text>
+  <line x1="563" y1="261" x2="376" y2="261" stroke="#b16c17" stroke-width="3" marker-end="url(#arrow-left)"/>
+  <text x="470" y="251" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#835113">通过后公布 r₁ ∈ S</text>
+  <text x="725" y="286" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">置 C₁ = g₁(r₁)</text>
+
+  <text x="470" y="326" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#657b83">⋮  前面的 r₁,…,rᵢ₋₁ 已公开  ⋮</text>
+  <rect x="62" y="354" width="310" height="62" rx="10" fill="#e6f1f7" stroke="#8db8c9" stroke-width="2"/>
+  <text x="217" y="393" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="650" fill="#12384b">发送 gᵢ(X)，次数 ≤ dᵢ</text>
+  <line x1="375" y1="385" x2="554" y2="385" stroke="#276884" stroke-width="3" marker-end="url(#arrow-right)"/>
+  <rect x="563" y="346" width="325" height="77" rx="10" fill="#e8f5f1" stroke="#92c8b8" stroke-width="2"/>
+  <text x="725" y="375" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="650" fill="#12384b">检查 deg gᵢ ≤ dᵢ</text>
+  <text x="725" y="401" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">gᵢ(0) + gᵢ(1) = Cᵢ₋₁</text>
+  <text x="725" y="448" text-anchor="middle" font-family="system-ui, sans-serif" font-size="17" fill="#9a4b32">不通过 → 拒绝</text>
+  <line x1="563" y1="473" x2="376" y2="473" stroke="#b16c17" stroke-width="3" marker-end="url(#arrow-left)"/>
+  <text x="470" y="463" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#835113">通过后公布 rᵢ ∈ S</text>
+  <text x="725" y="498" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">置 Cᵢ = gᵢ(rᵢ)</text>
+
+  <text x="470" y="538" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="#657b83">⋮  同样的步骤直到第 n 轮  ⋮</text>
+  <rect x="62" y="557" width="310" height="62" rx="10" fill="#e6f1f7" stroke="#8db8c9" stroke-width="2"/>
+  <text x="217" y="596" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="650" fill="#12384b">发送 gₙ(X)，次数 ≤ dₙ</text>
+  <line x1="375" y1="588" x2="554" y2="588" stroke="#276884" stroke-width="3" marker-end="url(#arrow-right)"/>
+  <rect x="563" y="549" width="325" height="77" rx="10" fill="#e8f5f1" stroke="#92c8b8" stroke-width="2"/>
+  <text x="725" y="578" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="650" fill="#12384b">检查 deg gₙ ≤ dₙ</text>
+  <text x="725" y="604" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">gₙ(0) + gₙ(1) = Cₙ₋₁</text>
+  <line x1="563" y1="653" x2="376" y2="653" stroke="#b16c17" stroke-width="3" marker-end="url(#arrow-left)"/>
+  <text x="470" y="644" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#835113">通过后公布 rₙ ∈ S</text>
+  <rect x="563" y="680" width="325" height="67" rx="10" fill="#fff0d9" stroke="#d9a653" stroke-width="2"/>
+  <text x="725" y="707" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="650" fill="#12384b">最终独立求值</text>
+  <text x="725" y="732" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" fill="#12384b">Cₙ = gₙ(rₙ) ?= f(r₁,…,rₙ)</text>
+  <text x="725" y="772" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#12384b">相等则接受，否则拒绝</text>
+</svg>

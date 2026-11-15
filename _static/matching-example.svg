@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" role="img" aria-labelledby="title desc">
+  <title id="title">二分图的完美匹配示意图</title>
+  <desc id="desc">左侧顶点 u1、u2，右侧顶点 v1、v2。边 u1 到 v2 与 u2 到 v1 用蓝绿色粗线表示，构成完美匹配；边 u1 到 v1 用灰色细线表示。</desc>
+  <rect x="1" y="1" width="758" height="328" rx="16" fill="#f7fafb" stroke="#c5d8dc" stroke-width="2"/>
+  <text x="178" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#12384b">左侧顶点</text>
+  <text x="582" y="42" text-anchor="middle" font-family="system-ui, sans-serif" font-size="21" font-weight="700" fill="#12384b">右侧顶点</text>
+  <path d="M205 95 L555 95" fill="none" stroke="#8498a0" stroke-width="4"/>
+  <path d="M205 95 L555 235" fill="none" stroke="#007d82" stroke-width="7" stroke-linecap="round"/>
+  <path d="M205 235 L555 95" fill="none" stroke="#007d82" stroke-width="7" stroke-linecap="round"/>
+  <g fill="#ffffff" stroke="#12384b" stroke-width="3">
+    <circle cx="180" cy="95" r="25"/><circle cx="180" cy="235" r="25"/>
+    <circle cx="580" cy="95" r="25"/><circle cx="580" cy="235" r="25"/>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="19" font-weight="700" fill="#12384b" text-anchor="middle" dominant-baseline="middle">
+    <text x="180" y="95">u₁</text><text x="180" y="235">u₂</text>
+    <text x="580" y="95">v₁</text><text x="580" y="235">v₂</text>
+  </g>
+  <g font-family="system-ui, sans-serif" font-size="17" font-weight="600">
+    <text x="378" y="81" text-anchor="middle" fill="#596d76">x₁₁</text>
+    <text x="292" y="151" fill="#006e73">x₁₂</text>
+    <text x="458" y="151" fill="#006e73">x₂₁</text>
+  </g>
+  <line x1="220" y1="293" x2="270" y2="293" stroke="#007d82" stroke-width="7" stroke-linecap="round"/>
+  <text x="285" y="300" font-family="system-ui, sans-serif" font-size="17" fill="#12384b">选入的完美匹配：{(u₁,v₂), (u₂,v₁)}</text>
+</svg>
