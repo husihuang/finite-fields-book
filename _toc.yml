@@ -34,6 +34,14 @@ parts:
       - file: chapters/c18
       - file: chapters/c19
       - file: chapters/c20
+  - caption: 课程实践项目
+    chapters:
+      - file: projects/index
+      - file: projects/submission
+      - file: projects/project01_field
+      - file: projects/project02_frobenius
+      - file: projects/project03_interpolation
+      - file: projects/project04_randomized
   - caption: 附录
     chapters:
       - file: appendices/source
