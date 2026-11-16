@@ -4,7 +4,7 @@
 
 一部面向课程教学与自主学习的中文交互式教材讲义。从群、环和多项式出发，介绍域扩张与有限域的基本理论，进一步讨论迹、范数、基、割圆多项式、有限域计算及多项式的组合应用。
 
-**[在线阅读教材](https://husihuang.github.io/finite-fields-book/)** · **[知识图谱与学习状态](https://husihuang.github.io/finite-fields-book/knowledge.html)** · **[提交勘误与建议](https://github.com/husihuang/finite-fields-book/issues)**
+**[在线阅读教材](https://husihuang.github.io/finite-fields-book/)** · **[期末复习纲要](https://husihuang.github.io/finite-fields-book/final-review.html)** · **[知识图谱与学习状态](https://husihuang.github.io/finite-fields-book/knowledge.html)** · **[提交勘误与建议](https://github.com/husihuang/finite-fields-book/issues)**
 
 直接打开在线教材即可阅读和使用浏览器实验，无需安装 Python。支持电脑、平板和手机，以及浅色、夜间显示模式。
 
