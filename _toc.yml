@@ -1,6 +1,9 @@
 format: jb-book
 root: intro
 parts:
+  - caption: 期末复习
+    chapters:
+      - file: final-review
   - caption: 学习导航
     chapters:
       - file: knowledge
