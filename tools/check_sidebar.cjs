@@ -9,6 +9,7 @@ const {chromium}=require('C:/Users/husih/.cache/codex-runtimes/codex-primary-run
   if(await page.locator('#pst-page-toc-nav a').count()){
    assert.equal(await page.locator('.ff-inline-page-toc').count(),1,path+' page toc merged');
    assert.ok(await page.locator('.ff-inline-page-toc #pst-page-toc-nav a').count(),path+' merged toc has links');
+   assert.equal(await page.locator('.ff-inline-page-toc summary').count(),0,path+' redundant page toc heading removed');
   }
   for(const kind of ['primary','secondary']){
    const toggle=page.locator(`.${kind}-toggle:visible`).first();if(!await toggle.count())continue;const modal=page.locator(`#pst-${kind}-sidebar-modal`);

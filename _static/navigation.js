@@ -4,14 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentItem = primarySidebar?.querySelector('.bd-docs-nav li.current.active');
 
   if (pageToc && currentItem && pageToc.querySelector('a')) {
-    const panel = document.createElement('details');
-    const summary = document.createElement('summary');
+    const panel = document.createElement('div');
     panel.className = 'ff-inline-page-toc';
-    panel.open = true;
-    summary.textContent = '本页目录';
     pageToc.setAttribute('aria-label', '本页目录');
     pageToc.removeAttribute('aria-labelledby');
-    panel.append(summary, pageToc);
+    panel.append(pageToc);
     currentItem.append(panel);
     document.documentElement.classList.add('ff-page-toc-merged');
   }

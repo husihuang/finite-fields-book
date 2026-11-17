@@ -252,31 +252,20 @@ dialog[open] .ff-sidebar-close {
   display: none !important;
 }
 .ff-inline-page-toc {
-  margin: .35rem 0 .55rem .45rem;
-  border-left: 2px solid var(--pst-color-border, #ccd9dc);
+  margin: .15rem 0 .55rem .65rem;
+  padding-left: .35rem;
+  border-left: 1px solid var(--pst-color-border, #ccd9dc);
   color: var(--pst-color-text-muted, #536772);
 }
-.ff-inline-page-toc > summary {
-  padding: .25rem .45rem;
-  color: var(--pst-color-text-base, #12384b);
-  font-size: .86rem;
-  font-weight: 650;
-  cursor: pointer;
-  list-style-position: inside;
-}
-.ff-inline-page-toc > summary:hover {
-  color: var(--pst-color-link-hover, #007d82);
-}
 .ff-inline-page-toc #pst-page-toc-nav {
-  margin: .1rem 0 .35rem;
-  padding-left: .35rem;
+  margin: 0;
 }
 .ff-inline-page-toc .section-nav {
   padding-left: 0;
 }
 .ff-inline-page-toc .toc-entry a.nav-link {
   margin-left: 0;
-  padding: .22rem .45rem;
+  padding: .2rem .35rem;
   font-size: .82rem;
   line-height: 1.35;
 }
